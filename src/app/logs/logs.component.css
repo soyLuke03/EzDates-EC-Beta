@@ -1,0 +1,19 @@
+.center{
+    text-align: center;
+    margin: auto;
+}
+
+.border-form{
+    border: 5px;
+    border-style: outset;
+    border-radius:45px;
+}
+
+.sepparate{
+    margin: 1.3%;
+}
+
+.input{
+    margin: auto;
+    width: 60%;
+}

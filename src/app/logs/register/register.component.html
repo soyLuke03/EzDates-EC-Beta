@@ -1,0 +1,68 @@
+<form (ngSubmit)="save($event)" [formGroup]="myForm"> 
+    <div class="container center">
+        <div class="row">
+            <h1>Ez Dates / Register form</h1>
+            <h5>"Find your duo to get the win"</h5>
+            <hr>
+            <div class="col-6">
+                <div class="border-form">
+                        <!--Formulario de registro-->
+                        <label class="form-label">Username</label><br>
+                        <input required class="sepparate form-control input" type="text" id="username" name="username" formControlName="username" placeholder="exampleUser">
+                        
+                        <br>
+
+                        <label class="form-label">Email</label><br>
+                        <input required class="sepparate form-control input" type="text" id="email" name="email" formControlName="email" placeholder="example@example.com">
+                        
+                        <br>
+
+                        <label class="form-label">Name</label><br>
+                        <input class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="example name">
+                        
+                        <br>
+                        
+                        <label class="form-label">Surname</label><br>
+                        <input required class="sepparate form-control input" type="text" id="surname" name="surname" formControlName="surname" placeholder="example surname">
+                        
+                            <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
+                            <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
+                            
+                            <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
+                            
+                            <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
+                            <!-- -------------------- -->
+
+                        <!-- -------------------- -->
+                        <br><br>                   
+
+                    
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="border-form">
+                        <label class="form-label">Password</label><br>
+                        <input required class="sepparate form-control input" type="password" id="password" name="password" formControlName="password" placeholder="Enter your password here...">
+                    
+                        <br>
+                        
+                        <label class="form-label">Repeat Password</label><br>
+                        <input required class="sepparate form-control input" type="password" id="password2" name="password2" formControlName="password2" placeholder="Repeat your password here...">
+                        
+                        <span class="form-text text-danger" 
+                        *ngIf="errorPasswords">
+                            Password do not match
+                        </span>
+                        <br><br>
+                        
+                </div>
+                <br><br>
+                <div class="border-form">
+                    <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Register"> 
+                    <input class="btn btn-danger sepparate" type="reset" value="Cancel">
+                    <a [routerLink]="['/logs/login']"><button  class="btn btn-info sepparate">Return</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

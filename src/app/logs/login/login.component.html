@@ -1,0 +1,43 @@
+<div class="container center">
+    <div class="row">
+        <h1>Ez Dates</h1>
+        <h5>"Find your duo to get the win"</h5>
+        <hr>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form (ngSubmit)="save($event)" #myForm="ngForm" class="border-form">
+                    <label class="form-label">Email</label><br>
+                    <input class="sepparate form-control input" required type="text" id="email" [ngModel]="email" name="email" minlength="1" placeholder="example@example.com">
+                    
+                    <span class="form-text text-danger" 
+                          *ngIf="notValid('email')">
+                        Email does not exist
+                    </span>
+                    
+                    <br>
+                    
+                    <label class="form-label">Password</label><br>
+                    <input class="sepparate form-control input" required type="password" id="password" [ngModel]="password" name="password" minlength="1" placeholder="Enter your password here...">
+                                                
+                    <span class="form-text text-danger" 
+                          *ngIf="notValid('password') || errorLogin">
+                          Email or password are not correct
+                    </span>
+
+                    <br><br>
+
+                    <input class="btn btn-success sepparate" [disabled]="myForm.invalid" type="submit" value="Login"> 
+                    <input class="btn btn-danger sepparate" type="reset" value="Cancel">
+                                                
+                    
+
+                    <br>
+                    
+                    <p>You don't have an account?
+                    <a [routerLink]="['/logs/register']" routerLinkActive="active">register now</a>
+                    </p>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
