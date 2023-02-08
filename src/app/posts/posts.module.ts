@@ -6,6 +6,8 @@ import { UpdateComponent } from './update/update.component';
 import { AddComponent } from './add/add.component';
 import { PostComponent } from './post/post.component';
 import { PostsRoutingModule } from './posts-routing.module';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { PostsRoutingModule } from './posts-routing.module';
   ],
   imports: [
     CommonModule,
-    PostsRoutingModule
+    PostsRoutingModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class PostsModule { }

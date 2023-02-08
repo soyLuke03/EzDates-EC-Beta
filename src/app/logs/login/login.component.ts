@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import * as e from 'express';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   /*----------------------------*/
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -54,9 +55,13 @@ export class LoginComponent implements OnInit {
         email:"",
         password:""
       })
+      this.router.navigate(['/posts/list'])
     }
     else{
       this.errorLogin="Credentials are incorrect"
+      setTimeout(() => {
+        this.errorLogin=""
+      }, 3000);
     }
 
   }

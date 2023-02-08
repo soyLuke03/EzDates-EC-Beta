@@ -13,12 +13,12 @@ export class RegisterComponent implements OnInit {
   errorPasswords:string = "";
 
   myForm: FormGroup = this.fb.group({
-    username: [null, [Validators.required]],
-    email: [null, [Validators.required, Validators.email]],
-    name: [null],
-    surname: [null, [Validators.required, Validators.minLength(1)]],
-    password: [null, [Validators.required]],
-    password2: [null, [Validators.required]]
+    username: [null, [Validators.required,Validators.maxLength(199)]],
+    email: [null, [Validators.required, Validators.email, Validators.maxLength(199)]],
+    name: [null,Validators.maxLength(199)],
+    surname: [null, [Validators.required,Validators.maxLength(199)]],
+    password: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]],
+    password2: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]]
   })
   
   constructor(private fb: FormBuilder, private acRoute: Router) { }
@@ -38,13 +38,15 @@ export class RegisterComponent implements OnInit {
         this.myForm?.controls[campo]?.touched
     }
 
+
+
     equalsPasswords(){
       return this.myForm.controls['password'].value == this.myForm.controls['password2'].value
     }
 
-    /**
-   * Método cuando se envía el formulario correctamente
-   */
+  /**
+  * Método cuando se envía el formulario correctamente
+  */
   save = (e: { preventDefault: () => void; }) => {
     if(this.equalsPasswords()){
       console.log("Enviado")

@@ -1,0 +1,14 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+}
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 42px;
+}
+
+h5, label{
+    font-weight: bold;
+}
+

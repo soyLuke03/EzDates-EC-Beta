@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PostComponent } from './post/post.component';
-import { UpdateComponent } from '../trends/update/update.component';
-import { ListComponent } from '../trends/list/list.component';
-import { DeleteComponent } from '../trends/delete/delete.component';
-import { AddComponent } from './add/add.component';
+import { PostComponent } from '../posts/post/post.component';
+import { UpdateComponent } from '../posts/update/update.component';
+import { ListComponent } from '../posts/list/list.component';
+import { DeleteComponent } from '../posts/delete/delete.component';
+import { AddComponent } from '../posts/add/add.component';
 
 
 

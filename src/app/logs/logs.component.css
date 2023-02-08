@@ -1,3 +1,4 @@
+
 .center{
     text-align: center;
     margin: auto;
@@ -16,4 +17,28 @@
 .input{
     margin: auto;
     width: 60%;
+}
+
+
+.header{
+    background: rgb(2,0,36);
+    background: linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 100%);}
+
+.logo{
+    padding: 3%;
+    margin: auto;
+    border-radius: 350px;
+    height: 100%;
+    width: 100%;
+}
+
+.title, .subtitle{
+    color: bisque;
+}
+
+/*Clase Foto de logo de fondo*/
+.img-bg{
+    background-image: url(../../../../../CarpetaPersonal/Fotos/serverdedisc.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }

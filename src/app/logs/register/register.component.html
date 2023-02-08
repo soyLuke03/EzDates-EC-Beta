@@ -1,30 +1,44 @@
 <form (ngSubmit)="save($event)" [formGroup]="myForm"> 
-    <div class="container center">
-        <div class="row">
-            <h1>Ez Dates / Register form</h1>
-            <h5>"Find your duo to get the win"</h5>
+    <div class="container-flex center">
+        <div class="header">
+            <h1 class="title">Ez Dates / Register form</h1>
+            <h5 class="subtitle">"Find your duo to get the win"</h5>
             <hr>
-            <div class="col-6">
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
                 <div class="border-form">
                         <!--Formulario de registro-->
                         <label class="form-label">Username</label><br>
                         <input required class="sepparate form-control input" type="text" id="username" name="username" formControlName="username" placeholder="exampleUser">
-                        
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('username')">
+                                Username is required. 
+                            </span>
                         <br>
 
                         <label class="form-label">Email</label><br>
-                        <input required class="sepparate form-control input" type="text" id="email" name="email" formControlName="email" placeholder="example@example.com">
-                        
+                        <input required class="sepparate form-control input" type="email" id="email" name="email" formControlName="email" placeholder="example@example.com">
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('email')">
+                                Email is required. 
+                            </span>
                         <br>
 
                         <label class="form-label">Name</label><br>
                         <input class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="example name">
-                        
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('name')">
+                                Name is too long. 
+                            </span>
                         <br>
                         
                         <label class="form-label">Surname</label><br>
                         <input required class="sepparate form-control input" type="text" id="surname" name="surname" formControlName="surname" placeholder="example surname">
-                        
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('surname')">
+                                Surname is required. 
+                            </span>
                             <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
                             <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
                             
@@ -39,18 +53,25 @@
                     
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="border-form">
                         <label class="form-label">Password</label><br>
                         <input required class="sepparate form-control input" type="password" id="password" name="password" formControlName="password" placeholder="Enter your password here...">
-                    
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('password')">
+                                Password is required and longer than 8 characters. 
+                            </span>
                         <br>
                         
                         <label class="form-label">Repeat Password</label><br>
                         <input required class="sepparate form-control input" type="password" id="password2" name="password2" formControlName="password2" placeholder="Repeat your password here...">
-                        
+                            <span class="form-text text-danger" 
+                            *ngIf="notValid('password2')">
+                                Password is required and longer than 8 characters. 
+                            </span>
+
                         <span class="form-text text-danger" 
-                        *ngIf="errorPasswords">
+                        *ngIf="!equalsPasswords()">
                             Password do not match
                         </span>
                         <br><br>
