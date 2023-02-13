@@ -1,1 +1,139 @@
-<p>user works!</p>
+<div class="container-flex">
+    <!--HEADER-->
+    <div class="header row">
+        <div class="center col-md-3 col-sm-4 col-xs-2">
+            <img class="logo" src="../../../assets/serverdedisc.png" alt="Logo de EZdates">
+        </div>
+        <div class="col-sm-8 col-md-9 center">
+            <h1 class="title">Ez Dates</h1>
+            <h5 class="subtitle">"Find your duo to get the win"</h5>
+        </div>
+    </div>  
+
+    <!--NAVIGATION BAR-->
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid ">
+        <a class="navbar-brand">
+          Menu: 
+        </a>
+        <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/logs/logout']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Log out
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/posts/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Home
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/trends/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Trends
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/users/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Search User
+              </a>
+            </li>
+          </ul>
+
+
+        </div>
+        
+      </div>
+      
+    </nav>  
+    <!---->
+</div>
+
+<div class="body backBlack ">
+  <p class="breadCramp">User's List > User</p>
+  <div class="container  backBlack update">
+    <div class="row white">
+      <div class="col-sm-12 col-xs-12 col-md-6 center">
+        <!-- Tarjeta de cada post -->
+        <div class="card center image" style="width: 18rem;">
+          
+          <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
+          
+        </div>
+        <a [routerLink]="['/users/update/1']"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/users/delete/1']"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Return</button></a>
+
+
+        <!-- -------------------- -->
+      </div>
+      <br>
+      <div class="col-sm-12 col-xs-12 col-md-6">
+        <br>
+        <a [routerLink]="['/users/user/1']"><button  class="btn btn-success sepparate">Add Follower</button></a>
+        <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
+
+        <p class="subtitle"><span class="title">USERNAME:</span> soyLuke03</p>
+
+        <p class="subtitle"><span class="title">NAME:</span> Antonio </p>
+
+        <p class="subtitle"><span class="title">SURNAME:</span> Gonzalez</p>
+
+        <p class="subtitle"><span class="title">STATUS:</span> ENABLED</p>
+      </div>
+    </div>
+    <hr style="color: aliceblue;">
+    
+    <div class="row galery">
+      <!-- Tarjeta de cada post -->
+      <div class="galery-img">
+        <div class="card" style="width: 18rem;">
+
+          <a [routerLink]="['/posts/post/1']"><img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ..."></a>
+          <div class="card-body">
+            <h4 class="card-title">Title of Post</h4>
+            <sub>#1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</sub>
+            <hr>
+            <p class="card-text">There is a random description of this post, so you can create an idea of what's inside.
+              So if there was an unitentional message of a larger description... What I would be do? 
+              In that case that happens
+            </p>
+            <p class="date">08/02/2023 19:10</p>
+          </div>
+        </div>
+      </div>
+      <!-- -------------------- -->
+      
+      
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container-flex">
+    <div class="row">
+      <div class="col center bg-black">
+        
+        <div class="terms">
+          <p>Legal terms</p>
+          <p>Privacy policy</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     password2: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]]
   })
   
-  constructor(private fb: FormBuilder, private acRoute: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -56,15 +56,20 @@ export class RegisterComponent implements OnInit {
       Swal.fire({
         icon: 'success',
         title: 'Register success',
-        text: 'Now check your email to verify your account'
+        text: 'Now check your email to verify your account',
+        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+        confirmButtonColor: 'black',
+        confirmButtonText: 'OK'
       })
+      this.router.navigate(['logs/login'])
     }
     if(!this.equalsPasswords()){
       Swal.fire({
         icon: 'error',
         title: 'Passwords do not match',
-        timer: 2000,
-        timerProgressBar: true
+        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+        confirmButtonColor: 'black',
+        confirmButtonText: 'OK'
       })
       this.errorPasswords="Password do not match"
     }

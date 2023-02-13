@@ -1,6 +1,6 @@
 .header{
     background: rgb(2,0,36);
-    background: linear-gradient(200deg, rgba(0,0,0) 40%, rgba(255,0,0,0.9284664549413515) 100%);
+    background: linear-gradient(200deg, rgba(0,0,0) 0%, rgba(255,0,0,0.9284664549413515) 100%);
 }
 
 .logo{
@@ -25,6 +25,25 @@ sub{
     color: bisque;
     font-size: 42px;
 }
+.footer {
+
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .galery{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: auto;
+    background-color: rgb(21, 21, 21);
+  }
+  
+  .galery .galery-img{
+    max-width: 320px;
+    padding: 1rem;
+  }
 
 .date{
       color: rgb(157, 157, 157);
@@ -77,12 +96,7 @@ sub{
     color: bisque;
     padding: 3%;
 }
-.footer {
 
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
 
 
 .formulario{
@@ -113,11 +127,11 @@ sub{
 
 .update{
     text-align: left;
-    background-color: rgb(21, 21, 21);
+    background-color: black;
 }
 
 .image{
-    background-color: rgb(21, 21, 21);
+    background-color: black;
     margin-top: 8%;
     margin-bottom: 8%;
     border-color: aliceblue;
@@ -129,16 +143,20 @@ sub{
     background-color: rgb(21, 21, 21);
 }
 
+
+
 .white{
     color: aliceblue;
+}
+
+.table{
+    border: 5px;
+    border-style: solid;
+    border-color: rgb(63, 63, 63);
 }
 
 .breadCramp{
     color: aliceblue;
     background: rgb(2,0,36);
     background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
-}
-
-.right{
-    text-align: right;
 }

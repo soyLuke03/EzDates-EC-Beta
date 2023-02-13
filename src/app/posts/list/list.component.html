@@ -11,82 +11,60 @@
     </div>  
 
     <!--NAVIGATION BAR-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid ">
           <a class="navbar-brand">
             Menu: 
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Logs Menu
+                <a [routerLink]="['/logs/logout']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Log out
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/logs/login']" routerLinkActive="active">Login</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/logs/logout']" routerLinkActive="active">Logout</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/logs/register']" routerLinkActive="active">Register</a></li>
-                </ul>
               </li>
             </ul>
             
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Posts Menu
+                <a [routerLink]="['/posts/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Home
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/posts/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/add']" routerLinkActive="active">Add</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/post/1']" routerLinkActive="active">Post</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
               </li>
             </ul>
 
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Trends Menu
+                <a [routerLink]="['/trends/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Trends
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/trends/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/trend/1']" routerLinkActive="active">Trend</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
               </li>
             </ul>
 
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  User Menu
+                <a [routerLink]="['/users/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Search User
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/users/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/add']" routerLinkActive="active">Add</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/user/1']" routerLinkActive="active">User</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
               </li>
             </ul>
 
 
           </div>
+          
         </div>
-      </nav>  
-      <!---->
+        
+    </nav>  
+    <!---->
+      
 </div>
 
-<div class="body">
-
+<div class="body backBlack">
+  <p class="breadCramp">Post's List</p>
   <div class="container">
     <div class="row galery">
 
@@ -96,25 +74,20 @@
             <div class="profile-link-badge">
               <a class="profile-link" [routerLink]="['/users/user/__PRUEBA__']">A link to the profile of the user</a>
             </div>
-            <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
+            <a [routerLink]="['/posts/post/1']"><img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ..."></a>
             <div class="card-body">
               <h4 class="card-title">Title of Post</h4>
+              <sub>#1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</sub>
               <hr>
               <p class="card-text">There is a random description of this post, so you can create an idea of what's inside.
                 So if there was an unitentional message of a larger description... What I would be do? 
-                In that case that happens hear
+                In that case that happens
               </p>
               <p class="date">08/02/2023 19:10</p>
             </div>
           </div>
         </div>
         <!-- -------------------- -->
-
-
-        
-
-        
-
 
     </div>
   </div>

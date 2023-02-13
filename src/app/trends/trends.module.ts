@@ -5,6 +5,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
 import { TrendsRoutingModule } from './trends-routing.module';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +19,9 @@ import { TrendsRoutingModule } from './trends-routing.module';
   ],
   imports: [
     CommonModule,
-    TrendsRoutingModule
+    TrendsRoutingModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class TrendsModule { }

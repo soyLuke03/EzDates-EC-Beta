@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { TrendComponent } from './trend/trend.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
-import { AddComponent } from '../posts/add/add.component';
+import { ListComponent } from './list/list.component';
+
 
 
 
@@ -14,7 +15,7 @@ const routes: Routes = [
       { path: 'trend/:id', component: TrendComponent },
       { path: 'update/:id', component: UpdateComponent },
       { path: 'delete/:id', component: DeleteComponent },
-      { path: 'list', component: AddComponent },
+      { path: 'list', component: ListComponent },
       { path: '**', redirectTo: 'list' }
     ]
   }

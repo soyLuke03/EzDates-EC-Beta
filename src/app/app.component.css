@@ -12,3 +12,10 @@ h5, label{
     font-weight: bold;
 }
 
+.backBlack{
+    background-color: rgb(21, 21, 21);
+}
+
+.white{
+    color: aliceblue;
+}

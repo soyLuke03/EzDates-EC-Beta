@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2'
+import { LogsService } from '../logs.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,19 +18,34 @@ export class LoginComponent implements OnInit {
    * Cosas del formulario TEMPLATE
    */
   @ViewChild('myForm') myForm!: NgForm;
-  email:string=""
+  
+  username:string=""
   password:string=""
   /*--- --------------------- ---*/
 
+
   /*-- Credenciales de acceso temporales--*/
-  entryEmail:string = "0"
+  entryusername:string = "0"
   entryPassword:string = "0"
   /*----------------------------*/
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private logsService:LogsService) { }
 
   ngOnInit(): void {
+  }
+
+
+  /**
+   * Método para logear al usuario
+   */
+  login(){
+    console.log(this.username, this.password)
+    this.logsService.login(this.username,this.password)
+    .subscribe({
+      next: resp => console.log(resp),
+      error: resp => console.log("ERROR")
+    })
   }
 
 
@@ -42,18 +60,31 @@ export class LoginComponent implements OnInit {
       this.myForm?.controls[campo]?.touched
   }
 
+
+
+
+
+
   /**
    * Método cuando se envía el formulario correctamente
    */
   save = (e: { preventDefault: () => void; }) => {
-    let email = this.myForm.controls['email'].value;
+    let username = this.myForm.controls['username'].value;
     let pass = this.myForm.controls['password'].value
 
-    if(email===this.entryEmail && pass === this.entryPassword){
+    if(username===this.entryusername && pass === this.entryPassword){
       this.errorLogin="";
       this.myForm.resetForm({
         email:"",
         password:""
+      })
+      Swal.fire({
+        title: "Log in",
+        text: "You've been logged in",
+        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',
+        color: 'white',
+        confirmButtonColor: 'black',
+        confirmButtonText: 'OK'
       })
       this.router.navigate(['/posts/list'])
     }

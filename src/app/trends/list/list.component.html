@@ -1,1 +1,105 @@
-<p>list works!</p>
+<div class="container-flex">
+    <!--HEADER-->
+    <div class="header row">
+        <div class="center col-md-3 col-sm-4 col-xs-2">
+            <img class="logo" src="../../../assets/serverdedisc.png" alt="Logo de EZdates">
+        </div>
+        <div class="col-sm-8 col-md-9 center">
+            <h1 class="title">Ez Dates</h1>
+            <h5 class="subtitle">"Find your duo to get the win"</h5>
+        </div>
+    </div>  
+
+    <!--NAVIGATION BAR-->
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid ">
+        <a class="navbar-brand">
+          Menu: 
+        </a>
+        <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/logs/logout']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Log out
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/posts/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Home
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/trends/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Trends
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/users/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Search User
+              </a>
+            </li>
+          </ul>
+
+
+        </div>
+        
+      </div>
+      
+    </nav>  
+    <!---->
+</div>
+
+<div class="body backBlack">
+  <p class="breadCramp">Trend's List</p>
+  <div class="container-flex backBlack">
+    <div class="row galery ">
+
+        <!-- Tarjeta de cada trend -->
+        <div class="galery-img ">
+          <a class="trend-link" [routerLink]="['/trends/trend/1']">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h4 class="card-title">Title of Trend</h4>
+                <hr>
+                <p class="card-text">There is a random description of this post, so you can create an idea of what's inside.
+                  So if there was an unitentional message of a larger description... What I would be do? 
+                  In that case that happens
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- -------------------- -->
+        
+
+    </div>
+  </div>
+</div>  
+
+<div class="footer">
+  <div class="container-flex">
+    <div class="row">
+      <div class="col center bg-black">
+        
+        <div class="terms">
+          <p>Legal terms</p>
+          <p>Privacy policy</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

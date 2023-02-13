@@ -11,83 +11,89 @@
     </div>  
 
     <!--NAVIGATION BAR-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            Menu: 
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Logs Menu
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/logs/login']" routerLinkActive="active">Login</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/logs/logout']" routerLinkActive="active">Logout</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/logs/register']" routerLinkActive="active">Register</a></li>
-                </ul>
-              </li>
-            </ul>
-            
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Posts Menu
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/posts/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/add']" routerLinkActive="active">Add</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/post/1']" routerLinkActive="active">Post</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/posts/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
-              </li>
-            </ul>
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid ">
+        <a class="navbar-brand">
+          Menu: 
+        </a>
+        <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/logs/logout']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Log out
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/posts/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Home
+              </a>
+            </li>
+          </ul>
 
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Trends Menu
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/trends/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/trend/1']" routerLinkActive="active">Trend</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/trends/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
-              </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/trends/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Trends
+              </a>
+            </li>
+          </ul>
 
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  User Menu
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" [routerLink]="['/users/list']" routerLinkActive="active">List</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/add']" routerLinkActive="active">Add</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/delete/1']" routerLinkActive="active">Delete</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/user/1']" routerLinkActive="active">User</a></li>
-                  <li><a class="dropdown-item" [routerLink]="['/users/update/1']" routerLinkActive="active">Update</a></li>
-                </ul>
-              </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/users/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Search User
+              </a>
+            </li>
+          </ul>
 
 
-          </div>
         </div>
-      </nav>  
-      <!---->
+        
+      </div>
+      
+    </nav>  
+    <!---->
 </div>
 
+<div class="body backBlack white">
+  <p class="breadCramp">Post's List > User Post</p>
+  <div class="container update">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12 col-md-6 center">
+        <!-- Tarjeta de cada post -->
+        <div class="card center image" style="width: 18rem;">
+          
+          <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
+          
+        </div>
+        <a [routerLink]="['/posts/update/1']"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/posts/delete/1']"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Return</button></a>
 
 
+        <!-- -------------------- -->
+      </div>
+      <div class="col-sm-12 col-xs-12 col-md-6">
+        <p class="subtitle"><span class="title">USER:</span> soyLuke03</p>
+        
+        <p class="subtitle"><span class="title">TITLE:</span> Title of Post</p>
 
+        <p class="subtitle"><span class="title">DESCRIPTION:</span> There is a random description of this post, so you can create an idea of what's inside. So if there was an unitentional message of a larger description... What I would be do? In that case that happens</p>
+
+        <p class="subtitle"><span class="title">DATE:</span> 08/02/2023 19:10</p>
+
+        <p class="subtitle"><span class="title">TRENDS:</span> #1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</p>
+      </div>
+    </div>
+  </div>
+</div>  
 
 <div class="footer">
   <div class="container-flex">

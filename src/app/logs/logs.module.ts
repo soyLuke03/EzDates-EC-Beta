@@ -6,6 +6,7 @@ import { LogsRoutingModule } from './logs-routing.module';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,6 +22,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: []
 })
 export class LogsModule { }

@@ -1,1 +1,166 @@
-<p>update works!</p>
+<div class="container-flex">
+    <!--HEADER-->
+    <div class="header row">
+        <div class="center col-md-3 col-sm-4 col-xs-2">
+            <img class="logo" src="../../../assets/serverdedisc.png" alt="Logo de EZdates">
+        </div>
+        <div class="col-sm-8 col-md-9 center">
+            <h1 class="title">Ez Dates</h1>
+            <h5 class="subtitle">"Find your duo to get the win"</h5>
+        </div>
+    </div>  
+
+    <!--NAVIGATION BAR-->
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid ">
+        <a class="navbar-brand">
+          Menu: 
+        </a>
+        <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/logs/logout']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Log out
+              </a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/posts/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Home
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/trends/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Trends
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/users/list']" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Search User
+              </a>
+            </li>
+          </ul>
+
+
+        </div>
+        
+      </div>
+      
+    </nav>  
+    <!---->
+</div>
+
+<div class="body backBlack">
+<p class="breadCramp">User's List > Update user</p>
+<form (ngSubmit)="save($event)" [formGroup]="myForm" class="backBlack white"> 
+  <div class="container-flex center">
+    <br>
+      <div class="row ">
+
+          <div class="col-md-6 col-sm-12">
+              <div class="border-form">
+                      <!--Formulario de registro-->
+                      <label class="form-label">*Username</label><br>
+                      <input required class="sepparate form-control input" type="text" id="username" name="username" formControlName="username" placeholder="exampleUser">
+                          <span class="form-text text-danger" 
+                          *ngIf="notValid('username')">
+                              Username is required. 
+                          </span>
+                      <br>
+
+                      <label class="form-label">Email</label><br>
+                      <input readonly  class="sepparate form-control input" type="email" id="email" name="email" placeholder="example@example.com">
+
+                      <br>
+
+                      <label class="form-label">Name</label><br>
+                      <input class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="example name">
+                          <span class="form-text text-danger" 
+                          *ngIf="notValid('name')">
+                              Name is too long. 
+                          </span>
+                      <br>
+                      
+                      <label class="form-label">*Surname</label><br>
+                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" formControlName="surname" placeholder="example surname">
+                          <span class="form-text text-danger" 
+                          *ngIf="notValid('surname')">
+                              Surname is required. 
+                          </span>
+                          <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
+                          <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
+                          
+                          <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
+                          
+                          <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
+                          <!-- -------------------- -->
+
+                      <!-- -------------------- -->
+                      <br><br>                   
+
+                  
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="border-form">
+                      <label class="form-label">*Password</label><br>
+                      <input required class="sepparate form-control input" type="password" id="password" name="password" formControlName="password" placeholder="Enter your password here...">
+                          <span class="form-text text-danger" 
+                          *ngIf="notValid('password')">
+                              Password is required and longer than 8 characters. 
+                          </span>
+                      <br>
+                      
+                      <label class="form-label">*Repeat Password</label><br>
+                      <input required class="sepparate form-control input" type="password" id="password2" name="password2" formControlName="password2" placeholder="Repeat your password here...">
+                          <span class="form-text text-danger" 
+                          *ngIf="notValid('password2')">
+                              Password is required and longer than 8 characters. 
+                          </span>
+
+                      <span class="form-text text-danger" 
+                      *ngIf="!equalsPasswords()">
+                          Password do not match
+                      </span>
+                      <br><br>
+                      
+              </div>
+              <br><br>
+              <div class="border-form">
+                  <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Update">
+                  <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Cancel</button></a>
+              </div>
+          </div>
+      </div>
+      <br>
+      <br>
+  </div>
+</form>
+</div>
+
+<div class="footer">
+  <div class="container-flex">
+    <div class="row">
+      <div class="col center bg-black">
+        
+        <div class="terms">
+          <p>Legal terms</p>
+          <p>Privacy policy</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
