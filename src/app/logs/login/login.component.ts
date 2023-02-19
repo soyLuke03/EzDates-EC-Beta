@@ -24,18 +24,13 @@ export class LoginComponent implements OnInit {
   /*--- --------------------- ---*/
 
 
-  /*-- Credenciales de acceso temporales--*/
-  entryusername:string = "0"
-  entryPassword:string = "0"
-  /*----------------------------*/
-
 
   constructor(private router:Router, private logsService:LogsService) { }
 
   ngOnInit(): void {
   }
 
-
+  
   /**
    * Método para logear al usuario
    */
@@ -43,8 +38,8 @@ export class LoginComponent implements OnInit {
     console.log(this.username, this.password)
     this.logsService.login(this.username,this.password)
     .subscribe({
-      next: resp => console.log(resp),
-      error: resp => console.log("ERROR")
+      next: (resp) => this.verifyLogin(),
+      error: () => this.verifyLogin()
     })
   }
 
@@ -68,16 +63,9 @@ export class LoginComponent implements OnInit {
   /**
    * Método cuando se envía el formulario correctamente
    */
-  save = (e: { preventDefault: () => void; }) => {
-    let username = this.myForm.controls['username'].value;
-    let pass = this.myForm.controls['password'].value
+  verifyLogin = () => {
 
-    if(username===this.entryusername && pass === this.entryPassword){
-      this.errorLogin="";
-      this.myForm.resetForm({
-        email:"",
-        password:""
-      })
+    if(localStorage.getItem('token')!=null){
       Swal.fire({
         title: "Log in",
         text: "You've been logged in",
@@ -89,12 +77,18 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/posts/list'])
     }
     else{
-      this.errorLogin="Credentials are incorrect"
-      setTimeout(() => {
-        this.errorLogin=""
-      }, 3000);
+      Swal.fire({
+        title: "Oh oh",
+        text: "Incorrect credentials",
+        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',
+        color: 'white',
+        confirmButtonColor: 'black',
+        confirmButtonText: 'OK'
+      })
     }
-
   }
+
+
+
 
 }

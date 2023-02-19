@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { of, Observable, switchMap, catchError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthResponse } from '../interfaces/token.interface';
-import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -13,7 +12,7 @@ import Swal from 'sweetalert2';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "localhost:8080/signin"
+    url:string = "http://localhost:8080/signin"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,14 +22,17 @@ import Swal from 'sweetalert2';
   
     constructor(private http: HttpClient) { }
     
-    login(email: string, password: string):Observable<boolean>{
+    login(username: string, password: string):Observable<boolean>{
         //Recuperamos el usuario y comprobamos que la contraseña sea correcta
-      return this.http.post<AuthResponse>(this.url, {email, password},this.httpOptions)
+      return this.http.post<AuthResponse>(this.url, {username, password},this.httpOptions)
         .pipe( switchMap(token => {
-          localStorage.setItem('token', token.access_token);
+          console.log(token.token);
+          localStorage.setItem('token', token.token);
+          console.log("Token creado")
           return of(true);
         }),catchError(error => {
           localStorage.removeItem('token');
+          console.log(error)
           return of(false);
         })
         )

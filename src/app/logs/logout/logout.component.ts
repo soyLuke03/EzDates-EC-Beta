@@ -15,6 +15,7 @@ export class LogoutComponent implements OnInit {
   }
 
   logout(){
+    localStorage.removeItem('token')
     this.router.navigate(['logs/login'])
     Swal.fire({
       title: "Loging out",

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { User } from '../../interfaces/user.interface';
+import { PostService } from '../posts.service';
+import { ConversionUtils } from 'turbocommons-ts';
 // import { Router } from '@angular/router';
 
 // import Swal from 'sweetalert2';
@@ -16,12 +19,25 @@ export class AddComponent implements OnInit {
   myForm: FormGroup = this.fb.group({
     title: [null, [Validators.required, Validators.maxLength(200)]],
     description: [null, [Validators.required, Validators.maxLength(200)]],
-    imgURL: [null, [Validators.required]]
+    imgurl: [null, [Validators.required]]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private pS:PostService) { }
+
+
+  token = localStorage.getItem('token')!;
+  payload!:string;
+  username!: string;
 
   ngOnInit(): void {
+    if(this.token){
+      this.token = localStorage.getItem('token')!;
+      this.payload = ConversionUtils.base64ToString(this.token.split(".")[1])
+      this.username = this.payload.split('"')[3];
+    }
+    else{
+      this.username = "Anonimous"
+    }
   }
   
   /**
