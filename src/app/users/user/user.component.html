@@ -4,7 +4,7 @@
   <div class="container  backBlack update">
     <div class="row white">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
-        <!-- Tarjeta de cada post -->
+        <!-- Tarjeta de cada foto de user -->
         <div class="card center image" style="width: 18rem;">
           
           <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
@@ -23,32 +23,35 @@
         <a [routerLink]="['/users/user/1']"><button  class="btn btn-success sepparate">Add Follower</button></a>
         <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
 
-        <p class="subtitle"><span class="title">USERNAME:</span> soyLuke03</p>
+        <p class="subtitle"><span class="title">USERNAME:</span> {{user.username}}</p>
 
-        <p class="subtitle"><span class="title">NAME:</span> Antonio </p>
+        <p class="subtitle"><span class="title">NAME:</span> {{user.name}} </p>
 
-        <p class="subtitle"><span class="title">SURNAME:</span> Gonzalez</p>
+        <p class="subtitle"><span class="title">SURNAME:</span> {{user.surname}}</p>
 
-        <p class="subtitle"><span class="title">STATUS:</span> ENABLED</p>
+        <p class="subtitle"><span class="title">STATUS:</span> {{user.enabled}}</p>
       </div>
     </div>
     <hr style="color: aliceblue;">
     
     <div class="row galery">
       <!-- Tarjeta de cada post -->
-      <div class="galery-img">
+      <div *ngFor="let post of userPosts" class="galery-img">
         <div class="card" style="width: 18rem;">
-
-          <a [routerLink]="['/posts/post/1']"><img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ..."></a>
+          <div class="profile-link-badge">
+            <a class="profile-link" [routerLink]="['/users/user/', post.user.username]">{{ post.user.username }}</a>
+          </div>
+          <a [routerLink]="['/posts/post/', post.id]" >
+            <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
+            <!--Si no hay foto, una por defecto-->
+            <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
+          </a>
           <div class="card-body">
-            <h4 class="card-title">Title of Post</h4>
+            <h4 class="card-title">{{ post.title }}</h4>
             <sub>#1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</sub>
             <hr>
-            <p class="card-text">There is a random description of this post, so you can create an idea of what's inside.
-              So if there was an unitentional message of a larger description... What I would be do? 
-              In that case that happens
-            </p>
-            <p class="date">08/02/2023 19:10</p>
+            <p class="card-text">{{ post.description }}</p>
+            <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
           </div>
         </div>
       </div>

@@ -9,12 +9,12 @@
       <td class="d-none d-sm-table-cell">SURNAME</td>
     </thead>
     <tbody>
-      <tr>
-        <td>SoyLuke_03</td>
-        <td>SoyLuke03</td>
-        <td class="d-none d-sm-table-cell">Antonio</td>
-        <td class="d-none d-sm-table-cell">Gonzalez</td>
-        <td><a [routerLink]="['/users/user/1']">PROFILE</a></td>
+      <tr *ngFor="let user of userList">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td class="d-none d-sm-table-cell">{{ user.name }}</td>
+        <td class="d-none d-sm-table-cell">{{ user.surname }}</td>
+        <td><a [routerLink]="['/users/user/',user.username]">PROFILE</a></td>
       </tr>
     </tbody>
   </table>
