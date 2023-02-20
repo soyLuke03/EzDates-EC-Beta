@@ -32,8 +32,8 @@ import { Post } from '../interfaces/post.interface';
        return this.http.get<Post>(this.url+"/"+id)
     }
 
-    postPost(post:Post, username:string, file:File){
-      return this.http.post<Post>(this.url+"/add"+"/"+username+"/?file="+file,post,this.Multipart);
+    postPost(post:Post, username:string){
+      return this.http.post<Post>(this.url+"/add"+"/"+username,post,this.Multipart);
     }
 
     putPost(post:Post,id:number, username:string){

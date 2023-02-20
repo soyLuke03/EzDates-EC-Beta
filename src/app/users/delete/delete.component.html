@@ -6,26 +6,26 @@
     <br>
       <div class="row ">
 
-          <div class="col-md-6 col-sm-12">
+          <div class="col-md-12 col-sm-12">
               <div class="border-form">
                       <!--Formulario de registro-->
                       <label class="form-label">*Username</label><br>
-                      <input required class="sepparate form-control input" type="text" id="username" name="username"  placeholder="exampleUser">
+                      <input required class="sepparate form-control input" type="text" id="username" name="username"  placeholder="{{user.username}}">
 
                       <br>
 
                       <label class="form-label">Email</label><br>
-                      <input readonly  class="sepparate form-control input" type="email" id="email" name="email"  placeholder="example@example.com">
+                      <input readonly  class="sepparate form-control input" type="email" id="email" name="email"  placeholder="{{user.email}}">
 
                       <br>
 
                       <label class="form-label">Name</label><br>
-                      <input class="sepparate form-control input" type="text" id="name" name="name" placeholder="example name">
+                      <input class="sepparate form-control input" type="text" id="name" name="name" placeholder="{{user.name}}">
 
                       <br>
                       
                       <label class="form-label">*Surname</label><br>
-                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" placeholder="example surname">
+                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" placeholder="{{user.surname}}">
 
                           <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
                           <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
@@ -41,23 +41,11 @@
                   
               </div>
           </div>
-          <div class="col-md-6">
-              <div class="border-form">
-                      <label class="form-label">*Password</label><br>
-                      <input required class="sepparate form-control input" type="password" id="password" name="password" placeholder="Enter your password here...">
-
-                      <br>
-                      
-                      <label class="form-label">*Repeat Password</label><br>
-                      <input required class="sepparate form-control input" type="password" id="password2" name="password2" placeholder="Repeat your password here...">
-
-                      <br><br>
-                      
-              </div>
+          <div class="col-md-12">
               <br><br>
               <div class="border-form">
                   <input class="btn btn-success sepparate" type="submit" value="Remove"> 
-                  <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                  <a [routerLink]="['/users/user/', user.username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
               </div>
           </div>
       </div>

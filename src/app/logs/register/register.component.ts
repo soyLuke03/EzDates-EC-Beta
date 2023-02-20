@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/users/user.service';
 import Swal from 'sweetalert2'
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-register',
@@ -20,8 +22,10 @@ export class RegisterComponent implements OnInit {
     password: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]],
     password2: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]]
   })
+
+
   
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private uS:UserService) { }
 
   ngOnInit(): void {
   }
@@ -48,19 +52,42 @@ export class RegisterComponent implements OnInit {
   * Método cuando se envía el formulario correctamente
   */
   save = (e: { preventDefault: () => void; }) => {
+
+    let newUser:User = {
+      username: this.myForm.controls['username'].value,
+      email: this.myForm.controls['email'].value,
+      password: this.myForm.controls['password'].value,
+      name: this.myForm.controls['name'].value,
+      surname: this.myForm.controls['username'].value,
+      verificationCode: "",
+      enabled: false,
+      role: "USER_ROLE"
+    }
+
     if(this.equalsPasswords()){
-      console.log("Enviado")
+      
+      this.uS.register(newUser).subscribe({
+        next: resp => 
+        Swal.fire({
+          title: "Created",
+          text: "Your profile has been created succesfully. Now verifiy your account",
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+          confirmButtonColor: 'black',
+          confirmButtonText: 'OK'
+        }),
+        error: (error) =>
+          Swal.fire({
+            title: "An error has appeared",
+            text: "The profile cannot be created. Try again later or contact with an admin",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK'
+          }) 
+      })
+      // console.log("Enviado")
       this.myForm.reset()
       this.errorPasswords=""
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Register success',
-        text: 'Now check your email to verify your account',
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
-      })
       this.router.navigate(['logs/login'])
     }
     if(!this.equalsPasswords()){

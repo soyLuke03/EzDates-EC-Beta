@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { TrendService } from '../trend.service';
+import { Trend } from '../../interfaces/trend.interface';
 
 @Component({
   selector: 'app-delete',
@@ -15,9 +18,15 @@ export class DeleteComponent implements OnInit {
     imgURL: [null, [Validators.required]]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private aCRoute:ActivatedRoute, private tS:TrendService, private fb: FormBuilder, private route:Router) { }
+
+  trend!:Trend;
 
   ngOnInit(): void {
+    let id = this.aCRoute.snapshot.params['id'];
+    this.tS.getTrend(id).subscribe({
+      next: resp => this.trend = resp
+    })
   }
 
 
@@ -36,16 +45,31 @@ export class DeleteComponent implements OnInit {
   * Método cuando se envía el formulario correctamente
   */
     save = (e: { preventDefault: () => void; }) => {
-      this.myForm.reset()
-      console.log("Añadido con éxito")
-
-      Swal.fire({
-        title: "Removed",
-        text: "Your trend has been removed",
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
+      
+      this.tS.deleteTrend(this.trend.name).subscribe({
+        next: resp => 
+        Swal.fire({
+          title: "Removed",
+          text: "Your trend have been removed",
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+          confirmButtonColor: 'black',
+          confirmButtonText: 'OK'
+        }),
+        error: (error) =>
+          Swal.fire({
+            title: "An error has appeared",
+            text: "The trend cannot be removed. Try again later or contact with an admin",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK'
+          }) 
       })
+      
+      // console.log("Añadido con éxito")
+      this.myForm.reset()
+      this.route.navigate([['/trend/list/']]);
+
+ 
     }
 
 }

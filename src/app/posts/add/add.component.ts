@@ -54,7 +54,7 @@ export class AddComponent implements OnInit {
   */
     save = (e: { preventDefault: () => void; }) => {
 
-      this.pS.postPost(this.myForm.value,this.username,this.myForm.controls['file'].value).subscribe({
+      this.pS.postPost(this.myForm.value,this.username).subscribe({
         next: resp => 
         Swal.fire({
           title: "Saved successfully",
@@ -74,14 +74,6 @@ export class AddComponent implements OnInit {
       })
       this.myForm.reset()
       
-
-      Swal.fire({
-        title: "Submitted",
-        text: "Your post has been submitted",
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
-      })
     }
 
 

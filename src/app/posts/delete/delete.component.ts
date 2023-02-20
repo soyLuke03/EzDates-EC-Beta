@@ -59,7 +59,7 @@ export class DeleteComponent implements OnInit {
           }) 
       })
 
-      this.router.navigate([['/posts/list']]);
+      this.router.navigate([['/posts/post']]);
       
     }
 

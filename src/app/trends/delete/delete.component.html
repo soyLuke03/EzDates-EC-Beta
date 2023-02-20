@@ -9,7 +9,7 @@
                 <br>
                       <!--Formulario de registro-->
                       <label class="form-label">Title</label><br>
-                      <input readonly class="sepparate form-control input" type="text" id="title" name="title" formControlName="title" placeholder="explameTitle" maxlength="199">
+                      <input readonly class="sepparate form-control input" type="text" id="title" name="title" formControlName="title" placeholder="{{trend.name}}" maxlength="199">
                       <br><br>
                       
                       <!-- -------------------- -->                  
@@ -20,7 +20,7 @@
               <br><br>
               <div class="border-form col-8 center">
                   <input class="btn btn-success sepparate" type="submit" value="Remove"> 
-                  <a [routerLink]="['/trends/trend/1']"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                  <a [routerLink]="['/trends/trend/', trend.name]"><button  class="btn btn-danger sepparate">Cancel</button></a>
               </div>
           </div>
       </div>

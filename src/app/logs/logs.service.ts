@@ -22,6 +22,10 @@ import { AuthResponse } from '../interfaces/token.interface';
   
     constructor(private http: HttpClient) { }
     
+    verify(user:string, code:string){
+      return this.http.get<any>(`http://localhost:8080/users/verify?code=${code}&user=${user}`)
+    }
+
     login(username: string, password: string):Observable<boolean>{
         //Recuperamos el usuario y comprobamos que la contraseña sea correcta
       return this.http.post<AuthResponse>(this.url, {username, password},this.httpOptions)

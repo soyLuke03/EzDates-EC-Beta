@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrendService } from '../trend.service';
+import { Trend } from '../../interfaces/trend.interface';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tS:TrendService) { }
+  trendList:Trend[] = [];
 
   ngOnInit(): void {
+    this.tS.getTrends().subscribe({
+      next: resp => this.trendList = resp
+    })
   }
 
 }

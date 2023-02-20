@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UserService } from '../user.service';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-delete',
@@ -16,27 +18,47 @@ export class DeleteComponent implements OnInit {
     imgURL: [null, [Validators.required]]
   })
 
+  user!:User;
 
-  constructor(private router:Router, private fb: FormBuilder) { }
+  constructor(private router:Router, private fb: FormBuilder, private uS:UserService, private aCRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    let username = this.aCRoute.snapshot.params['id'];
+    this.uS.getUser(username)
+    .subscribe({
+      next: resp => this.user = resp,
+      error: (error) => console.log("ERROR on loading user")
+    })
   }
 
   /**
   * Método cuando se envía el formulario correctamente
   */
     save = (e: { preventDefault: () => void; }) => {
-      this.myForm.reset()
-      console.log("Eliminado con éxito")
-      Swal.fire({
-        title: "User removed",
-        text: "The user has been removed",
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
-      })
       
-      this.router.navigate([['/users/list']]);
+      this.uS.deleteUser(this.user.username).subscribe({
+        next: resp => 
+        Swal.fire({
+          title: "Removed",
+          text: "Your account has been removed",
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+          confirmButtonColor: 'black',
+          confirmButtonText: 'OK'
+        }),
+        error: (error) =>
+          Swal.fire({
+            title: "An error has appeared",
+            text: "The account cannot be removed. Try again later or contact with an admin",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK'
+          })
+      })
+      this.myForm.reset()
+      // console.log("Eliminado con éxito")
+
+      
+      this.router.navigate([['/users/login']]);
       
     }
 

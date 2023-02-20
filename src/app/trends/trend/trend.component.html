@@ -7,11 +7,11 @@
         <!-- Tarjeta de cada post -->
         <div class="card center image subtitle" style="width: 18rem;">
           
-          NOMBRE DEL TREND
+          {{trend.name}}
           
         </div>
-        <a [routerLink]="['/trends/update/1']"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/trends/delete/1']"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/trends/update/', trend.name]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/trends/delete/', trend.name]"><button  class="btn EZbtn sepparate">Delete</button></a>
         <a [routerLink]="['/trends/list']"><button  class="btn EZbtn sepparate">Return</button></a>
 
 

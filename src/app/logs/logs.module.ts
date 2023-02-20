@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { VerifyComponent } from './verify/verify.component';
 
 
 
@@ -14,7 +15,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: []
+  providers: [
+    
+  ]
 })
 export class LogsModule { }

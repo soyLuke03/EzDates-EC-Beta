@@ -10,8 +10,8 @@
           <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
           
         </div>
-        <a [routerLink]="['/users/update/1']"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/users/delete/1']"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/users/update/', user.username]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/users/delete/',user.username]"><button  class="btn EZbtn sepparate">Delete</button></a>
         <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Return</button></a>
 
 

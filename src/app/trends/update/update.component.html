@@ -9,7 +9,7 @@
                 <br>
                       <!--Formulario de registro-->
                       <label class="form-label">Title</label><br>
-                      <input required class="sepparate form-control input" type="text" id="title" name="title" formControlName="title" placeholder="explameTitle" maxlength="199">
+                      <input required class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="{{trend.name}}" maxlength="199">
                         <span class="form-text text-danger" 
                         *ngIf="notValid('title')">
                             Title is required and length less than 200 characters 
@@ -23,8 +23,8 @@
           
               <br><br>
               <div class="border-form col-8 center">
-                <input class="btn btn-success sepparate" type="submit" value="Remove"> 
-                <a [routerLink]="['/trends/trend/1']"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                <input class="btn btn-success sepparate" type="submit" value="Submit"> 
+                <a [routerLink]="['/trends/trend/', trend.name]"><button  class="btn btn-danger sepparate">Cancel</button></a>
             </div>
           </div>
       </div>
