@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
 
   constructor(private uS:UserService, private acRoute:ActivatedRoute, private pS:PostService) { }
 
-  user!:User;
+  user!:User[];
   userPosts:Post[] = [];
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
 
   getUserPosts(posts:Post[]){
     for (let post of posts) {
-      if(post.user.username==this.user.username){
+      if(post.user.username==this.user[0].username){
         this.userPosts.unshift(post)
       }
     }

@@ -29,12 +29,11 @@
                       <input readonly class="sepparate form-control input" type="text" id="imgurl" name="imgurl" formControlName="imgurl" placeholder="{{ post.imgurl }}">
 
                           <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                          <input class="sepparate form-control input" type="hidden" id="date" name="date" formControlName="date" placeholder="{{ post.date }}">
+                          <input class="sepparate form-control input hidden" type="datetime" id="date" name="date" formControlName="date" placeholder="{{ post.date }}">
                           <!-- -------------------- -->
 
-                        <br>
-                        <label class="form-label">Trends</label><br>
-                        <input disabled readonly class="sepparate form-control input" type="text" id="trends" name="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
+                      <label class="form-label">Trends</label><br>
+                      <input readonly class="sepparate form-control input" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
 
                        
                       <!-- -------------------- -->

@@ -1,0 +1,49 @@
+
+<div class="body backBlack">
+    <p class="breadCramp backBlack">Trend's List > Add Trend</p>
+  
+  
+    <form class="formulario backBlack white" enctype="multipart/form-data" (ngSubmit)="save($event)" [formGroup]="myForm"> 
+      <div class="container-flex center">
+          <div class="row">
+              <div class="col-md-8 col-sm-12 center">
+                  <div class="border-form">
+                    <!--Formulario de registro-->
+                    <label class="form-label">Name: </label><br>
+                    <input required class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="explameTitle" maxlength="199">
+                      <span class="form-text text-danger" 
+                      *ngIf="notValid('name')">
+                          Title is required and length less than 200 characters 
+                      </span>
+  
+                        
+                    <!-- -------------------- -->
+                    <br><br>                   
+                  </div>
+              </div>
+              
+                  <br><br>
+                  <div class="border-form col-8 center">
+                      <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Submit"> 
+                      <input class="btn btn-danger sepparate" type="reset" value="Cancel">
+                      <a [routerLink]="['/trends/list']"><button  class="btn btn-info sepparate">Return</button></a>
+                  </div>
+              </div>
+          </div>
+    </form>
+  </div>
+  
+  <div class="footer">
+    <div class="container-flex">
+      <div class="row">
+        <div class="col center bg-black">
+          
+          <div class="terms">
+            <p>Legal terms</p>
+            <p>Privacy policy</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

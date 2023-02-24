@@ -30,6 +30,10 @@ import { Trend } from '../interfaces/trend.interface';
       return this.http.get<Trend>(this.url+"/"+name)
     }
 
+    postTrend(trend:Trend):Observable<Trend>{
+      return this.http.post<Trend>(this.url+"/add",trend)
+    }
+
     putTrend(name:string, trend:Trend):Observable<Trend>{
       return this.http.put<Trend>(this.url+"/"+name,trend)
     }

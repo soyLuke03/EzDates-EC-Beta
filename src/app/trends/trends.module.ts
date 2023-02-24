@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component';
 import { TrendsRoutingModule } from './trends-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddComponent } from './add/add.component';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TrendComponent,
     DeleteComponent,
     UpdateComponent,
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     CommonModule,

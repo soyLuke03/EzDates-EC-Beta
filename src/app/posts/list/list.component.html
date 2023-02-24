@@ -17,7 +17,9 @@
             </a>
             <div class="card-body">
               <h4 class="card-title">{{ post.title }}</h4>
-              <sub>#1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</sub>
+              <sub>
+                <input class="btn hashtag" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+              </sub>
               <hr>
               <p class="card-text">{{ post.description }}</p>
               <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>

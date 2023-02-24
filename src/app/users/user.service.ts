@@ -24,8 +24,8 @@ import { User } from '../interfaces/user.interface';
         return this.http.get<User[]>(this.url)
     }
     
-    getUser(username:string):Observable<User>{
-       return this.http.get<User>(this.url+"/"+username)
+    getUser(username:string):Observable<User[]>{
+       return this.http.get<User[]>(this.url+"/"+username)
     }
 
     register(user:User){

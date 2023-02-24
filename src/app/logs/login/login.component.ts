@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2'
 import { LogsService } from '../logs.service';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private router:Router, private logsService:LogsService) { }
+  constructor(private router:Router, private auth:AuthService, private lS:LogsService) { }
 
   ngOnInit(): void {
   }
@@ -35,11 +36,27 @@ export class LoginComponent implements OnInit {
    * Método para logear al usuario
    */
   login(){
-    console.log(this.username, this.password)
-    this.logsService.login(this.username,this.password)
+    // console.log(this.username, this.password)
+    this.lS.login(this.username,this.password).subscribe({
+      next: resp => console.log(resp),
+      error: (error) => console.log(error)
+    })
+
+    this.auth.login(this.username,this.password)
     .subscribe({
-      next: (resp) => this.verifyLogin(),
-      error: () => this.verifyLogin()
+      next: (resp) => {
+        if (resp) {
+          Swal.fire({
+            title: "Log in",
+            text: "Please wait a second",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK'
+          })
+          this.router.navigate(['/posts']);
+          // location.reload()
+        }
+      }
     })
   }
 

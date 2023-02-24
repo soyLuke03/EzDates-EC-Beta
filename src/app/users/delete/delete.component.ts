@@ -18,7 +18,7 @@ export class DeleteComponent implements OnInit {
     imgURL: [null, [Validators.required]]
   })
 
-  user!:User;
+  user!:User[];
 
   constructor(private router:Router, private fb: FormBuilder, private uS:UserService, private aCRoute:ActivatedRoute) { }
 
@@ -36,7 +36,7 @@ export class DeleteComponent implements OnInit {
   */
     save = (e: { preventDefault: () => void; }) => {
       
-      this.uS.deleteUser(this.user.username).subscribe({
+      this.uS.deleteUser(this.user[0].username).subscribe({
         next: resp => 
         Swal.fire({
           title: "Removed",

@@ -32,8 +32,8 @@ import { Post } from '../interfaces/post.interface';
        return this.http.get<Post>(this.url+"/"+id)
     }
 
-    postPost(post:Post, username:string){
-      return this.http.post<Post>(this.url+"/add"+"/"+username,post,this.Multipart);
+    postPost(post:FormData, username:string, file:File){
+      return this.http.post<Post>(this.url+"/add/"+username,{post , file},{headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })});
     }
 
     putPost(post:Post,id:number, username:string){

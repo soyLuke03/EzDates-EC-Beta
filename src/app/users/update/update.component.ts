@@ -29,7 +29,7 @@ export class UpdateComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private uS:UserService, private aCRoute: ActivatedRoute) { }
 
 
-  user!:User;
+  user!:User[];
   ngOnInit(): void {
     let username = this.aCRoute.snapshot.params['id'];
     this.uS.getUser(username)
@@ -41,12 +41,14 @@ export class UpdateComponent implements OnInit {
 
   defaultValues(resp:any) {
     this.user = resp;
+    // console.log(resp[0].surname);
+    
 
-    this.myForm.controls['username'].setValue(this.user.username)
-    this.myForm.controls['email'].setValue(this.user.email)
-    this.myForm.controls['name'].setValue(this.user.name)
-    this.myForm.controls['surname'].setValue(this.user.surname)
-    this.myForm.controls['password'].setValue(this.user.password)
+    this.myForm.controls['username'].setValue(resp[0].username)
+    this.myForm.controls['email'].setValue(resp[0].email)
+    this.myForm.controls['name'].setValue(resp[0].name)
+    this.myForm.controls['surname'].setValue(resp[0].surname)
+    this.myForm.controls['password'].setValue("w")
 
   }
 
@@ -73,7 +75,7 @@ export class UpdateComponent implements OnInit {
     if(this.equalsPasswords()){
       
       let username = this.aCRoute.snapshot.params['id'];
-      console.log(username);
+      console.log(this.myForm.controls['password'].value);
       
 
       this.uS.putUser(this.myForm.value,username,this.myForm.controls['email'].value).subscribe({
@@ -81,7 +83,8 @@ export class UpdateComponent implements OnInit {
           Swal.fire({
             title: "Updated",
             text: "Your account has been updated",
-            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
+            color: 'white',
             confirmButtonColor: 'black',
             confirmButtonText: 'OK'
           }),
@@ -89,7 +92,8 @@ export class UpdateComponent implements OnInit {
             Swal.fire({
               title: "An error has appeared",
               text: "The account cannot be updated. Try again later or contact with an admin",
-              background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+              background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
+              color: 'white',
               confirmButtonColor: 'black',
               confirmButtonText: 'OK'
             })

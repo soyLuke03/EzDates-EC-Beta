@@ -77,7 +77,7 @@
               <br><br>
               <div class="border-form">
                   <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Update">
-                  <a [routerLink]="['/users/user/', user.username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                  <a [routerLink]="['/users/user/', user[0].username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
               </div>
           </div>
       </div>

@@ -10,22 +10,22 @@
               <div class="border-form">
                       <!--Formulario de registro-->
                       <label class="form-label">*Username</label><br>
-                      <input required class="sepparate form-control input" type="text" id="username" name="username"  placeholder="{{user.username}}">
+                      <input required class="sepparate form-control input" type="text" id="username" name="username"  placeholder="{{user[0].username}}">
 
                       <br>
 
                       <label class="form-label">Email</label><br>
-                      <input readonly  class="sepparate form-control input" type="email" id="email" name="email"  placeholder="{{user.email}}">
+                      <input readonly  class="sepparate form-control input" type="email" id="email" name="email"  placeholder="{{user[0].email}}">
 
                       <br>
 
                       <label class="form-label">Name</label><br>
-                      <input class="sepparate form-control input" type="text" id="name" name="name" placeholder="{{user.name}}">
+                      <input class="sepparate form-control input" type="text" id="name" name="name" placeholder="{{user[0].name}}">
 
                       <br>
                       
                       <label class="form-label">*Surname</label><br>
-                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" placeholder="{{user.surname}}">
+                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" placeholder="{{user[0].surname}}">
 
                           <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
                           <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
@@ -45,7 +45,7 @@
               <br><br>
               <div class="border-form">
                   <input class="btn btn-success sepparate" type="submit" value="Remove"> 
-                  <a [routerLink]="['/users/user/', user.username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                  <a [routerLink]="['/users/user/', user[0].username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
               </div>
           </div>
       </div>

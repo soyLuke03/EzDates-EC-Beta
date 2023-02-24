@@ -29,7 +29,7 @@
 
         <p class="subtitle"><span class="title">DATE:</span> {{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}} </p>
 
-        <p class="subtitle"><span class="title">TRENDS:</span> #1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</p>
+        <p class="subtitle"><span class="title" *ngFor="let trend of post.trendsList"> #{{ trend.trend.name }}, </span></p>
       </div>
     </div>
   </div>

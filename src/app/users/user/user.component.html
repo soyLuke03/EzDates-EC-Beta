@@ -10,9 +10,9 @@
           <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
           
         </div>
-        <a [routerLink]="['/users/update/', user.username]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/users/delete/',user.username]"><button  class="btn EZbtn sepparate">Delete</button></a>
-        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Return</button></a>
+        <a [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/users/list']"><button  class="btn EZbtn sepparate">Return</button></a>
 
 
         <!-- -------------------- -->
@@ -23,13 +23,13 @@
         <a [routerLink]="['/users/user/1']"><button  class="btn btn-success sepparate">Add Follower</button></a>
         <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
 
-        <p class="subtitle"><span class="title">USERNAME:</span> {{user.username}}</p>
+        <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>
 
-        <p class="subtitle"><span class="title">NAME:</span> {{user.name}} </p>
+        <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
 
-        <p class="subtitle"><span class="title">SURNAME:</span> {{user.surname}}</p>
+        <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
 
-        <p class="subtitle"><span class="title">STATUS:</span> {{user.enabled}}</p>
+        <p class="subtitle"><span class="title">STATUS:</span> {{user[0].enabled}}</p>
       </div>
     </div>
     <hr style="color: aliceblue;">
@@ -48,7 +48,9 @@
           </a>
           <div class="card-body">
             <h4 class="card-title">{{ post.title }}</h4>
-            <sub>#1 #numero2 #hashtag #muchos #demasiados #estoesunhashtagconespacios</sub>
+            <sub>
+              <input class="btn hashtag" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+            </sub>
             <hr>
             <p class="card-text">{{ post.description }}</p>
             <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>

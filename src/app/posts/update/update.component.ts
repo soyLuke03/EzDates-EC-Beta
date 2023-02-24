@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { PostService } from '../posts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
+import { Trend } from '../../interfaces/trend.interface';
 
 @Component({
   selector: 'app-update',
@@ -13,12 +14,15 @@ import { Post } from '../../interfaces/post.interface';
 export class UpdateComponent implements OnInit {
 
   post!: Post;
+  trends: Trend[] = []
+  showTrends: string = "";
   
   myForm: FormGroup = this.fb.group({
     title: [null, [Validators.required, Validators.maxLength(200)]],
     description: [null, [Validators.required, Validators.maxLength(200)]],
     imgurl: [null],
-    date: [null]
+    date: [null],
+    trends: [null]
   })
 
   constructor(private router:Router,private fb: FormBuilder, private pS:PostService, private acRoute:ActivatedRoute) { }
@@ -38,7 +42,7 @@ export class UpdateComponent implements OnInit {
 
     this.myForm.controls['title'].setValue(this.post.title)
     this.myForm.controls['description'].setValue(this.post.description)
-    console.log(this.post.imgurl);
+    // console.log(this.post.imgurl);
     
     if(!this.post.imgurl){
       this.myForm.controls['imgurl'].setValue("https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png")
@@ -47,6 +51,13 @@ export class UpdateComponent implements OnInit {
       this.myForm.controls['imgurl'].setValue(this.post.imgurl.toString())
     }
     this.myForm.controls['date'].setValue(this.post.date)
+    
+    this.trends = this.post.trendsList
+    for (const trend of this.trends) {
+      this.showTrends += trend.trend.name + ","
+    }
+    this.myForm.controls['trends'].setValue(this.showTrends)
+    
   }
 
   /**

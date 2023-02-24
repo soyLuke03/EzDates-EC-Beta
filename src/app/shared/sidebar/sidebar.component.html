@@ -47,6 +47,14 @@
 
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
+                <a [routerLink]="['/trends/add']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Add new Trend
+                </a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
                 <a [routerLink]="['/trends/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Trends
                 </a>
@@ -56,10 +64,16 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a [routerLink]="['/users/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Search User
+                  User list
                 </a>
               </li>
             </ul>
+
+            <!-- <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <app-search (userEvento)="findByUName($event)"></app-search>
+              </li>
+            </ul> -->
 
 
           </div>

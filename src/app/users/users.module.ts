@@ -5,7 +5,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { UpdateComponent } from './update/update.component';
 import { UserComponent } from './user/user.component';
 import { UsersRoutingModule } from './users-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 
@@ -21,7 +21,11 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
+  ],
+  exports: [
+    ListComponent
   ]
 })
 export class UsersModule { }

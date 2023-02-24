@@ -10,6 +10,19 @@
     border-radius: 350px;
 }
 
+.hashtag{
+    color: rgb(60, 0, 255);
+    border-color: rgba(60, 0, 255, 0.368);
+    border-width: 2px;
+}
+
+.hashtag:hover{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-color: aliceblue;
+    border-width: 2px;
+}
+
 .EZbtn{
     background-color: rgba(108, 0, 0, 0.801);
     color: white;

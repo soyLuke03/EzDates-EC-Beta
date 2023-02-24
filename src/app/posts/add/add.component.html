@@ -27,7 +27,7 @@
 
 
                   <label class="form-label">Image</label><br>
-                  <input class="sepparate form-control input" type="file" id="file" name="file" formControlName="file">
+                  <input class="sepparate form-control input" (change)="onFileChange($event)" type="file" id="file" name="file" formControlName="file">
                     <span class="form-text text-danger" 
                     *ngIf="notValid('file')">
                         Image is required
@@ -38,8 +38,8 @@
                         <input class="sepparate form-control input" type="hidden" id="date" name="date" placeholder="date">
                         <!-- -------------------- -->
                       
-                  <label class="form-label">Trends (sepparated by commas)</label><br>
-                <input class="sepparate form-control input" type="text" id="trends" name="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
+                  <label class="form-label">Trends</label><br>
+                  <input class="sepparate form-control input" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
 
                       
                   <!-- -------------------- -->
