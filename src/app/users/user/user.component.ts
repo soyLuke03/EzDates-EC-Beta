@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
 
   constructor(private uS:UserService, private acRoute:ActivatedRoute, private pS:PostService) { }
 
-  user:User[] = [];
+  user!:User[];
   userPosts:Post[] = [];
 
   followers:string[] = []
