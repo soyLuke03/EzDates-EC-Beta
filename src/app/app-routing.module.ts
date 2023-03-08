@@ -5,12 +5,11 @@ import { AuthGuard } from './auth-guard.service';
 import { TermConditionsComponent } from './term-conditions/term-conditions/term-conditions.component';
 
 const routes: Routes = [
-  { 
-    path: 'logs',
+  { path: 'logs',
     loadChildren: () => import('./logs/logs.module').then( m => m.LogsModule )
   },
-  { 
-    path: 'posts',
+
+  { path: 'posts',
     canActivate: [AuthGuard],
     loadChildren: () => import('./posts/posts.module').then( m => m.PostsModule ),
     data: {
@@ -23,8 +22,8 @@ const routes: Routes = [
       ]
     }
   },
-  { 
-    path: 'trends',
+
+  { path: 'trends',
     canActivate: [AuthGuard],
     loadChildren: () => import('./trends/trends.module').then( m => m.TrendsModule ),
     data: {
@@ -37,8 +36,8 @@ const routes: Routes = [
       ]
     }
   },
-  { 
-    path: 'users',
+
+  { path: 'users',
     canActivate: [AuthGuard],
     loadChildren: () => import('./users/users.module').then( m => m.UsersModule ),
     data: {
@@ -51,6 +50,7 @@ const routes: Routes = [
       ]
     }
   },
+
   { path: 'terms', component: TermConditionsComponent, data: {
     title: 'TERMS',
     breadcrumb: [
@@ -61,6 +61,7 @@ const routes: Routes = [
     ]
   } 
   },
+  
   {
     path: '',
     redirectTo: 'logs',

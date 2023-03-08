@@ -24,6 +24,7 @@ export class UserComponent implements OnInit {
   token = localStorage.getItem('token')!;
   payload!:string;
   username!: string;
+  role!: string;
 
   ngOnInit(): void {
 
@@ -31,6 +32,7 @@ export class UserComponent implements OnInit {
       this.token = localStorage.getItem('token')!;
       this.payload = ConversionUtils.base64ToString(this.token.split(".")[1])
       this.username = this.payload.split('"')[3].toLowerCase();
+      this.role = this.payload.split('"')[9];
     }
 
     //Obtener el usuario

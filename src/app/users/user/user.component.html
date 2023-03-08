@@ -1,5 +1,5 @@
 
-<div class="body backBlack ">
+<div *ngIf="user" class="body backBlack ">
   <div class="container  backBlack update">
     <div class="row white">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
@@ -9,8 +9,8 @@
           <img src="assets/logoEZDates.png" class="card-img-top" alt="Image of the user ...">
           
         </div>
-        <a *ngIf="belong(user[0].username.toLowerCase())" [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a *ngIf="belong(user[0].username.toLowerCase())" [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a *ngIf="belong(user[0].username.toLowerCase()) || role=='ADMIN_ROLE'" [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a *ngIf="belong(user[0].username.toLowerCase()) || role=='ADMIN_ROLE'" [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
         <a [routerLink]="['/users/list']"><button  class="btn EZbtn sepparate">User List</button></a>
 
 
