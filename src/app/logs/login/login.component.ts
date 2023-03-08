@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, private auth:AuthService, private lS:LogsService) { }
 
   ngOnInit(): void {
-    
+    localStorage.removeItem('token');
   }
 
   
@@ -39,24 +39,26 @@ export class LoginComponent implements OnInit {
   login(){
     // console.log(this.username, this.password)
     this.lS.login(this.username,this.password).subscribe({
-      next: resp => console.log(resp),
-      error: (error) => window.location.reload()
+      next: resp => console.log(resp)
     })
 
     this.auth.login(this.username,this.password)
     .subscribe({
       next: (resp) => {
         if (resp) {
+          this.router.navigate(['/posts']);
           Swal.fire({
             title: "Log in",
             text: "Please wait a second",
             background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
             color: 'white',
             confirmButtonColor: 'black',
-            confirmButtonText: 'OK'
-          })
-          
-          this.router.navigate(['/posts']).then(() => window.location.reload());
+            confirmButtonText: 'OK',
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload()
+          }})
         }
       }
     })

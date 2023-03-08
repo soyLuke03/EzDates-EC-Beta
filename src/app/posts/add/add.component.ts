@@ -5,7 +5,7 @@ import { Trend } from '../../interfaces/trend.interface';
 import { TrendService } from '../../trends/trend.service';
 import { PostService } from '../posts.service';
 import { ConversionUtils } from 'turbocommons-ts';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // import Swal from 'sweetalert2';
 
@@ -32,7 +32,7 @@ export class AddComponent implements OnInit {
 
   trendList!:Trend[];
 
-  constructor(private fb: FormBuilder, private pS:PostService, private acRoute:ActivatedRoute, private tS:TrendService) { }
+  constructor(private fb: FormBuilder, private pS:PostService, private acRoute:ActivatedRoute, private tS:TrendService, private router:Router) { }
 
 
   token = localStorage.getItem('token')!;
@@ -91,8 +91,12 @@ export class AddComponent implements OnInit {
           background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
           color: 'white',
           confirmButtonColor: 'black',
-          confirmButtonText: 'OK'
-        }),
+          confirmButtonText: 'OK',
+          allowOutsideClick: false
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload()
+        }}),
         error: (error) => {
           // console.log(error);
           
@@ -107,6 +111,7 @@ export class AddComponent implements OnInit {
         }
       })
       this.myForm.reset()
+      this.router.navigate([['/posts/list']]);
       
     }
 

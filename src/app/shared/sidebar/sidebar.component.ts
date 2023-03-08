@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   constructor(private router:Router) { }
-  
-  UName:string = ""
 
   token = localStorage.getItem('token')!;
   payload!:string;
@@ -29,13 +27,6 @@ export class SidebarComponent implements OnInit {
       this.role = this.payload.split('"')[9];
     }
   }
-
- 
-  findByUName(evento:string){
-
-    console.log(evento);
-    
-    this.UName = evento
-  }
+  
 
 }

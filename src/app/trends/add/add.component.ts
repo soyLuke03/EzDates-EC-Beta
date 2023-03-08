@@ -49,8 +49,12 @@ export class AddComponent implements OnInit {
           text: "Your trend has been saved",
           background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
           confirmButtonColor: 'black',
-          confirmButtonText: 'OK'
-        }),
+          confirmButtonText: 'OK',
+          allowOutsideClick: false
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload()
+        }}),
         error: (error) =>
           Swal.fire({
             title: "An error has appeared",
@@ -60,7 +64,7 @@ export class AddComponent implements OnInit {
             confirmButtonText: 'OK'
           }) 
       })
-      this.route.navigate(['trends/list']).then(() => window.location.reload())
+      this.route.navigate(['trends/list'])
       this.myForm.reset()
       
     }

@@ -42,14 +42,19 @@ export class DeleteComponent implements OnInit {
       let idPost = this.acRoute.snapshot.params['id'];
       this.pS.deletePost(idPost).subscribe({
         next: resp => 
-          Swal.fire({
-            title: "Post deleted",
-            text: "The post has been removed",
-            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
-            confirmButtonColor: 'black',
-            confirmButtonText: 'OK'
-          }),
-        error: (error) =>
+        Swal.fire({
+          title: "Log in",
+          text: "Please wait a second",
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+          color: 'white',
+          confirmButtonColor: 'black',
+          confirmButtonText: 'OK',
+          allowOutsideClick: false
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload()
+        }}),
+          error: (error) =>
           Swal.fire({
             title: "An error has appeared",
             text: "The post cannot be removed. Try again later or contact with an admin",
@@ -57,10 +62,10 @@ export class DeleteComponent implements OnInit {
             confirmButtonColor: 'black',
             confirmButtonText: 'OK'
           }) 
-      })
-
-      this.router.navigate([['/posts/list']]).then(() => window.location.reload());
-      
-    }
+        })
+        
+        this.router.navigate([['/posts/list']]);
+        
+      }
 
 }

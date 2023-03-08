@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
 
   constructor(private uS:UserService, private acRoute:ActivatedRoute, private pS:PostService) { }
 
-  user!:User[];
+  user:User[] = [];
   userPosts:Post[] = [];
 
   followers:string[] = []
@@ -59,7 +59,6 @@ export class UserComponent implements OnInit {
         }
         // console.log(this.followers)
       }
-      
     })
   }
 
@@ -75,8 +74,7 @@ export class UserComponent implements OnInit {
   //Seguir usuario
   follow(user:string){
     this.uS.followUser(this.username,user).subscribe({
-      next: resp => {console.log(resp),console.log(this.followers);
-      },
+      next: resp => {this.reload()},
       error: (err) => console.log(err)  
     })
     // console.log(user + " is followed by " + this.username);
@@ -85,7 +83,7 @@ export class UserComponent implements OnInit {
   //Dejar de seguir un usuario
   unfollow(user:string){
     this.uS.unfollowUser(this.username,user).subscribe({
-      next: resp => console.log(resp),
+      next: resp => this.reload(),
       error: (err) => console.log(err)  
     })
     // console.log(user + " is unfollowed by " + this.username);
@@ -96,4 +94,7 @@ export class UserComponent implements OnInit {
     return this.username == user
   }
 
+  reload(){
+    location.reload()
+  }
 }

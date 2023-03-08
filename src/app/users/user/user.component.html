@@ -1,12 +1,12 @@
 
-<div class="body backBlack ">
+<div *ngIf="user" class="body backBlack ">
   <div class="container  backBlack update">
     <div class="row white">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
         <!-- Tarjeta de cada foto de user -->
         <div class="card center image" style="width: 18rem;">
           
-          <img src="../../../assets/logoEZDates.png" class="card-img-top" alt="Image of the user ...">
+          <img src="assets/logoEZDates.png" class="card-img-top" alt="Image of the user ...">
           
         </div>
         <a *ngIf="belong(user[0].username.toLowerCase())" [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
@@ -20,7 +20,7 @@
       <div class="col-sm-12 col-xs-12 col-md-6">
         <br>
         <div class="follows" *ngIf="username != user[0].username.toLowerCase()">
-          <a *ngIf="!followers.includes(user[0].username)" (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Add Follower</button></a>
+          <a *ngIf="!followers.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Add Follower</button></a>
           <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
         </div>
         <div class=" center follows" *ngIf="username == user[0].username.toLowerCase()">

@@ -86,8 +86,12 @@ export class UpdateComponent implements OnInit {
             background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
             color: 'white',
             confirmButtonColor: 'black',
-            confirmButtonText: 'OK'
-          }),
+            confirmButtonText: 'OK',
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload()
+          }}),
           error: (error) =>
             Swal.fire({
               title: "An error has appeared",
