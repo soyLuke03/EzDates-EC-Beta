@@ -82,7 +82,8 @@ export class AddComponent implements OnInit {
       this.json.title = this.myForm.get('title')?.value;
       this.json.description = this.myForm.get('description')?.value;
       
-      this.pS.postPost(this.json, this.myForm.get('trends')?.value, this.username, this.myForm.controls['fileSource'].value).subscribe({
+      this.pS.postPost(this.json, this.myForm.get('trends')?.value, this.username, this.myForm.controls['fileSource'].value)
+      .subscribe({
         next: resp => 
         Swal.fire({
           title: "Saved successfully",
@@ -92,7 +93,9 @@ export class AddComponent implements OnInit {
           confirmButtonColor: 'black',
           confirmButtonText: 'OK'
         }),
-        error: (error) =>
+        error: (error) => {
+          // console.log(error);
+          
           Swal.fire({
             title: "An error has appeared",
             text: "The post cannot be saved. Try again later or contact with an admin",
@@ -101,6 +104,7 @@ export class AddComponent implements OnInit {
             confirmButtonColor: 'black',
             confirmButtonText: 'OK'
           }) 
+        }
       })
       this.myForm.reset()
       

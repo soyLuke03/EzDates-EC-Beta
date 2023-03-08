@@ -36,13 +36,16 @@ import { Post } from '../interfaces/post.interface';
       const form: FormData = new FormData();
       form.append('file', file, file.name);
       form.append('post', new Blob([JSON.stringify(post)], {type: 'application/json'}))
-      form.append('trends', new Blob([JSON.stringify(post)], {type: 'application/json'}))
+      // form.append('trends', new Blob([JSON.stringify(post)]))
       
       // console.log(form);
-
+      // return this.http.post<Post>(this.url+"/add/"+username,form,{headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })});
+      // console.log(trends);
+      
       
 
-      return this.http.post<Post>(this.url+"/add/"+username,{form},{headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })});
+      return this.http.post<Post>(this.url+"/add/"+username+"?trends="+trends,form);
+
     }
 
     putPost(post:Post,id:number, username:string){
