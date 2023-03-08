@@ -1,6 +1,11 @@
 
-<div class="body backBlack">
-  <p class="breadCramp">Post's List > Remove Post</p>
+<div class="body backBlack" *ngIf="!post">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
+
+<div class="body backBlack" *ngIf="post">
   <form class="formulario backBlack white" (ngSubmit)="save($event)" [formGroup]="myForm"> 
     <div class="container-flex center">
         <div class="row">
@@ -16,32 +21,24 @@
                         <input readonly class="sepparate form-control input" type="text" id="description" name="description" formControlName="description" placeholder="{{ post.description }}" value="{{ post.description }}">
   
                         <br>
-  
-  
-                        <label class="form-label">Image URL</label><br>
-                        <input readonly class="sepparate form-control input" type="text" id="imgURL" name="imgURL" formControlName="imgURL" placeholder="{{ post.imgurl }}" value="{{ post.imgurl }}" >
-  
-  
-                            <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                            <input readonly disabled class="sepparate form-control input" type="hidden" id="date" name="date" placeholder="{{ post.date }}" value="{{ post.date }}">
-                            <!-- -------------------- -->
-                        <br>
-
-                        <label class="form-label">Trends</label><br>
-                        <input disabled readonly class="sepparate form-control input" type="text" id="trends" name="trends" placeholder="Trend1,Trend2,Trend3..." maxlength="199">
-    
-                        <!-- -------------------- -->
+                        
+                        <input readonly class="sepparate form-control input hidden" type="text" id="imgURL" name="imgURL" formControlName="imgURL" placeholder="{{ post.imgurl }}" value="{{ post.imgurl }}" >
+                        
+                        <input readonly disabled class="sepparate form-control input hidden" type="hidden" id="date" name="date" placeholder="{{ post.date }}" value="{{ post.date }}">
+                        <h3>Are you sure you want to delete this?</h3> 
+                        
+                        <input disabled readonly class="sepparate form-control input hidden" type="text" id="trends" name="trends" placeholder="Trend1,Trend2,Trend3..." maxlength="199">
+                        <div class="border-form col-8 center">
+                          <input class="btn btn-success sepparate" type="submit" value="Remove"> 
+                          <a [routerLink]="['/posts/post/', post.id ]"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                        </div>
                         <br><br>                   
   
                     
                 </div>
             </div>
             
-                <br><br>
-                <div class="border-form col-8 center">
-                    <input class="btn btn-success sepparate" type="submit" value="Remove"> 
-                    <a [routerLink]="['/posts/post/', post.id ]"><button  class="btn btn-danger sepparate">Cancel</button></a>
-                </div>
+
             </div>
         </div>
   </form>

@@ -2,7 +2,7 @@
     <!--HEADER-->
     <div class="header row">
         <div class="center col-md-3 col-sm-4 col-xs-2">
-            <img class="logo" src="../../../assets/serverdedisc.png" alt="Logo de EZdates">
+            <img class="logo" src="../../../assets/logoEZDates.png" alt="Logo de EZdates">
         </div>
         <div class="col-sm-8 col-md-9 center">
             <h1 class="title">Ez Dates</h1>
@@ -21,50 +21,67 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             
-            <ul class="navbar-nav">
+
+            <ul *ngIf="!token" class="navbar-nav">
               <li class="nav-item dropdown">
-                <a [routerLink]="['/logs/logout']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <a title="Login" [routerLink]="['/logs/login']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Login
+                </a>
+              </li>
+            </ul>
+
+            <ul *ngIf="token"  class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a title="Logout" [routerLink]="['/logs/logout']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Log out
                 </a>
               </li>
             </ul>
             
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
+            <ul *ngIf="token"  class="navbar-nav">
+              <li title="Home" class="nav-item dropdown">
                 <a [routerLink]="['/posts/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Home
                 </a>
               </li>
             </ul>
 
-            <ul class="navbar-nav">
+            <ul *ngIf="token"  class="navbar-nav">
               <li class="nav-item dropdown">
-                <a [routerLink]="['/posts/add']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <a title="Add a new post" [routerLink]="['/posts/add']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Add new Post
                 </a>
               </li>
             </ul>
 
-            <ul class="navbar-nav">
+            <ul *ngIf="role=='ADMIN_ROLE'" class="navbar-nav">
               <li class="nav-item dropdown">
-                <a [routerLink]="['/trends/add']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <a title="Add a new trend" [routerLink]="['/trends/add']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Add new Trend
                 </a>
               </li>
             </ul>
 
-            <ul class="navbar-nav">
+            <ul *ngIf="token"  class="navbar-nav">
               <li class="nav-item dropdown">
-                <a [routerLink]="['/trends/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <a title="Check trends" [routerLink]="['/trends/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Trends
                 </a>
               </li>
             </ul>
 
-            <ul class="navbar-nav">
+            <ul *ngIf="token" class="navbar-nav">
               <li class="nav-item dropdown">
-                <a [routerLink]="['/users/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <a title="Search users" [routerLink]="['/users/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   User list
+                </a>
+              </li>
+            </ul>
+
+            <ul *ngIf="username" class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a title="Your profile" [routerLink]="['/users/user/', username]" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  My User
                 </a>
               </li>
             </ul>

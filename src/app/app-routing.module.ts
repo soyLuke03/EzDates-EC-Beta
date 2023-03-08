@@ -11,17 +11,44 @@ const routes: Routes = [
   { 
     path: 'posts',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./posts/posts.module').then( m => m.PostsModule )
+    loadChildren: () => import('./posts/posts.module').then( m => m.PostsModule ),
+    data: {
+      title: 'HOME',
+      breadcrumb: [
+        {
+          label: 'HOME',
+          url: 'posts'
+        }
+      ]
+    }
   },
   { 
     path: 'trends',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./trends/trends.module').then( m => m.TrendsModule )
+    loadChildren: () => import('./trends/trends.module').then( m => m.TrendsModule ),
+    data: {
+      title: 'TRENDS',
+      breadcrumb: [
+        {
+          label: 'TRENDS',
+          url: 'trends'
+        }
+      ]
+    }
   },
   { 
     path: 'users',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./users/users.module').then( m => m.UsersModule )
+    loadChildren: () => import('./users/users.module').then( m => m.UsersModule ),
+    data: {
+      title: 'USERS',
+      breadcrumb: [
+        {
+          label: 'USERS',
+          url: 'users'
+        }
+      ]
+    }
   },
   {
     path: '',

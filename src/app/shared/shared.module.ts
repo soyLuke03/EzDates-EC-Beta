@@ -4,7 +4,6 @@ import { ErrorComponent } from './error/error.component';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
-import { SearchComponent } from './search/search.component';
 import { UsersModule } from '../users/users.module';
 
 
@@ -12,8 +11,7 @@ import { UsersModule } from '../users/users.module';
 @NgModule({
   declarations: [
     ErrorComponent,
-    SidebarComponent,
-    SearchComponent
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +21,7 @@ import { UsersModule } from '../users/users.module';
   ],
   exports: [
     ErrorComponent,
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class SharedModule { }

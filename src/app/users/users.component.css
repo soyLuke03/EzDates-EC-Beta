@@ -75,7 +75,6 @@ sub{
 
 .galery{
     display: flex;
-    flex-flow: wrap;
     justify-content: center;
     margin: auto;
     background-color: rgb(21, 21, 21);
@@ -104,7 +103,9 @@ sub{
     background-color: red;
     text-align: center;
 }
-
+.hidden {
+    visibility: hidden;
+}
 .terms{
     color: bisque;
     padding: 3%;
@@ -173,3 +174,32 @@ sub{
     background: rgb(2,0,36);
     background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
 }
+
+/**/
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  
+  .sorting:hover{
+    color: red;
+  }
+
+/**/

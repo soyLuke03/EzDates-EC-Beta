@@ -38,13 +38,22 @@ export class DeleteComponent implements OnInit {
       
       this.uS.deleteUser(this.user[0].username).subscribe({
         next: resp => 
-        Swal.fire({
+        {Swal.fire({
           title: "Removed",
           text: "Your account has been removed",
           background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
           confirmButtonColor: 'black',
           confirmButtonText: 'OK'
         }),
+          localStorage.removeItem('token')
+          this.router.navigate(['logs/login'])
+          Swal.fire({
+            title: "Loging out",
+            text: "You've been logged out",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK'
+          })},
         error: (error) =>
           Swal.fire({
             title: "An error has appeared",
@@ -58,7 +67,7 @@ export class DeleteComponent implements OnInit {
       // console.log("Eliminado con éxito")
 
       
-      this.router.navigate([['/users/login']]);
+      this.router.navigate([['/users/login']]).then(() => window.location.reload());
       
     }
 

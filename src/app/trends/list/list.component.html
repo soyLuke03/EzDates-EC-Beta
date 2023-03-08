@@ -1,13 +1,17 @@
+<div class="body backBlack" *ngIf="!trendList">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
 
-<div class="body backBlack">
-  <p class="breadCramp">Trend's List</p>
+<div class="body backBlack" *ngIf="trendList">
   <div class="container-flex backBlack">
     <div class="row galery ">
 
         <!-- Tarjeta de cada trend -->
         <div class="galery-img" *ngFor="let trend of trendList">
           <a class="trend-link" [routerLink]="['/trends/trend/', trend.name]">
-            <div class="card" style="width: 18rem;">
+            <div class="card fondo" style="width: 18rem;">
               <div class="card-body">
                 <h4 class="card-title center">#{{ trend.name }}</h4>
               </div>

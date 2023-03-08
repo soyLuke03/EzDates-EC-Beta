@@ -12,11 +12,100 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'post/:id', component: PostComponent },
-      { path: 'update/:id', component: UpdateComponent },
-      { path: 'list', component: ListComponent },
-      { path: 'delete/:id', component: DeleteComponent },
-      { path: 'add', component: AddComponent },
+      { path: 'post/:id', component: PostComponent,    
+      data: {
+        title: 'POSTS > {{ id }}',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'POSTS',
+            url: 'posts'
+          },
+          {
+            label: 'POST ID: {{id}}',
+            url: 'posts/post/:id'
+          }
+        ]
+      } },
+      { path: 'update/:id', component: UpdateComponent,
+      data: {
+        title: 'POSTS > {{ id }} > UPDATE',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'POSTS',
+            url: 'posts'
+          },
+          {
+            label: 'POST ID: {{id}}',
+            url: 'posts/post/:id'
+          },
+          {
+            label: 'UPDATE',
+            url: 'posts/update/:id'
+          }
+        ]
+      } },
+      { path: 'list', component: ListComponent,
+      data: {
+        title: 'POSTS',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'POSTS',
+            url: 'posts'
+          }
+        ]
+      } },
+      { path: 'delete/:id', component: DeleteComponent,
+      data: {
+        title: 'POSTS > {{ id }} > DELETE',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'POSTS',
+            url: 'posts'
+          },
+          {
+            label: 'POST ID: {{id}}',
+            url: 'posts/post/:id'
+          },
+          {
+            label: 'DELETE',
+            url: 'posts/delete/:id'
+          }
+        ]
+      } },
+      { path: 'add', component: AddComponent,
+      data: {
+        title: 'HOME',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'POSTS',
+            url: 'posts'
+          },
+          {
+            label: 'ADD',
+            url: 'posts/add'
+          }
+        ]
+      } },
       { path: '**', redirectTo: 'list' }
     ]
   }

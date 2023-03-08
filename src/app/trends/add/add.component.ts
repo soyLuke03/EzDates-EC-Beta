@@ -16,6 +16,7 @@ export class AddComponent implements OnInit {
 
 
   myForm: FormGroup = this.fb.group({
+    trend: [],
     name: [null, [Validators.required, Validators.maxLength(200)]]
   })
 
@@ -59,7 +60,7 @@ export class AddComponent implements OnInit {
             confirmButtonText: 'OK'
           }) 
       })
-      this.route.navigate(['trends/list'])
+      this.route.navigate(['trends/list']).then(() => window.location.reload())
       this.myForm.reset()
       
     }

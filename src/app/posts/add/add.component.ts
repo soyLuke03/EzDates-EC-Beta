@@ -25,6 +25,11 @@ export class AddComponent implements OnInit {
     trends: ['']
   })
 
+  json: any = {
+    title: '',
+    description: ''
+  }
+
   trendList!:Trend[];
 
   constructor(private fb: FormBuilder, private pS:PostService, private acRoute:ActivatedRoute, private tS:TrendService) { }
@@ -61,9 +66,8 @@ export class AddComponent implements OnInit {
 
 
   onFileChange(event:any) {
-  
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
+      const file:File = event.target.files[0];
       this.myForm.patchValue({
         fileSource: file
       });
@@ -74,30 +78,11 @@ export class AddComponent implements OnInit {
   * Método cuando se envía el formulario correctamente
   */
     save = (e: { preventDefault: () => void; }) => {
-      const formData = new FormData();
-      formData.append('file', this.myForm.controls['fileSource'].value);
 
-      /*
-      let tagsValue:string = this.myForm.controls['trends'].value
-      let listaTags:string[] = tagsValue.split(",")
-      let trendList:Trend[] = []
+      this.json.title = this.myForm.get('title')?.value;
+      this.json.description = this.myForm.get('description')?.value;
       
-      for (const tag of listaTags) {
-        if(tag.trim()==""){
-          listaTags = listaTags.filter((param) => param.trim()!="")
-        }
-      }
-      for (const tag of listaTags) {
-        let newTrend:Trend = {trend:null,id:0,name: tag.trim()};
-        this.tS.postTrend(newTrend).subscribe({
-          next: resp => console.log(resp)
-        })
-      }
-      */
-
-      console.log(this.myForm.controls['fileSource'].value);
-      
-      this.pS.postPost(formData, this.username, this.myForm.controls['fileSource'].value).subscribe({
+      this.pS.postPost(this.json, this.myForm.get('trends')?.value, this.username, this.myForm.controls['fileSource'].value).subscribe({
         next: resp => 
         Swal.fire({
           title: "Saved successfully",
@@ -120,17 +105,6 @@ export class AddComponent implements OnInit {
       this.myForm.reset()
       
     }
-
-
-
-
-
-
-
-
-//Source: https://stackoverflow.com/questions/68837794
-
-
 
 
 }

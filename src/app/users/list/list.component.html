@@ -1,29 +1,49 @@
-
 <div class="body container-flex backBlack">
-  <p class="breadCramp">User's List</p>
-  <div class="searchBar">
-    <form (ngSubmit)="emitUsername()">
-      <input placeholder="Search by username ..." type="text" id="UserN" name="UserN" [(ngModel)]="UserN" class="form-control">
-    </form>
+  <div class="container mat-elevation-z8 white">
+    <div class="white ">
+        <input matInput name="filterWord" [(ngModel)]="filterWord" (keyup.enter)="applyFilter()" placeholder="Search...">
+        <hr>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="username">
+        <mat-header-cell class="sorting d-sm-block" *matHeaderCellDef mat-sort-header> USERNAME </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="d-sm-block"> {{row.username}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container class="d-none d-sm-block" matColumnDef="name">
+        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> NAME </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="d-none d-sm-block"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Surname Column -->
+      <ng-container class="d-none d-sm-block" matColumnDef="surname">
+        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> SURNAME </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="d-none d-sm-block"> {{row.surname}} </mat-cell>
+      </ng-container>
+
+      <!-- Boton Column -->
+      <ng-container class="d-none d-sm-block" matColumnDef="boton">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row"> 
+          <a [routerLink]="['/users/user/',row.username]">
+            <button class="btn EZbtn">View Profile</button>
+          </a>   
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
   </div>
-  <table class="table table-hover table-dark table-striped">
-    <thead>
-      <td>USERNAME</td>
-      <td>EMAIL</td>
-      <td class="d-none d-sm-table-cell">NAME</td>
-      <td class="d-none d-sm-table-cell">SURNAME</td>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of userList">
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td class="d-none d-sm-table-cell">{{ user.name }}</td>
-        <td class="d-none d-sm-table-cell">{{ user.surname }}</td>
-        <td><a [routerLink]="['/users/user/',user.username]">PROFILE</a></td>
-      </tr>
-    </tbody>
-  </table>
 </div>
+
 
 <div class="footer">
   <div class="container-flex">

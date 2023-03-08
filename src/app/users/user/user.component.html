@@ -1,18 +1,17 @@
 
 <div class="body backBlack ">
-  <p class="breadCramp">User's List > User</p>
   <div class="container  backBlack update">
     <div class="row white">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
         <!-- Tarjeta de cada foto de user -->
         <div class="card center image" style="width: 18rem;">
           
-          <img src="../../../assets/serverdedisc.png" class="card-img-top" alt="Image of the user ...">
+          <img src="../../../assets/logoEZDates.png" class="card-img-top" alt="Image of the user ...">
           
         </div>
-        <a [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
-        <a [routerLink]="['/users/list']"><button  class="btn EZbtn sepparate">Return</button></a>
+        <a *ngIf="belong(user[0].username.toLowerCase())" [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a *ngIf="belong(user[0].username.toLowerCase())" [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/users/list']"><button  class="btn EZbtn sepparate">User List</button></a>
 
 
         <!-- -------------------- -->
@@ -20,8 +19,13 @@
       <br>
       <div class="col-sm-12 col-xs-12 col-md-6">
         <br>
-        <a [routerLink]="['/users/user/1']"><button  class="btn btn-success sepparate">Add Follower</button></a>
-        <a [routerLink]="['/users/user/1']"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
+        <div class="follows" *ngIf="username != user[0].username.toLowerCase()">
+          <a *ngIf="!followers.includes(user[0].username)" (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Add Follower</button></a>
+          <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
+        </div>
+        <div class=" center follows" *ngIf="username == user[0].username.toLowerCase()">
+          <h3>Your profile</h3>
+        </div>
 
         <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>
 
@@ -29,7 +33,7 @@
 
         <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
 
-        <p class="subtitle"><span class="title">STATUS:</span> {{user[0].enabled}}</p>
+        <p class="subtitle"><span class="title">ACTIVE:</span> {{user[0].enabled}}</p>
       </div>
     </div>
     <hr style="color: aliceblue;">
@@ -49,7 +53,16 @@
           <div class="card-body">
             <h4 class="card-title">{{ post.title }}</h4>
             <sub>
-              <input class="btn hashtag" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+              <p>
+                <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Show trends
+                </a>
+              </p>
+              <div class="collapse" id="{{post.id}}">
+                <div class="card card-body">
+                  <input class="btn hashtag" [routerLink]="['/trends/trend', trend.trend.name]" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+                </div>
+              </div>
             </sub>
             <hr>
             <p class="card-text">{{ post.description }}</p>

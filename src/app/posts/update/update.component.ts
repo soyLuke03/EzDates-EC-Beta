@@ -100,7 +100,7 @@ export class UpdateComponent implements OnInit {
 
 
       
-      this.router.navigate([['/posts/post']]);
+      this.router.navigate([['/posts/list']]).then(() => window.location.reload());
     }
 
 }

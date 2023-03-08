@@ -1,6 +1,10 @@
+<div class="body backBlack" *ngIf="!post">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
 
-<div class="body backBlack white">
-  <p class="breadCramp">Post's List > User Post</p>
+<div class="body backBlack white" *ngIf="post">
   <div class="container update">
     <div class="row">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
@@ -13,9 +17,9 @@
           <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
       
         </div>
-        <a [routerLink]="['/posts/update/', post.id]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/posts/delete/', post.id]"><button  class="btn EZbtn sepparate">Delete</button></a>
-        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Return</button></a>
+        <a *ngIf="belong(post.user.username.toLowerCase())" [routerLink]="['/posts/update/', post.id]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a *ngIf="belong(post.user.username.toLowerCase())" [routerLink]="['/posts/delete/', post.id]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Posts List</button></a>
         <!-- -------------------- -->
 
 

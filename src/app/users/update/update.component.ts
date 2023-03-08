@@ -48,7 +48,7 @@ export class UpdateComponent implements OnInit {
     this.myForm.controls['email'].setValue(resp[0].email)
     this.myForm.controls['name'].setValue(resp[0].name)
     this.myForm.controls['surname'].setValue(resp[0].surname)
-    this.myForm.controls['password'].setValue("w")
+    this.myForm.controls['password'].setValue("")
 
   }
 
@@ -104,7 +104,7 @@ export class UpdateComponent implements OnInit {
       this.myForm.reset()
       this.errorPasswords=""
 
-      this.router.navigate(['logs/login'])
+      this.router.navigate(['logs/login']).then(() => window.location.reload())
     }
     if(!this.equalsPasswords()){
       Swal.fire({

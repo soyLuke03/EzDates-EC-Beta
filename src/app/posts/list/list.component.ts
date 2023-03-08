@@ -11,34 +11,19 @@ import { Trend } from '../../interfaces/trend.interface';
 export class ListComponent implements OnInit {
 
   listaPosts!: Post[];
-  listaTrend!: Trend[];
 
-  constructor(private pS:PostService) { }
-
+  constructor(private pS:PostService) { 
+  }
+  
   ngOnInit(): void {
     this.pS.getPosts()
     .subscribe({
-      next: resp => this.complementario(resp),
+      next: resp => {this.listaPosts = resp},
       error: (error)=> console.log(error)
     })
-  }
-  
-  complementario(resp:any){
-    this.listaPosts = resp;
-    for (const post of this.listaPosts) {
-      console.log(post.trendsList[0]);
-      
-      
-      // if(post.trendsList.length!=0){
-      //   for(const trend of post.trendsList){
-      //     console.log(trend);
-          
-      //   }
-        
-      // }
-      
-    }
     
   }
+  
+
 
 }

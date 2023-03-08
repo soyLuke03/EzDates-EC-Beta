@@ -1,6 +1,10 @@
+<div class="body backBlack" *ngIf="!post">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
 
-<div class="backBlack body">
-  <p class="breadCramp">Post's List > Update Post</p>
+<div class="backBlack body" *ngIf="post">
 <form class="formulario backBlack white" (ngSubmit)="save($event)" [formGroup]="myForm"> 
   <div class="container-flex center">
       <div class="row">
@@ -22,22 +26,14 @@
                         *ngIf="notValid('description')">
                             Description is required and length less than 200 characters 
                         </span>
-                      <br>
 
-
-                      <label class="form-label">Image URL</label><br>
-                      <input readonly class="sepparate form-control input" type="text" id="imgurl" name="imgurl" formControlName="imgurl" placeholder="{{ post.imgurl }}">
-
-                          <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                          <input class="sepparate form-control input hidden" type="datetime" id="date" name="date" formControlName="date" placeholder="{{ post.date }}">
-                          <!-- -------------------- -->
-
-                      <label class="form-label">Trends</label><br>
-                      <input readonly class="sepparate form-control input" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
-
-                       
+                      <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
+                      <input readonly class="sepparate form-control input hidden" type="text" id="imgurl" name="imgurl" formControlName="imgurl" placeholder="{{ post.imgurl }}">
+                      <h3>Are you sure you want to update the post?</h3>
+                      <input class="sepparate form-control input hidden" type="datetime" id="date" name="date" formControlName="date" placeholder="{{ post.date }}">
+                      <input readonly class="sepparate form-control input hidden" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
                       <!-- -------------------- -->
-                      <br><br>                   
+               
 
                   
               </div>

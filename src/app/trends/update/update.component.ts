@@ -15,16 +15,19 @@ export class UpdateComponent implements OnInit {
   myForm: FormGroup = this.fb.group({
     name: [null, [Validators.required, Validators.maxLength(200)]]
   })
-
-  constructor(private aCRoute:ActivatedRoute, private tS:TrendService, private fb: FormBuilder, private route:Router) { }
-
   trend!:Trend;
-
-  ngOnInit(): void {
+  
+  constructor(private aCRoute:ActivatedRoute, private tS:TrendService, private fb: FormBuilder, private route:Router) {
     let id = this.aCRoute.snapshot.params['id'];
     this.tS.getTrend(id).subscribe({
       next: resp => this.trend = resp
     })
+   }
+
+  
+
+  ngOnInit(): void {
+
   }
 
 
@@ -64,7 +67,7 @@ export class UpdateComponent implements OnInit {
       })
 
       this.myForm.reset()
-      this.route.navigate(['/trend/list/']);
+      this.route.navigate(['/trends/list/']).then(() => window.location.reload());
       // console.log("Añadido con éxito")
 
     }

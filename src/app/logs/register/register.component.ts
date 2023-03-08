@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if(this.equalsPasswords()){
+      console.log(newUser);
       
       this.uS.register(newUser).subscribe({
         next: resp => 

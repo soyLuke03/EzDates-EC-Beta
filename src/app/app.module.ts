@@ -9,17 +9,23 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     HttpClientModule,
-    FormsModule
+    SharedModule,
+    FormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    NgDynamicBreadcrumbModule,
   ],
   providers: [
     AuthGuard,

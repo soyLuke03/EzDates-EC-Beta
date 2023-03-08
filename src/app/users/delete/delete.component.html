@@ -1,6 +1,5 @@
 
 <div class="body backBlack">
-<p class="breadCramp">User's List > Delete user</p>
 <form (ngSubmit)="save($event)" [formGroup]="myForm" class="backBlack white"> 
   <div class="container-flex center">
     <br>
@@ -17,23 +16,20 @@
                       <label class="form-label">Email</label><br>
                       <input readonly  class="sepparate form-control input" type="email" id="email" name="email"  placeholder="{{user[0].email}}">
 
-                      <br>
 
-                      <label class="form-label">Name</label><br>
-                      <input class="sepparate form-control input" type="text" id="name" name="name" placeholder="{{user[0].name}}">
+                      <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
+                      <input class="sepparate form-control input hidden" type="text" id="name" name="name" placeholder="{{user[0].name}}">
 
-                      <br>
+                      <input required class="sepparate form-control input hidden" type="text" id="surname" name="surname" placeholder="{{user[0].surname}}">
+
+                      <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
                       
-                      <label class="form-label">*Surname</label><br>
-                      <input required class="sepparate form-control input" type="text" id="surname" name="surname" placeholder="{{user[0].surname}}">
+                      <h3>Are you sure you want to delete the user?</h3>
 
-                          <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                          <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
+                      <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
                           
-                          <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
-                          
-                          <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
-                          <!-- -------------------- -->
+                      <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
+                      <!-- -------------------- -->
 
                       <!-- -------------------- -->
                       <br><br>                   

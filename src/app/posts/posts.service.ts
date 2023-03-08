@@ -12,7 +12,7 @@ import { Post } from '../interfaces/post.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "http://localhost:8080/posts"
+    url:string = "https://ezdatesbeta-production.up.railway.app/posts"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,8 +32,17 @@ import { Post } from '../interfaces/post.interface';
        return this.http.get<Post>(this.url+"/"+id)
     }
 
-    postPost(post:FormData, username:string, file:File){
-      return this.http.post<Post>(this.url+"/add/"+username,{post , file},{headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })});
+    postPost(post:any,trends:any, username:string, file:File){
+      const form: FormData = new FormData();
+      form.append('file', file, file.name);
+      form.append('post', new Blob([JSON.stringify(post)], {type: 'application/json'}))
+      form.append('trends', new Blob([JSON.stringify(post)], {type: 'application/json'}))
+      
+      // console.log(form);
+
+      
+
+      return this.http.post<Post>(this.url+"/add/"+username,{form},{headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })});
     }
 
     putPost(post:Post,id:number, username:string){
@@ -41,7 +50,7 @@ import { Post } from '../interfaces/post.interface';
     }
 
     deletePost(id:number){
-      return this.http.delete<Post>("http://localhost:8080/posts/"+id)
+      return this.http.delete<Post>("https://ezdatesbeta-production.up.railway.app/posts/"+id)
     }
 
   

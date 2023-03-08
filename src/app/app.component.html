@@ -1,8 +1,9 @@
-<div class="container-flex" style="overflow: hidden;">
+<div class="container-flex backBlack" style="overflow: hidden;">
   <app-sidebar></app-sidebar>
   <div class="row">
     <div class="col-md-12 center">
-        <router-outlet></router-outlet>
+      <app-ng-dynamic-breadcrumb [fontColor]="'#ffffff'" [bgColor]="'#000000'"></app-ng-dynamic-breadcrumb>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

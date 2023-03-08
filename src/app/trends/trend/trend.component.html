@@ -1,6 +1,10 @@
+<div class="body backBlack" *ngIf="!trend">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
 
-<div class="body backBlack white">
-  <p class="breadCramp">Trend's List > Trends</p>
+<div class="body backBlack "*ngIf="trend">
   <div class="container-flex update">
     <div class="row">
       <div class="center">
@@ -10,15 +14,59 @@
           {{trend.name}}
           
         </div>
-        <a [routerLink]="['/trends/update/', trend.name]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a [routerLink]="['/trends/delete/', trend.name]"><button  class="btn EZbtn sepparate">Delete</button></a>
-        <a [routerLink]="['/trends/list']"><button  class="btn EZbtn sepparate">Return</button></a>
+        <a *ngIf="role=='ADMIN_ROLE'" [routerLink]="['/trends/update/', trend.name]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a *ngIf="role=='ADMIN_ROLE'" [routerLink]="['/trends/delete/', trend.name]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/trends/list']"><button  class="btn EZbtn sepparate">Trend List</button></a>
 
 
         <!-- -------------------- -->
       </div>
       <hr style="color: white;">
 
+      <div class="body backBlack" *ngIf="postDelTrend.length==0">
+        <div class="grande center">
+          <span class=" white">
+            It seems that this trend do not have any post
+          </span>
+        </div>
+      </div>
+      <div class="row galery" *ngIf="postDelTrend">
+        <!-- Tarjeta de cada post -->
+        <div *ngFor="let post of postDelTrend" class="galery-img ">
+          <div class="card" style="width: 18rem;">
+            <div class="profile-link-badge">
+              <a class="profile-link" [routerLink]="['/users/user/', post.user.username]">{{ post.user.username }}</a>
+            </div>
+            <a [routerLink]="['/posts/post/', post.id]" >
+              <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
+              <!--Si no hay foto, una por defecto-->
+              <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">{{ post.title }}</h4>
+              <sub>
+                <p>
+                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Show trends
+                  </a>
+                </p>
+                <div class="collapse" id="{{post.id}}">
+                  <div class="card card-body">
+                    <input class="btn hashtag" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+                  </div>
+                </div>
+              </sub>
+              <hr>
+              <p class="card-text">{{ post.description }}</p>
+              <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- -------------------- -->
+        
+        
+      </div>
+      
     </div>
   </div>
 </div>

@@ -13,11 +13,100 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'trend/:id', component: TrendComponent },
-      { path: 'update/:id', component: UpdateComponent },
-      { path: 'delete/:id', component: DeleteComponent },
-      { path: 'add', component: AddComponent },
-      { path: 'list', component: ListComponent },
+      { path: 'trend/:id', component: TrendComponent,
+      data: {
+        title: 'TRENDS > {{id}}',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'TRENDS',
+            url: 'trends'
+          },
+          {
+            label: 'TREND: {{id}}',
+            url: 'trends/trend/:id'
+          }
+        ]
+      } },
+      { path: 'update/:id', component: UpdateComponent,
+      data: {
+        title: 'TRENDS > {{id}} > UPDATE',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'TRENDS',
+            url: 'trends'
+          },
+          {
+            label: 'TREND: {{id}}',
+            url: 'trends/trend/:id'
+          },
+          {
+            label: 'UPDATE',
+            url: 'trends/update/:id'
+          }
+        ]
+      } },
+      { path: 'delete/:id', component: DeleteComponent,
+      data: {
+        title: 'TRENDS > {{id}} > DELETE',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'TRENDS',
+            url: 'trends'
+          },
+          {
+            label: 'TREND: {{id}}',
+            url: 'trends/trend/:id'
+          },
+          {
+            label: 'DELETE',
+            url: 'trends/delete/:id'
+          }
+        ]
+      } },
+      { path: 'add', component: AddComponent,
+      data: {
+        title: 'TRENDS > {{id}} > ADD',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'TRENDS',
+            url: 'trends'
+          },
+          {
+            label: 'ADD',
+            url: 'trends/add'
+          }
+        ]
+      } },
+      { path: 'list', component: ListComponent,
+      data: {
+        title: 'TRENDS',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'TRENDS',
+            url: 'trends'
+          }
+        ]
+      } },
       { path: '**', redirectTo: 'list' }
     ]
   }

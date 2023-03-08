@@ -10,7 +10,7 @@ export class AuthService {
     
     
 
-    url:string = "http://localhost:8080/signin"
+    url:string = "https://ezdatesbeta-production.up.railway.app/signin"
   
 
     httpOptions = {
@@ -19,7 +19,7 @@ export class AuthService {
     
     constructor(private http:HttpClient, private route:Router){ }
     
-    urlAuth: string = 'http://localhost:8080/jwt'
+    urlAuth: string = 'https://ezdatesbeta-production.up.railway.app/jwt'
 //   loggedIn = false;
  
   isAuthenticated(): Observable<boolean> { 

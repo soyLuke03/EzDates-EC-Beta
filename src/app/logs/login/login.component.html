@@ -1,25 +1,25 @@
 <div class="container-flex center backBlack white">
-    <div class="header">
-        <h1 class="title">Ez Dates</h1>
-        <h5 class="subtitle">"Find your duo to get the win"</h5>
-        <hr>
-    </div>
+    <br>
     <div class="row">
         <div class="col-2"></div>
         <div class="col-sm-12 col-md-6 center">
             <h1>Login</h1>
             <form (ngSubmit)="login()" method="post" #myForm="ngForm" class="border-form">
-                    <label class="form-label">UserName</label><br>
+                    <label class="form-label">*UserName</label><br>
                     <input class="sepparate form-control input" required type="text" id="username" [(ngModel)]="username" name="username" minlength="1" placeholder="example username">
-                    
+                    <span class="form-text text-danger" 
+                          *ngIf="notValid('username') || errorLogin">
+                          Username is required
+                    </span>
+
                     <br>
                     
-                    <label class="form-label">Password</label><br>
+                    <label class="form-label">*Password</label><br>
                     <input class="sepparate form-control input" required type="password" id="password" [(ngModel)]="password" name="password" minlength="1" placeholder="Enter your password here...">
                                                 
                     <span class="form-text text-danger" 
                           *ngIf="notValid('password') || errorLogin">
-                          Email or password are not correct
+                          Password is required
                     </span>
 
                     <br><br>
@@ -32,7 +32,7 @@
                     <br>
                     
                     <p>You don't have an account?
-                    <a [routerLink]="['/logs/register']" routerLinkActive="active">register now</a>
+                    <a [routerLink]="['/logs/register']" routerLinkActive="active">Register now</a>
                     </p>
             </form>
             <br>

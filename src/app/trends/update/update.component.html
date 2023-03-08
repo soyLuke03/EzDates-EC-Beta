@@ -1,6 +1,10 @@
+<div class="body backBlack" *ngIf="!trend">
+  <div class="grande center">
+    <span class="loader center"></span>
+  </div>
+</div>
 
-<div class="body backBlack">
-<p class="breadCramp">Trend's List > Update trend</p>
+<div class="body backBlack" *ngIf="trend">
 <form class="formulario backBlack white" (ngSubmit)="save($event)" [formGroup]="myForm"> 
   <div class="container-flex center">
       <div class="row">

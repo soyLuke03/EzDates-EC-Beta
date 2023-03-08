@@ -13,7 +13,7 @@ import { Trend } from '../interfaces/trend.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "http://localhost:8080/trends"
+    url:string = "https://ezdatesbeta-production.up.railway.app/trends"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,8 +30,8 @@ import { Trend } from '../interfaces/trend.interface';
       return this.http.get<Trend>(this.url+"/"+name)
     }
 
-    postTrend(trend:Trend):Observable<Trend>{
-      return this.http.post<Trend>(this.url+"/add",trend)
+    postTrend(name:string):Observable<Trend>{
+      return this.http.post<Trend>(this.url+"/add",{ name },this.httpOptions)
     }
 
     putTrend(name:string, trend:Trend):Observable<Trend>{

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { of, Observable, switchMap, catchError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
+import { Follower } from '../interfaces/follower.interface';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { User } from '../interfaces/user.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "http://localhost:8080/users"
+    url:string = "https://ezdatesbeta-production.up.railway.app/users"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,7 +30,7 @@ import { User } from '../interfaces/user.interface';
     }
 
     register(user:User){
-      return this.http.post<User>(this.url+"/register",user);
+      return this.http.post<User>("https://ezdatesbeta-production.up.railway.app/register",user);
     }
 
     putUser(user:User, username:string, email:string){
@@ -37,8 +38,22 @@ import { User } from '../interfaces/user.interface';
     }
 
     deleteUser(username:string){
-      return this.http.delete<User>("http://localhost:8080/users/"+username)
+      return this.http.delete<User>("https://ezdatesbeta-production.up.railway.app/users/"+username)
     }
 
+    /* URL follows */
+    followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
+
+    getFollows(){
+      return this.http.get<Follower[]>(this.followUrl)
+    }
+
+    followUser(seguidor:string, seguido:string){
+      return this.http.post<Follower>(this.followUrl+"/add/"+seguidor+"/"+seguido,null)
+    }
+
+    unfollowUser(seguidor:string, seguido:string){
+      return this.http.delete<Follower>(this.followUrl+"/del/"+seguidor+"/"+seguido)
+    }
   
   }

@@ -1,5 +1,5 @@
 export interface Trend{
-    trend: any;
+    trend: Trend;
     id: number,
     name: string
 }
