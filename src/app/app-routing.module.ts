@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './shared/error/error.component';
 import { AuthGuard } from './auth-guard.service';
+import { TermConditionsModule } from './term-conditions/term-conditions.module';
+import { TermConditionsComponent } from './term-conditions/term-conditions/term-conditions.component';
 
 const routes: Routes = [
   { 
@@ -36,20 +38,17 @@ const routes: Routes = [
       ]
     }
   },
-  { 
-    path: 'users',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./users/users.module').then( m => m.UsersModule ),
-    data: {
-      title: 'USERS',
-      breadcrumb: [
-        {
-          label: 'USERS',
-          url: 'users'
-        }
-      ]
-    }
+  { path: 'terms', component: TermConditionsComponent, data: {
+    title: 'TERMS',
+    breadcrumb: [
+      {
+        label: 'TERMS',
+        url: 'terms'
+      }
+    ]
+  } 
   },
+
   {
     path: '',
     redirectTo: 'logs',

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
+import { TermConditionsModule } from './term-conditions/term-conditions.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
     HttpClientModule,
     SharedModule,
     FormsModule,
+    TermConditionsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
     NgDynamicBreadcrumbModule,

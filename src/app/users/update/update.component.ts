@@ -75,10 +75,20 @@ export class UpdateComponent implements OnInit {
     if(this.equalsPasswords()){
       
       let username = this.aCRoute.snapshot.params['id'];
-      console.log(this.myForm.controls['password'].value);
+      // console.log(this.myForm.controls['password'].value);
+      let formulario:any = {
+        username: this.myForm.controls['username'].value,
+        email: this.myForm.controls['email'].value,
+        name: this.myForm.controls['name'].value,
+        surname: this.myForm.controls['surname'].value,
+        password: this.myForm.controls['password'].value,
+        enabled: true
+      }
+
+      console.log(formulario);
       
 
-      this.uS.putUser(this.myForm.value,username,this.myForm.controls['email'].value).subscribe({
+      this.uS.putUser(formulario,username,this.myForm.controls['email'].value).subscribe({
         next: resp => 
           Swal.fire({
             title: "Updated",

@@ -9,19 +9,19 @@
 
       <!-- Username Column -->
       <ng-container matColumnDef="username">
-        <mat-header-cell class="sorting d-sm-block" *matHeaderCellDef mat-sort-header> USERNAME </mat-header-cell>
+        <mat-header-cell class="sorting d-sm-block" *matHeaderCellDef mat-sort-header> username </mat-header-cell>
         <mat-cell *matCellDef="let row" class="d-sm-block"> {{row.username}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container class="d-none d-sm-block" matColumnDef="name">
-        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> NAME </mat-header-cell>
+        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> name </mat-header-cell>
         <mat-cell *matCellDef="let row" class="d-none d-sm-block"> {{row.name}} </mat-cell>
       </ng-container>
 
       <!-- Surname Column -->
       <ng-container class="d-none d-sm-block" matColumnDef="surname">
-        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> SURNAME </mat-header-cell>
+        <mat-header-cell class="sorting d-none d-sm-block" *matHeaderCellDef mat-sort-header> surname </mat-header-cell>
         <mat-cell *matCellDef="let row" class="d-none d-sm-block"> {{row.surname}} </mat-cell>
       </ng-container>
 
@@ -51,8 +51,8 @@
       <div class="col center bg-black">
         
         <div class="terms">
-          <p>Legal terms</p>
-          <p>Privacy policy</p>
+          <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
+          <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
         </div>
         
       </div>
