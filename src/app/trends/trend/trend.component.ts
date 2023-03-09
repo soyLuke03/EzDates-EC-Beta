@@ -43,7 +43,7 @@ export class TrendComponent implements OnInit {
     this.pS.getPosts()
     .subscribe({
       next: resp => this.complementario(resp),
-      error: (error) => console.log("ERROR on loading post")
+      error: (error) => console.log()
     })
   }
 

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   login(){
     // console.log(this.username, this.password)
     this.lS.login(this.username,this.password).subscribe({
-      next: resp => console.log(resp)
+      next: resp => console.log()
     })
 
     this.auth.login(this.username,this.password)

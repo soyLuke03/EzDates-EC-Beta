@@ -32,7 +32,7 @@ export class UpdateComponent implements OnInit {
     this.pS.getPost(idPost)
     .subscribe({
       next: resp => this.defaultValues(resp),
-      error: (error) => console.log("ERROR on loading post")
+      error: (error) => console.log()
     })
 
   }

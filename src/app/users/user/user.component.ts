@@ -40,14 +40,14 @@ export class UserComponent implements OnInit {
     this.uS.getUser(idUser)
     .subscribe({
       next: resp => this.user = resp,
-      error: (error) => console.log("ERROR on loading user")
+      error: (error) => console.log()
     })
 
     //Obtener los posts
     this.pS.getPosts()
     .subscribe({
       next: resp => this.getUserPosts(resp),
-      error: (error) => console.log("ERROR on loading posts")
+      error: (error) => console.log()
     })
 
     //Obtener seguidores

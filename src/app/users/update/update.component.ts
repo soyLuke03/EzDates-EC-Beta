@@ -35,7 +35,7 @@ export class UpdateComponent implements OnInit {
     this.uS.getUser(username)
     .subscribe({
       next: resp => this.defaultValues(resp),
-      error: (error) => console.log("ERROR on loading user")
+      error: (error) => console.log()
     })
   }
 
@@ -85,7 +85,7 @@ export class UpdateComponent implements OnInit {
         enabled: true
       }
 
-      console.log(formulario);
+      // console.log(formulario);
       
 
       this.uS.putUser(formulario,username,this.myForm.controls['email'].value).subscribe({

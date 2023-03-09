@@ -27,7 +27,7 @@ export class DeleteComponent implements OnInit {
     this.uS.getUser(username)
     .subscribe({
       next: resp => this.user = resp,
-      error: (error) => console.log("ERROR on loading user")
+      error: (error) => console.log()
     })
   }
 

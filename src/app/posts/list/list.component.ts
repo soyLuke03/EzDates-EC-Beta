@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
     this.pS.getPosts()
     .subscribe({
       next: resp => {this.listaPosts = resp},
-      error: (error)=> console.log(error)
+      error: (error)=> console.log()
     })
     
   }
