@@ -13,7 +13,8 @@ import { Follower } from '../interfaces/follower.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "https://ezdatesbeta-production.up.railway.app/users"
+    // url:string = "https://ezdatesbeta-production.up.railway.app/users"
+    url:string = "http://localhost:8080/users"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,7 +31,7 @@ import { Follower } from '../interfaces/follower.interface';
     }
 
     register(user:User){
-      return this.http.post<User>("https://ezdatesbeta-production.up.railway.app/register",user);
+      return this.http.post<User>("http://localhost:8080/register",user);
     }
 
     putUser(user:User, username:string, email:string){
@@ -38,11 +39,12 @@ import { Follower } from '../interfaces/follower.interface';
     }
 
     deleteUser(username:string){
-      return this.http.delete<User>("https://ezdatesbeta-production.up.railway.app/users/"+username)
+      return this.http.delete<User>(this.url+"/"+username)
     }
 
     /* URL follows */
-    followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
+    // followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
+    followUrl:string = "http://localhost:8080/follows"
 
     getFollows(){
       return this.http.get<Follower[]>(this.followUrl)
