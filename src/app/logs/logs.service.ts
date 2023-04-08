@@ -23,7 +23,7 @@ import { AuthResponse } from '../interfaces/token.interface';
     constructor(private http: HttpClient) { }
     
     verify(user:string, code:string){
-      return this.http.get<any>(`https://ezdatesbeta-production.up.railway.app/verify?code=${code}&user=${user}`)
+      return this.http.get<any>(`http://localhost:8080/verify?code=${code}&user=${user}`)
     }
 
     login(username: string, password: string):Observable<boolean>{
