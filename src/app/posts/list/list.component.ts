@@ -11,6 +11,8 @@ import { Trend } from '../../interfaces/trend.interface';
 export class ListComponent implements OnInit {
 
   listaPosts!: Post[];
+  commentsList!: any[];
+  comment: string = ""
 
   constructor(private pS:PostService) { 
   }
@@ -18,12 +20,20 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.pS.getPosts()
     .subscribe({
-      next: resp => {this.listaPosts = resp},
+      next: resp => {
+        this.listaPosts = resp,
+        console.log(resp[0]);
+        
+      },
       error: (error)=> console.log()
     })
     
   }
   
-
+  submitNewComment(): void{
+    console.log("Nuevo comentario");
+    
+    this.comment = ""
+  }
 
 }

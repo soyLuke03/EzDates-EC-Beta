@@ -20,11 +20,22 @@
       <div class="col-sm-12 col-xs-12 col-md-6">
         <br>
         <div class="follows" *ngIf="username != user[0].username.toLowerCase()">
+          
           <a *ngIf="!followers.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Add Follower</button></a>
           <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
         </div>
-        <div class=" center follows" *ngIf="username == user[0].username.toLowerCase()">
+        <div class="center follows" *ngIf="username == user[0].username.toLowerCase()">
           <h3>Your profile</h3>
+          <div class="row center">
+            <div class="col-sm-3">
+              <span>FOLLOWERS</span>
+              <p>{{ follows.length }}</p>
+            </div>
+            <div class="col-sm-3">
+              <span>FOLLOWS</span>
+              <p>{{ followers.length }}</p>
+            </div>
+          </div>
         </div>
 
         <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>

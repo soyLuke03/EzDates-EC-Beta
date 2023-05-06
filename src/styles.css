@@ -17,3 +17,5 @@ img{
     background: rgb(2,0,36);
     background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

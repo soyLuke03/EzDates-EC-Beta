@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
    * Método para logear al usuario
    */
   login(){
-    // console.log(this.username, this.password)
     this.lS.login(this.username,this.password).subscribe({
       next: resp => console.log()
     })

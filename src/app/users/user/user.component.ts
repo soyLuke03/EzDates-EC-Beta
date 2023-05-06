@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
   userPosts:Post[] = [];
 
   followers:string[] = []
+  follows:string[] = []
 
   token = localStorage.getItem('token')!;
   payload!:string;
@@ -39,7 +40,9 @@ export class UserComponent implements OnInit {
     let idUser = this.acRoute.snapshot.params['id'];
     this.uS.getUser(idUser)
     .subscribe({
-      next: resp => this.user = resp,
+      next: resp => {
+        this.user = resp
+      },
       error: (error) => console.log()
     })
 
@@ -76,7 +79,10 @@ export class UserComponent implements OnInit {
   //Seguir usuario
   follow(user:string){
     this.uS.followUser(this.username,user).subscribe({
-      next: resp => {this.reload()},
+      next: resp => {
+        this.reload(),
+        this.follows.unshift(user)
+      },
       error: (err) => console.log(err)  
     })
     // console.log(user + " is followed by " + this.username);

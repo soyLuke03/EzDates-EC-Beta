@@ -21,12 +21,15 @@
             </a>
             <div class="card-body">
               <h4 class="card-title">{{ post.title }}</h4>
+              <!--TRENDS y LIKES-->
               <sub>
                 <!--  -->
-                <p>
-                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <p class="row">
+                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white col-sm-6" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Show trends
                   </a>
+                  <span class="col-sm-2"></span>
+                  <button onclick="addLike(post.id)" class="btn backBlack white col-sm-4">LIKES: 8</button>
                 </p>
                 <div class="collapse" id="{{post.id}}">
                   <div class="card card-body">
@@ -35,8 +38,26 @@
                 </div>
                 <!--  -->
               </sub>
+              <!---------->
               <hr>
               <p class="card-text">{{ post.description }}</p>
+              <!--COMMENTS-->
+              <sub>
+                <!--  -->
+                <p class="row">
+                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white col-sm-6" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Show Comments
+                  </a>
+                </p>
+                <div class="collapse center" id="{{post.id}}comments">
+                  <input type="text" class="form-control" (keydown.enter)="submitNewComment()" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+                  <div class="card card-body">
+                    <input class="btn hashtag" type="button" value="{{ comment.trend.name }}" *ngFor="let comment of commentsList">
+                  </div>
+                </div>
+                <!--  -->
+              </sub>
+              <!------------>
               <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
             </div>
           </div>

@@ -47,17 +47,7 @@ export class DeleteComponent implements OnInit {
         }),
           localStorage.removeItem('token')
           this.router.navigate(['logs/login'])
-          Swal.fire({
-            title: "Loging out",
-            text: "You've been logged out",
-            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      color: 'white',
-            confirmButtonColor: 'black',
-            confirmButtonText: 'OK',
-            allowOutsideClick: false
-          }).then((result) => {
-            if (result.isConfirmed) {
-              location.reload()
-          }})},
+        },
         error: (error) =>
           Swal.fire({
             title: "An error has appeared",

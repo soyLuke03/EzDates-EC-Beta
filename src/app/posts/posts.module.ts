@@ -7,7 +7,7 @@ import { AddComponent } from './add/add.component';
 import { PostComponent } from './post/post.component';
 import { PostsRoutingModule } from './posts-routing.module';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PostsRoutingModule,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })

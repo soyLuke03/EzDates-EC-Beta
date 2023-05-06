@@ -11,7 +11,7 @@ export class AuthService {
     
 
     // url:string = "https://ezdatesbeta-production.up.railway.app/signin"
-    url:string = "http://localhost:8080/"
+    url:string = "http://localhost:8080/signin"
   
 
     httpOptions = {
@@ -41,17 +41,13 @@ export class AuthService {
 
 
   login(username: string, password: string):Observable<boolean>{
-    //Recuperamos el usuario y comprobamos que la contraseña sea correcta
+  //Recuperamos el usuario y comprobamos que la contraseña sea correcta
   return this.http.post<AuthResponse>(this.url, {username, password},this.httpOptions)
-    .pipe( switchMap(token => {
-    //   console.log(token.token);
+    .pipe( switchMap(token => {    
       localStorage.setItem('token', token.token);
-    //   console.log("Token creado")
-    //   console.log(token.token);      
       return of(true);
     }),catchError(error => {
       localStorage.removeItem('token');
-      // console.log(error)
       return of(false);
     })
     )

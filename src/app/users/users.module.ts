@@ -40,6 +40,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -76,6 +77,9 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+  ],
+  declarations: [
+    
   ]
 })
 export class DemoMaterialModule {}
@@ -86,6 +90,7 @@ export class DemoMaterialModule {}
     DeleteComponent,
     UpdateComponent,
     UserComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

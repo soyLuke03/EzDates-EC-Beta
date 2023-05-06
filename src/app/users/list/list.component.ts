@@ -45,7 +45,9 @@ export class ListComponent implements OnInit {
   
   ngOnInit(): void {
     this.uS.getUsers().subscribe({
-      next: resp => {this.dataSource = new MatTableDataSource(resp); resp}
+      next: resp => {this.dataSource = new MatTableDataSource(resp); 
+      console.log(resp[0]);
+      }
     })
     
   }

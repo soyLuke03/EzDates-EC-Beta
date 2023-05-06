@@ -3,6 +3,7 @@ import { of, Observable, switchMap, catchError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
 import { Follower } from '../interfaces/follower.interface';
+import { Profile } from '../interfaces/profile.interface';
 
 
 @Injectable({
@@ -56,6 +57,19 @@ import { Follower } from '../interfaces/follower.interface';
 
     unfollowUser(seguidor:string, seguido:string){
       return this.http.delete<Follower>(this.followUrl+"/del/"+seguidor+"/"+seguido)
+    }
+
+    postProfile(profile:any, file:File){
+      const form: FormData = new FormData();
+      form.append('image', file, file.name);
+      form.append('profile', new Blob([JSON.stringify(profile)], {type: 'application/json'}))
+      // console.log(form.get("image"));
+      // console.log(form.get("profile"));
+      
+      
+
+      return this.http.post<Profile>("http://localhost:8080/profile/add",form);
+
     }
   
   }

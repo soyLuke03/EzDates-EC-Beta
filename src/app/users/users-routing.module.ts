@@ -4,14 +4,14 @@ import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { UserComponent } from './user/user.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'user/:id', 
-      component: UserComponent,
+      { path: 'user/:id', component: UserComponent,
       data: {
         title: 'USERS > {{id}}',
         breadcrumb: [
@@ -81,6 +81,27 @@ const routes: Routes = [
           {
             label: 'DELETE',
             url: 'users/delete/:id'
+          }
+        ]
+      } },
+      { path: 'profile/:username', component: ProfileComponent,data: {
+        title: 'USERS > {{username}} > PROFILE',
+        breadcrumb: [
+          {
+            label: 'HOME',
+            url: 'posts'
+          },
+          {
+            label: 'USERS',
+            url: 'users'
+          },
+          {
+            label: 'USUARIO: {{username}}',
+            url: 'users/user/:username'
+          },
+          {
+            label: 'PROFILE',
+            url: 'users/profile/:username'
           }
         ]
       } },
