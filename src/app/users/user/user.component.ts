@@ -42,6 +42,8 @@ export class UserComponent implements OnInit {
     .subscribe({
       next: resp => {
         this.user = resp
+        console.log(resp);
+        
       },
       error: (error) => console.log()
     })
@@ -49,7 +51,13 @@ export class UserComponent implements OnInit {
     //Obtener los posts
     this.pS.getPosts()
     .subscribe({
-      next: resp => this.getUserPosts(resp),
+      next: resp => {
+        for (let post of resp) {
+          if(post.user.username==this.user[0].username){
+            this.userPosts.unshift(post)
+          }
+        }
+      },
       error: (error) => console.log()
     })
 
@@ -67,21 +75,12 @@ export class UserComponent implements OnInit {
     })
   }
 
-  //Obtiene los posts de un usuario
-  getUserPosts(posts:Post[]){
-    for (let post of posts) {
-      if(post.user.username==this.user[0].username){
-        this.userPosts.unshift(post)
-      }
-    }
-  }
-
   //Seguir usuario
   follow(user:string){
     this.uS.followUser(this.username,user).subscribe({
       next: resp => {
-        this.reload(),
-        this.follows.unshift(user)
+        this.follows.unshift(user),
+        this.reload()
       },
       error: (err) => console.log(err)  
     })

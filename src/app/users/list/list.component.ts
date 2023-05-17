@@ -15,21 +15,23 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private uS:UserService, private route:ActivatedRoute) { }
+    /** Filter, paginator y datatable */
+    displayedColumns = ['username', 'name', 'surname', 'boton'];
+    dataSource = new MatTableDataSource<User>();
+  
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+  constructor(private uS:UserService, private route:ActivatedRoute) { 
+    this.uS.getUsers().subscribe({
+      next: resp => {
+        this.dataSource = new MatTableDataSource(resp);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+    })
+  }
 
   filterWord:string = "";
-
-  /** Filter, paginator y datatable */
-  displayedColumns = ['username', 'name', 'surname', 'boton'];
-  dataSource!: MatTableDataSource<User>;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
   applyFilter() {
     this.filterWord = this.filterWord.trim(); // Remove whitespace
@@ -44,11 +46,7 @@ export class ListComponent implements OnInit {
   UserN:string = ""
   
   ngOnInit(): void {
-    this.uS.getUsers().subscribe({
-      next: resp => {this.dataSource = new MatTableDataSource(resp); 
-      console.log(resp[0]);
-      }
-    })
+
     
   }
 

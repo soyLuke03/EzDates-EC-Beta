@@ -29,7 +29,7 @@
                     Show trends
                   </a>
                   <span class="col-sm-2"></span>
-                  <button onclick="addLike(post.id)" class="btn backBlack white col-sm-4">LIKES: 8</button>
+                  <button (click)="addLike(post.id)" class="btn backBlack white col-sm-4">{{ post.likes.length }}</button>
                 </p>
                 <div class="collapse" id="{{post.id}}">
                   <div class="card card-body">
@@ -45,14 +45,14 @@
               <sub>
                 <!--  -->
                 <p class="row">
-                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white col-sm-6" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Show Comments
                   </a>
                 </p>
                 <div class="collapse center" id="{{post.id}}comments">
-                  <input type="text" class="form-control" (keydown.enter)="submitNewComment()" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+                  <input type="text" class="form-control" (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
                   <div class="card card-body">
-                    <input class="btn hashtag" type="button" value="{{ comment.trend.name }}" *ngFor="let comment of commentsList">
+                    <button class="btn" *ngFor="let comment of post.comments">{{username}}:  {{ comment.message }}</button>
                   </div>
                 </div>
                 <!--  -->

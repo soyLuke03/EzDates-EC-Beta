@@ -1,3 +1,5 @@
+import { Profile } from "./profile.interface";
+
 export interface User{
 	username: string,
 	email: string,
@@ -6,5 +8,6 @@ export interface User{
 	surname: string,
 	verificationCode: string,
 	enabled: boolean,
-	role: string
+	role: string,
+	userProfile: Profile
 }

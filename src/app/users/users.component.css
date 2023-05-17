@@ -175,6 +175,10 @@ sub{
     background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
 }
 
+.datatable{
+    width: 100%;
+}
+
 /**/
 
 .example-container {

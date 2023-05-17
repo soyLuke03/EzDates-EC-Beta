@@ -6,8 +6,17 @@
         <!-- Tarjeta de cada foto de user -->
         <div class="card center image" style="width: 18rem;">
           
-          <img src="assets/logoEZDates.png" class="card-img-top" alt="Image of the user ...">
+          <div *ngIf="user[0].userProfile">
+            <img *ngIf="user[0].userProfile.image" src="{{user[0].userProfile.image}}" class="card-img-top" alt="Image of the user ...">
           
+            <img *ngIf="!user[0].userProfile.image" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image of the user ...">
+
+          </div>
+          
+          <div *ngIf="!user[0].userProfile">
+            <img src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image of the user ...">
+          </div>
+
         </div>
         <a *ngIf="belong(user[0].username.toLowerCase()) || role=='ADMIN_ROLE'" [routerLink]="['/users/update/', user[0].username]"><button  class="btn EZbtn sepparate">Modify</button></a>
         <a *ngIf="belong(user[0].username.toLowerCase()) || role=='ADMIN_ROLE'" [routerLink]="['/users/delete/',user[0].username]"><button  class="btn EZbtn sepparate">Delete</button></a>
@@ -38,13 +47,34 @@
           </div>
         </div>
 
-        <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>
+        <!-- Si hay perfil -->
+        <div *ngIf="user[0].userProfile">
+          <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].userProfile.username}}</p>
+          <br>
+          <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
+          <br>
+          <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
+          <br>
+          <p *ngIf="user[0].userProfile.gender==1" class="subtitle"><span class="title">GENDER:</span> Male </p>
+          <p *ngIf="user[0].userProfile.gender==2" class="subtitle"><span class="title">GENDER:</span> Female </p>
+          <p *ngIf="user[0].userProfile.gender==3" class="subtitle"><span class="title">GENDER:</span> Non Binary </p>
+          <p *ngIf="user[0].userProfile.gender==4" class="subtitle"><span class="title">GENDER:</span> Other </p>
+          <p *ngIf="user[0].userProfile.gender==5" class="subtitle"><span class="title">GENDER:</span> Does not say </p>
+          <br>
+          <p class="subtitle"><span class="title">BIO:</span> {{user[0].userProfile.bio}}</p>
+        </div>
 
-        <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
+        <!-- Si no hay perfil -->
+        <div *ngIf="!user[0].userProfile">
+          <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>
 
-        <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
+          <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
 
-        <p class="subtitle"><span class="title">ACTIVE:</span> {{user[0].enabled}}</p>
+          <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
+        </div>
+        
+
+
       </div>
     </div>
     <hr style="color: aliceblue;">

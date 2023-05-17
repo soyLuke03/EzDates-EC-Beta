@@ -76,14 +76,10 @@ export class ProfileComponent implements OnInit {
     this.json.username = this.username
     this.json.gender = this.myForm.get('gender')?.value;
     this.json.bio = this.myForm.get('bio')?.value;
-
-    
-      console.log(this.json)
-
-      this.uS.postProfile(this.json, this.myForm.controls['imageSource'].value)
-      .subscribe({
-        next: resp => {}
-      })
+    this.uS.postProfile(this.json, this.myForm.controls['imageSource'].value)
+    .subscribe({
+      next: resp => {}
+    })
 
       this.myForm.reset()
 
