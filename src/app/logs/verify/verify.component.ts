@@ -16,11 +16,11 @@ export class VerifyComponent implements OnInit {
   ngOnInit(): void {
     let code = this.aCRoute.snapshot.queryParams['code']
     let user = this.aCRoute.snapshot.queryParams['user']
-    // console.log(code, user);
+    console.log(code, user);
     if(code != null && user != null){
       this.lS.verify(user, code).subscribe({
-        next: resp => console.log(),
-        error: (error) => console.log()
+        next: resp => console.log(resp),
+        error: (error) => console.log(error)
       })
       this.error=""
     }

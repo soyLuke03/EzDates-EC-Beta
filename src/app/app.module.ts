@@ -13,6 +13,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 import { TermConditionsModule } from './term-conditions/term-conditions.module';
+import { GamesModule } from './games/games.module';
+import { InterestsModule } from './interests/interests.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TermConditionsModule } from './term-conditions/term-conditions.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    GamesModule,
+    InterestsModule,
     HttpClientModule,
     SharedModule,
     FormsModule,

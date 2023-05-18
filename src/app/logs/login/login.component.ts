@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
    * Método para logear al usuario
    */
   login(){
+    this.username = this.username.toLocaleLowerCase()
+
     this.lS.login(this.username,this.password).subscribe({
       next: resp => console.log()
     })

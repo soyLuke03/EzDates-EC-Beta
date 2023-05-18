@@ -38,9 +38,7 @@ export class ListComponent implements OnInit {
     this.pS.getPosts()
     .subscribe({
       next: resp => {
-        this.listaPosts = resp,
-        console.log(resp[0]);
-        
+        this.listaPosts = resp
       },
       error: (error)=> console.log()
     })
@@ -48,7 +46,6 @@ export class ListComponent implements OnInit {
   }
   
   submitNewComment(idPost:number): void{
-    // console.log("Nuevo comentario");
     this.pS.addComment(idPost,this.username,this.comment)
     .subscribe({
       next: resp => {}
@@ -58,10 +55,17 @@ export class ListComponent implements OnInit {
   }
 
   addLike(idPost:number): void{
-    // console.log("Agregar like");
     this.pS.addLike(idPost,this.username)
     .subscribe({
-      next: resp => {}
+      next: resp => {console.log(resp);
+      },
+      error: (error) => {
+        if(error.status == 200){
+          console.log(error);
+          
+        }
+      }
+      
     })
   }
 

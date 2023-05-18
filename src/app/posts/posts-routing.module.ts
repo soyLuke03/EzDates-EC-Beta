@@ -9,7 +9,7 @@ import { AddComponent } from '../posts/add/add.component';
 
 
 const routes: Routes = [
-  {
+  { 
     path: '',
     children: [
       { path: 'post/:id', component: PostComponent,    

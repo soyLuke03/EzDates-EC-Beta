@@ -4,6 +4,5 @@ export interface Profile{
 	bio: string,
 	gender: number,
 	image: string,
-	user:User
 	username: string,
 }

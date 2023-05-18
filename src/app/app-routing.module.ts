@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './shared/error/error.component';
 import { AuthGuard } from './auth-guard.service';
 import { TermConditionsComponent } from './term-conditions/term-conditions/term-conditions.component';
+import { ListComponent } from './games/list/list.component';
 
 const routes: Routes = [
   { path: 'logs',
@@ -51,7 +52,37 @@ const routes: Routes = [
     }
   },
 
-  { path: 'terms', component: TermConditionsComponent, data: {
+  { path: 'games',
+    canActivate: [AuthGuard],
+    // component: ListComponent
+    loadChildren: () => import('./games/games.module').then( m => m.GamesModule ),
+    data: {
+      title: 'GAMES',
+      breadcrumb: [
+        {
+          label: 'GAMES',
+          url: 'login'
+        }
+      ]
+    }
+  },
+
+  { path: 'interests',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./interests/interests.module').then( m => m.InterestsModule ),
+    data: {
+      title: 'INTERESTS',
+      breadcrumb: [
+        {
+          label: 'INTERESTS',
+          url: 'interests'
+        }
+      ]
+    }
+  },
+
+  { path: 'terms', 
+    component: TermConditionsComponent, data: {
     title: 'TERMS',
     breadcrumb: [
       {

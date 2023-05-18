@@ -15,6 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { InterestsRoutingModule } from '../interests/interests-routing.module';
+import { GamesRoutingModule } from '../games/games-routing.module';
 
 
 @NgModule({

@@ -26,8 +26,8 @@ export class RegisterComponent implements OnInit {
 
   
   constructor(private fb: FormBuilder, private router: Router, private uS:UserService) { }
-
   ngOnInit(): void {
+    
   }
 
 
@@ -66,7 +66,6 @@ export class RegisterComponent implements OnInit {
         bio: '',
         gender: -1,
         image: '',
-        user: this.myForm.controls['username'].value
       },
       role: "USER_ROLE"
     }
@@ -83,7 +82,9 @@ export class RegisterComponent implements OnInit {
           confirmButtonColor: 'black',
           confirmButtonText: 'OK'
         }),
-        error: (error) =>
+        error: (error) =>{
+          console.log(error)
+          
           Swal.fire({
             title: "An error has appeared",
             text: "The profile cannot be created. Try again later or contact with an admin",
@@ -91,6 +92,7 @@ export class RegisterComponent implements OnInit {
             confirmButtonColor: 'black',
             confirmButtonText: 'OK'
           }) 
+        }
       })
       // console.log("Enviado")
       this.myForm.reset()

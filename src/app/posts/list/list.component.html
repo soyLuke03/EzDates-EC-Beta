@@ -10,7 +10,7 @@
 
         <!-- Tarjeta de cada post -->
         <div *ngFor="let post of listaPosts" class="galery-img">
-          <div *ngIf="post" class="card" style="width: 18rem;">
+          <div *ngIf="post.title" class="card" style="width: 18rem;">
             <div class="profile-link-badge">
               <a class="profile-link" [routerLink]="['/users/user/', post.user.username]">{{ post.user.username }}</a>
             </div>
