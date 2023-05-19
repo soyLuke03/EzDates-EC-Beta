@@ -1,1 +1,45 @@
-<p>list works!</p>
+<div class="body backBlack" *ngIf="!interestList">
+    <div class="grande center">
+      <span class="loader center"></span>
+    </div>
+  </div>
+  
+  <div class="body backBlack" *ngIf="interestList">
+    <div class="container-flex backBlack">
+      <div class="row galery ">
+  
+          <!-- Tarjeta de cada trend -->
+          <div class="container-flex galery-img" *ngFor="let interest of interestList">
+            <div class="row card fondo" style="width: 18rem;">
+              <div class="card-body">
+                <h4 class="card-title center">{{ interest.name }} -> <button (click)="deleteInterest(interest.name)">DELETE</button></h4>
+              </div>
+            </div>
+          </div>
+        <!-- -------------------- -->
+          <div class="galery-img">
+            <div class="row card fondo" style="width: 18rem;">
+              <div class="center card-body">
+                <h2>ADD NEW</h2>
+              </div>
+            </div>
+          </div>
+  
+      </div>
+    </div>
+  </div>  
+  
+  <div class="footer">
+    <div class="container-flex">
+      <div class="row">
+        <div class="col center bg-black">
+          
+          <div class="terms">
+            <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
+            <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

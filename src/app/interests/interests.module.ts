@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { InterestsRoutingModule } from './interests-routing.module';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +13,9 @@ import { InterestsRoutingModule } from './interests-routing.module';
   ],
   imports: [
     CommonModule,
-    InterestsRoutingModule
+    InterestsRoutingModule,
+    FormsModule,
+    RouterModule
   ],
   exports: [
     ListComponent
