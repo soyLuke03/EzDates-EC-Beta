@@ -19,32 +19,32 @@ import { ProfileInterest } from '../interfaces/profileInterest.interface copy';
     //access_token:string = localStorage.getItem('token')!;
 
     /* URL follows */
-    // followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
-    followUrl:string = "http://localhost:8080/follows"
+    followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
+    // followUrl:string = "http://localhost:8080/follows"
 
     /* URL users */
-    // url:string = "https://ezdatesbeta-production.up.railway.app/users"
-    url:string = "http://localhost:8080/users"
+    url:string = "https://ezdatesbeta-production.up.railway.app/users"
+    // url:string = "http://localhost:8080/users"
 
     /* URL games */
-    // urlGames:string = "https://ezdatesbeta-production.up.railway.app/profileGame"
-    urlGames:string = "http://localhost:8080/games"
+    urlGames:string = "https://ezdatesbeta-production.up.railway.app/profileGame"
+    // urlGames:string = "http://localhost:8080/games"
 
     /* URL interests */
-    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
-    urlInterests:string = "http://localhost:8080/interest"
+    urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    // urlInterests:string = "http://localhost:8080/interest"
 
     /* URL Profile */
-    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profile"
-    urlProfile:string = "http://localhost:8080/profile"
+    urlProfile:string = "https://ezdatesbeta-production.up.railway.app/profile"
+    // urlProfile:string = "http://localhost:8080/profile"
 
         /* URL ProfileInterests */
-    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
-    urlProfileInterests:string = "http://localhost:8080/profileInterest"
+        urlProfileInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    // urlProfileInterests:string = "http://localhost:8080/profileInterest"
 
     /* URL ProfileGames */
-    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profile"
-    urlProfileGames:string = "http://localhost:8080/profileGame"
+    urlProfileGames:string = "https://ezdatesbeta-production.up.railway.app/profile"
+    // urlProfileGames:string = "http://localhost:8080/profileGame"
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -61,7 +61,7 @@ import { ProfileInterest } from '../interfaces/profileInterest.interface copy';
     }
 
     register(user:User){
-      return this.http.post<User>("http://localhost:8080/register",user);
+      return this.http.post<User>("https://ezdatesbeta-production.up.railway.app/register",user);
     }
 
     putUser(user:User, username:string, email:string){

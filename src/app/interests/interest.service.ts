@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class InterestService {
 
-    // url:string = "https://ezdatesbeta-production.up.railway.app/interest"
-    url:string = "http://localhost:8080/interest"
+    url:string = "https://ezdatesbeta-production.up.railway.app/interest"
+    // url:string = "http://localhost:8080/interest"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

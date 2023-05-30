@@ -10,8 +10,8 @@ export class AuthService {
     
     
 
-    // url:string = "https://ezdatesbeta-production.up.railway.app/signin"
-    url:string = "http://localhost:8080/signin"
+    url:string = "https://ezdatesbeta-production.up.railway.app/signin"
+    // url:string = "http://localhost:8080/signin"
   
 
     httpOptions = {
@@ -20,8 +20,8 @@ export class AuthService {
     
     constructor(private http:HttpClient, private route:Router){ }
     
-    urlAuth: string = 'http://localhost:8080/jwt'
-    // urlAuth: string = 'https://ezdatesbeta-production.up.railway.app/jwt'
+    // urlAuth: string = 'http://localhost:8080/jwt'
+    urlAuth: string = 'https://ezdatesbeta-production.up.railway.app/jwt'
 
  
   isAuthenticated(): Observable<boolean> { 

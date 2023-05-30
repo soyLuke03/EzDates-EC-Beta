@@ -12,8 +12,9 @@ import { Game } from '../interfaces/game.interface';
   
   export class GamesService {
     
-    // url:string = "https://ezdatesbeta-production.up.railway.app/games"
-    url:string = "http://localhost:8080/games"
+    url:string = "https://ezdatesbeta-production.up.railway.app/games"
+    
+    // url:string = "http://localhost:8080/games"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

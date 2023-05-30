@@ -11,8 +11,8 @@ import { AuthResponse } from '../interfaces/token.interface';
   export class LogsService {
     
     //Url de verificación
-    // url:string = "https://ezdatesbeta-production.up.railway.app/signin"
-    url:string = "http://localhost:8080/signin"
+    url:string = "https://ezdatesbeta-production.up.railway.app/signin"
+    // url:string = "http://localhost:8080/signin"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +23,7 @@ import { AuthResponse } from '../interfaces/token.interface';
     constructor(private http: HttpClient) { }
     
     verify(user:string, code:string){
-      return this.http.get<any>(`http://localhost:8080/verify?code=${code}&user=${user}`)
+      return this.http.get<any>(`https://ezdatesbeta-production.up.railway.app?code=${code}&user=${user}`)
     }
 
     login(username: string, password: string):Observable<boolean>{
