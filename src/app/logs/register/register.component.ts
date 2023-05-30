@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       email: this.myForm.controls['email'].value,
       password: this.myForm.controls['password'].value,
       name: this.myForm.controls['name'].value,
-      surname: this.myForm.controls['username'].value,
+      surname: this.myForm.controls['surname'].value,
       verificationCode: "",
       enabled: false,
       role: "USER_ROLE"

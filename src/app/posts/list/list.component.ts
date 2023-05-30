@@ -49,7 +49,14 @@ export class ListComponent implements OnInit {
   submitNewComment(idPost:number): void{
     this.pS.addComment(idPost,this.username,this.comment)
     .subscribe({
-      next: resp => {}
+      next: resp => {
+        console.log(resp);
+        location.reload()
+      },
+      error: (error) => {
+        console.log(error);
+        
+      }
     })
     
     this.comment = ""
@@ -58,7 +65,9 @@ export class ListComponent implements OnInit {
   addLike(idPost:number): void{
     this.pS.addLike(idPost,this.username)
     .subscribe({
-      next: resp => {console.log(resp);
+      next: resp => {
+        console.log(resp);
+        location.reload()
       },
       error: (error) => {
         if(error.status == 200){
