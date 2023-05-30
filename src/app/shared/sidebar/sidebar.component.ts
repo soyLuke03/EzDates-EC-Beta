@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { ConversionUtils } from 'turbocommons-ts';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private acRoute:ActivatedRoute) { }
 
   token = localStorage.getItem('token')!;
   payload!:string;
@@ -18,7 +18,6 @@ export class SidebarComponent implements OnInit {
   role!: string;
   
   ngOnInit(): void {
-    
     
     if(this.token){
       this.token = localStorage.getItem('token')!;

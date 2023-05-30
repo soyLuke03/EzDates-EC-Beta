@@ -14,7 +14,7 @@ import { Comment } from '../interfaces/comment.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "https://ezdatesbeta-production.up.railway.app/posts"
+    url:string = "https://ezdatesbeta-production.up.railway.app"
     urlPost:string = "https://ezdatesbeta-production.up.railway.app/posts"
     // urlPost:string = "http://localhost:8080/posts"
     // url:string = "http://localhost:8080"

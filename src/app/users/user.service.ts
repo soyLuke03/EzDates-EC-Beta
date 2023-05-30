@@ -27,23 +27,23 @@ import { ProfileInterest } from '../interfaces/profileInterest.interface copy';
     // url:string = "http://localhost:8080/users"
 
     /* URL games */
-    urlGames:string = "https://ezdatesbeta-production.up.railway.app/profileGame"
+    urlGames:string = "https://ezdatesbeta-production.up.railway.app/games"
     // urlGames:string = "http://localhost:8080/games"
 
     /* URL interests */
-    urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    urlInterests:string = "https://ezdatesbeta-production.up.railway.app/interest"
     // urlInterests:string = "http://localhost:8080/interest"
 
     /* URL Profile */
     urlProfile:string = "https://ezdatesbeta-production.up.railway.app/profile"
     // urlProfile:string = "http://localhost:8080/profile"
 
-        /* URL ProfileInterests */
-        urlProfileInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    /* URL ProfileInterests */
+    urlProfileInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
     // urlProfileInterests:string = "http://localhost:8080/profileInterest"
 
     /* URL ProfileGames */
-    urlProfileGames:string = "https://ezdatesbeta-production.up.railway.app/profile"
+    urlProfileGames:string = "https://ezdatesbeta-production.up.railway.app/profileGame"
     // urlProfileGames:string = "http://localhost:8080/profileGame"
 
     httpOptions = {

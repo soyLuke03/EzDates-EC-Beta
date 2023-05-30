@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/posts']);
           Swal.fire({
             title: "Log in",
-            text: "Please wait a second",
+            text: "Click 'OK' to agree the terms and conditions of our website",
             background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
             color: 'white',
             confirmButtonColor: 'black',

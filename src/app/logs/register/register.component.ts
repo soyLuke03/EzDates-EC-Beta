@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
         next: resp => 
         Swal.fire({
           title: "Created",
-          text: "Your profile has been created succesfully. Now verifiy your account",
+          text: "Your profile has been created succesfully. Now check your email and verify",
           background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
           confirmButtonColor: 'black',
           confirmButtonText: 'OK'
