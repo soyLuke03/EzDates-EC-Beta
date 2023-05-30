@@ -5,26 +5,27 @@
 </div>
 
 <div class="body backBlack white" *ngIf="post">
-  <div class="container update">
+  <div class="container-flex update">
     <div class="row">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
         
         <!-- Tarjeta de cada post -->
-        <div class="card center image-full" style="width: 18rem;">
-          
-          <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top-full" alt="Image of the user ...">
-          <!--Si no hay foto, una por defecto-->
-          <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
+        <div class="center container-flex" >
+          <div class="row">
+            <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
+            <!--Si no hay foto, una por defecto-->
+            <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top-full" alt="Image not found ...">
+          </div>
       
         </div>
-        <a *ngIf="belong(post.userId.toString().toLowerCase())" [routerLink]="['/posts/update/', post.id]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a *ngIf="belong(post.userId.toString().toLowerCase())" [routerLink]="['/posts/delete/', post.id]"><button  class="btn EZbtn sepparate">Delete</button></a>
+        <a  [routerLink]="['/posts/update/', post.id]"><button  class="btn EZbtn sepparate">Modify</button></a>
+        <a  [routerLink]="['/posts/delete/', post.id]"><button  class="btn EZbtn sepparate">Delete</button></a>
         <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Posts List</button></a>
         <!-- -------------------- -->
-
+        <!-- *ngIf="belong(post.userId.toString().toLowerCase())" -->
 
       </div>
-      <div class="col-sm-12 col-xs-12 col-md-6">
+      <div class="col-sm-12 col-md-4 col-lg-6">
         <p class="subtitle"><span class="title">USER:</span> {{ post.userId }}</p>
         
         <hr>

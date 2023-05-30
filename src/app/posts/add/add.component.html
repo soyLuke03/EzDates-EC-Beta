@@ -2,55 +2,78 @@
 
 <div class="body backBlack">
   <form class="formulario backBlack white" enctype="multipart/form-data" (ngSubmit)="save($event)" [formGroup]="myForm"> 
-    <div class="container-flex center">
+    <div class="container center">
         <div class="row">
-            <div class="col-md-8 col-sm-12 center">
-                <div class="border-form">
+            <div class="col-md-8 col-sm-12 center ">
+                <div class="border-form container">
                   <!--Formulario de registro-->
-                  <label class="form-label">Title</label><br>
-                  <input required class="sepparate form-control input" type="text" id="title" name="title" formControlName="title" placeholder="explameTitle" maxlength="199">
-                    <span class="form-text text-danger" 
-                    *ngIf="notValid('title')">
-                        Title is required and length less than 200 characters 
-                    </span>
-                  <br>
+                  <div class="row">
+                    <div class="col-lg-2 center">
+                      <label class="form-label">Title</label>
+                    </div>
+                    <div class="col-lg-10">
+                      <input required class="form-control input" type="text" id="title" name="title" formControlName="title" placeholder="explameTitle" maxlength="199">
+                      <span class="form-text text-danger" 
+                      *ngIf="notValid('title')">
+                          Title is required and length less than 200 characters 
+                      </span>
+                    </div>
+                  </div>
 
-                  <label class="form-label">Description</label><br>
-                  <input required class="sepparate form-control input" type="text" id="description" name="description" formControlName="description" placeholder="Put here what you think...">
-                    <span class="form-text text-danger" 
-                    *ngIf="notValid('description')">
-                        Description is required and length less than 200 characters 
-                    </span>
-                  <br>
+                 <div class="row">
+                  <div class="col-lg-2 center">
+                    <label class="form-label">Trends</label><br>
+                  </div>
+                  <div class="col-lg-10">
+                    <input class="sepparate form-control input" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
+                  </div>
+                 </div>
 
+                  <div class="row">
+                    <div class="col-lg-2 center">
+                      <label class="form-label">Image</label>
+                    </div>
+                    <div class="col-lg-10">
+                      <input class="sepparate form-control input" (change)="onFileChange($event)" type="file" id="file" name="file" formControlName="file">
+                      <span class="form-text text-danger" 
+                      *ngIf="notValid('file')">
+                          Image is required
+                      </span>
+                    </div>
+                  </div>
 
-                  <label class="form-label">Image</label><br>
-                  <input class="sepparate form-control input" (change)="onFileChange($event)" type="file" id="file" name="file" formControlName="file">
-                    <span class="form-text text-danger" 
-                    *ngIf="notValid('file')">
-                        Image is required
-                    </span>
-                      
-                  <br>
+                  <div class="row">
+                    <div class="col-lg-2 center">
+                      <label class="form-label">Description</label>
+                    </div>
+                    <div class="col-lg-10">
+                      <input required class="sepparate form-control input" type="text" id="description" name="description" formControlName="description" placeholder="Put here what you think...">
+                      <span class="form-text text-danger" 
+                      *ngIf="notValid('description')">
+                          Description is required and length less than 200 characters 
+                      </span>
+                    </div>
+                  </div>
+          
                         <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                        <input class="sepparate form-control input" type="hidden" id="date" name="date" placeholder="date">
-                        <!-- -------------------- -->
-                      
-                  <label class="form-label">Trends</label><br>
-                  <input class="sepparate form-control input" type="text" id="trends" name="trends" formControlName="trends" placeholder="Trend1,Trend2, Trend3..." maxlength="199">
-
-                      
-                  <!-- -------------------- -->
-                  <br><br>                   
+                  <input class="sepparate form-control input" type="hidden" id="date" name="date" placeholder="date">
+                        <!-- -------------------- -->    
+                  <br>
                 </div>
             </div>
-            
-                <br><br>
-                <div class="border-form col-8 center">
-                    <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Submit"> 
-                    <input class="btn btn-danger sepparate" type="reset" value="Cancel">
-                    <a [routerLink]="['/posts/list']"><button  class="btn btn-info sepparate">Return</button></a>
-                </div>
+                <div class="col-8 center container">
+                  <div class="row div-botones">
+                    <div class="col-sm-4">
+                      <input class="btn btn-success botones" type="submit" [disabled]="myForm.invalid" value="Submit"> 
+                    </div>
+                    <div class="col-sm-4">
+                      <input class="btn btn-danger botones" type="reset" value="Cancel">
+                    </div>
+                    <div class="col-sm-4">
+                      <a [routerLink]="['/posts/list']"><button  class="btn btn-info botones">Return</button></a>
+                    </div>
+                  </div>
+                  </div>
             </div>
         </div>
   </form>

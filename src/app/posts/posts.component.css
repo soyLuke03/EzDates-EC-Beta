@@ -25,7 +25,12 @@
     margin-bottom: 3px;
 }
 
-.btn:hover {
+.btn {
+    font-size: medium;
+    margin-bottom: 3px;
+}
+
+.btn2:hover {
     color: red;
 }
 
@@ -139,16 +144,7 @@
     text-align: center;
 }
 
-.terms{
-    color: bisque;
-    padding: 3%;
-}
-.footer {
 
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
 
 
 .formulario{
@@ -171,9 +167,13 @@
     margin: 1.3%;
 }
 
+.row{
+    margin-top: 30px;
+}
+
 .input{
     margin: auto;
-    width: 60%;
+    width: 95%;
 }
 
 

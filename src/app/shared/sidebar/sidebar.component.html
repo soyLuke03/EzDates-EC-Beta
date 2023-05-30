@@ -9,10 +9,10 @@
             <p class="subtitle">"Find, talk & win"</p>
         </div>
         <div class="col-sm-9 "></div>
-        <div *ngIf="username" class="col-sm-3 logged-div d-none d-sm-inline" style="max-width: 200px;">
+        <div title="Your logged user" *ngIf="username" class="col-sm-3 logged-div d-none d-sm-inline" style="max-width: 200px;">
           <p class="border-logged">Logged user: <br> <span class="logged">{{username}}</span></p>
         </div>
-        <div *ngIf="username" class="col-sm-12 logged-div-sm d-sm-none text-center">
+        <div title="Your logged user" *ngIf="username" class="col-sm-12 logged-div-sm d-sm-none text-center">
           <p class="border-logged">Logged user: <br> <span class="logged">{{username}} grande</span></p>
         </div>
     </div>  
@@ -47,7 +47,7 @@
                </ul>
                
                <ul *ngIf="token"  class="navbar-nav">
-                 <li title="Home" class="nav-item dropdown">
+                 <li title="Home/Post´s list" class="nav-item dropdown">
                    <a [routerLink]="['/posts/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                      Home
                    </a>
@@ -96,7 +96,7 @@
    
                <ul *ngIf="username" class="navbar-nav">
                  <li class="nav-item dropdown">
-                   <a title="Your profile" [routerLink]="['/users/profile/', username]" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                   <a title="Change your profile" [routerLink]="['/users/profile/', username]" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                      Change Profile
                    </a>
                  </li>
@@ -104,7 +104,7 @@
    
                <ul *ngIf="role=='ADMIN_ROLE'" class="navbar-nav">
                  <li class="nav-item dropdown">
-                   <a title="Interests" [routerLink]="['/interests/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                   <a title="Interests" title="List of interests" [routerLink]="['/interests/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                      Interests
                    </a>
                  </li>
@@ -112,7 +112,7 @@
    
                <ul *ngIf="role=='ADMIN_ROLE'" class="navbar-nav">
                  <li class="nav-item dropdown">
-                   <a title="Games" [routerLink]="['/games/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                   <a title="Games" title="List of games" [routerLink]="['/games/list']" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                      Games
                    </a>
                  </li>
