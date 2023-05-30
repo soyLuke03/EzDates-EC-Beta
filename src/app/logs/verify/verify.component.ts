@@ -20,7 +20,7 @@ export class VerifyComponent implements OnInit {
     if(code != null && user != null){
       this.lS.verify(user, code).subscribe({
         next: resp => console.log(resp),
-        error: (error) => console.log(error)
+        error: (error) => console.log("ERROR")
       })
       this.error=""
     }
