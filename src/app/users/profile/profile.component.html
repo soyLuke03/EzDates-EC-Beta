@@ -3,9 +3,11 @@
       <br>
       <div class="row ">
           <h1>Profile form</h1>
+          
           <div class="center col-md-8 col-sm-12">
               <div class="border-form">
-                      <!--Formulario de registro-->
+                <h4>NOTE: Fill this form and submit before selecting any options below</h4>
+                      <!--Formulario de perfil-->
                       
 
                       <label class="form-label">Gender</label><br>
@@ -33,27 +35,55 @@
                   
               </div>
           </div>
+
+          <div *ngIf="profile" class="center col-md-8 col-sm-12">
+            <div class="border-form">
+                    <!--Formulario de perfil-Games-->
+                    
+
+                    <label class="form-label">Games</label><br>
+                    <div *ngFor="let game of games">
+                      <br *ngIf="!myGames.includes(game.name)">
+                      <input *ngIf="!myGames.includes(game.name)" type="button" (click)="addGame(game.id)" class="btn btn-success" name="{{game.name}}" id="{{game.name}}" value="{{game.name}}">
+                      <br *ngIf="!myGames.includes(game.name)">
+                    </div>
+                    <br>
+
+                    
+
+                    <!-- -------------------- -->
+                    <br><br>                   
+
+                
+            </div>
+          </div>
+
+          <div *ngIf="profile" class="center col-md-8 col-sm-12">
+            <div class="border-form">
+                    <!--Formulario de perfil-->
+                    
+
+                    <label class="form-label">Interests</label><br>
+                    <div *ngFor="let interest of interests">
+                      <br *ngIf="!myInterests.includes(interest.name)">
+                      <input *ngIf="!myInterests.includes(interest.name)" type="button" (click)="addInterest(interest.id)" class="btn btn-success" name="{{interest.name}}" id="{{interest.name}}" value="{{interest.name}}">
+                      <br *ngIf="!myInterests.includes(interest.name)">
+                    </div>
+
+                    <!-- -------------------- -->
+                    <br><br>                   
+
+                
+            </div>
+          </div>
+
           <div class="border-form center">
-            <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Register">
+            <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Change Profile">
             <a [routerLink]="['/logs/login']"><button  class="btn btn-danger sepparate">Cancel</button></a>
-        </div>
+          </div>
+
       </div>
       <br>
       <br>
   </div>
 </form>
-
-<div class="footer">
-  <div class="container-flex">
-    <div class="row">
-      <div class="col center bg-black">
-        
-        <div class="terms">
-          <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-          <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</div>

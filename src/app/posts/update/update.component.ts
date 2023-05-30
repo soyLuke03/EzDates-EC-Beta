@@ -76,7 +76,7 @@ export class UpdateComponent implements OnInit {
     save = (e: { preventDefault: () => void; }) => {
 
         let id = this.acRoute.snapshot.params['id'];
-        let user = this.post.user.username;
+        let user = this.post.userId.toString();
 
         this.pS.putPost(this.myForm.value,id,user).subscribe({
           next: resp => 

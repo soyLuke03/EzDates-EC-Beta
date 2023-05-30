@@ -1,102 +1,130 @@
-<form (ngSubmit)="save($event)" [formGroup]="myForm" class="backBlack white"> 
-    <div class="container-flex center">
-        <br>
-        <div class="row ">
-            <h1>Register form</h1>
+<div class="container center backBlack white">
+    <h1>Register form</h1>
+    <!--Formulario de registro-->
+    <form (ngSubmit)="save($event)" [formGroup]="myForm"> 
+        <div class="row">
+            <!-- Primer grupo de inputs -->
             <div class="col-md-6 col-sm-12">
-                <div class="border-form">
-                        <!--Formulario de registro-->
-                        <label class="form-label">*Username</label><br>
-                        <input required class="sepparate form-control input" type="text" id="username" name="username" formControlName="username" placeholder="exampleUser">
+                <div class="container border-form">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12 col-sm-12">
+                            <label class="form-label">*Username</label>
+                        </div>
+                        <div class="col-lg-10 col-md-12 col-sm-12">
+                            <input required class="sepparate form-control input" type="text" id="username" name="username" formControlName="username" placeholder="exampleUser">
                             <span class="form-text text-danger" 
                             *ngIf="notValid('username')">
                                 Username is required. 
                             </span>
-                        <br>
-
-                        <label class="form-label">*Email</label><br>
-                        <input required class="sepparate form-control input" type="email" id="email" name="email" formControlName="email" placeholder="example@example.com">
-                            <span class="form-text text-danger" 
-                            *ngIf="notValid('email')">
-                                Email is required. 
-                            </span>
-                        <br>
-
-                        <label class="form-label">Name</label><br>
-                        <input class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="example name">
-                            <span class="form-text text-danger" 
-                            *ngIf="notValid('name')">
-                                Name is too long. 
-                            </span>
-                        <br>
-                        
-                        <label class="form-label">*Surname</label><br>
-                        <input required class="sepparate form-control input" type="text" id="surname" name="surname" formControlName="surname" placeholder="example surname">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12">
+                            <label class="form-label">*Email</label>
+                        </div>
+                        <div class="col-lg-10 col-md-12">
+                            <input required class="sepparate form-control input" type="email" id="email" name="email" formControlName="email" placeholder="example@example.com">
+                                <span class="form-text text-danger" 
+                                *ngIf="notValid('email')">
+                                    Email is required. 
+                                </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12">
+                            <label class="form-label">*Name</label>
+                        </div>
+                        <div class="col-lg-10 col-md-12">
+                            <input class="sepparate form-control input" type="text" id="name" name="name" formControlName="name" placeholder="example name">
+                                <span class="form-text text-danger" 
+                                *ngIf="notValid('name')">
+                                    Name is too long. 
+                                </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12">
+                            <label class="form-label">*Surname</label>
+                        </div>
+                        <div class="col-lg-10 col-md-12">
+                            <input required class="sepparate form-control input" type="text" id="surname" name="surname" formControlName="surname" placeholder="example surname">
                             <span class="form-text text-danger" 
                             *ngIf="notValid('surname')">
                                 Surname is required. 
                             </span>
-                            <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                            <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
-                            
-                            <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
-                            
-                            <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
-                            <!-- -------------------- -->
-
-                        <!-- -------------------- -->
-                        <br><br>                   
-
+                        </div>
+                    </div>
+                    <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
+                    <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
+                                
+                    <input class="sepparate form-control input" value="false" type="hidden" id="enabled" name="enabled" placeholder="enabled">
                     
+                    <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
+                    <!-- -------------------- -->
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="border-form">
-                        <label class="form-label">*Password</label><br>
-                        <input required class="sepparate form-control input" type="password" id="password" name="password" formControlName="password" placeholder="Enter your password here...">
+            <!---->
+            <!-- Segundo grupo de inputs-->
+            <div class="col-md-6 col-sm-12">
+                <div class="container border-form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">*Password</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input required class="sepparate form-control input" type="password" id="password" name="password" formControlName="password" placeholder="Enter your password here...">
                             <span class="form-text text-danger" 
                             *ngIf="notValid('password')">
                                 Password is required and longer than 8 characters. 
                             </span>
-                        <br>
-                        
-                        <label class="form-label">*Repeat Password</label><br>
-                        <input required class="sepparate form-control input" type="password" id="password2" name="password2" formControlName="password2" placeholder="Repeat your password here...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">*Repeat Password</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input required class="sepparate form-control input" type="password" id="password2" name="password2" formControlName="password2" placeholder="Repeat your password here...">
                             <span class="form-text text-danger" 
                             *ngIf="notValid('password2')">
                                 Password is required and longer than 8 characters. 
                             </span>
+                        </div>
+                        
 
                         <span class="form-text text-danger" 
                         *ngIf="!equalsPasswords()">
                             Password do not match
                         </span>
-                        <br><br>
-                        
+                    </div>
                 </div>
-                <br><br>
-                <div class="border-form">
-                    <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Register">
-                    <a [routerLink]="['/logs/login']"><button  class="btn btn-danger sepparate">Cancel</button></a>
+                
+                <br>
+
+                <div class="row div-botones">
+
+                    <div class="col-lg-2 d-none d-lg-block"><!-- SEPARACION --></div> 
+                    
+                    <div class="col-lg-2 col-md-6">
+                        <input class="botones btn btn-success" [disabled]="myForm.invalid" type="submit" value="Register"> 
+                    </div>
+                        
+                    <div class="col-lg-1 d-none d-lg-block"><!-- SEPARACION --></div>
+                    <div class="col-lg-1 d-none d-lg-block"><!-- SEPARACION --></div>
+
+                    <div class="col-lg-2 col-md-6">
+                        <a [routerLink]="['/logs/login']">
+                            <button class="botones btn btn-danger" type="reset" value="Cancel">
+                                Cancel
+                            </button>
+                        </a>
+                    </div>
+                        
+                    <div class="col-lg-3 d-none d-lg-block"><!-- SEPARACION --></div>
                 </div>
             </div>
-        </div>
-        <br>
-        <br>
-    </div>
-</form>
+            <!---->
 
-<div class="footer">
-    <div class="container-flex">
-      <div class="row">
-        <div class="col center bg-black">
-          
-          <div class="terms">
-            <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-            <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-          </div>
-          
         </div>
-      </div>
-    </div>
+    </form>
 </div>

@@ -4,6 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
 import { Follower } from '../interfaces/follower.interface';
 import { Profile } from '../interfaces/profile.interface';
+import { Game } from '../interfaces/game.interface';
+import { Interest } from '../interfaces/interest.interface';
+import { ProfileGame } from '../interfaces/profileGame.interface';
+import { ProfileInterest } from '../interfaces/profileInterest.interface copy';
 
 
 @Injectable({
@@ -13,10 +17,35 @@ import { Profile } from '../interfaces/profile.interface';
   export class UserService {
     
     //access_token:string = localStorage.getItem('token')!;
-    
+
+    /* URL follows */
+    // followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
+    followUrl:string = "http://localhost:8080/follows"
+
+    /* URL users */
     // url:string = "https://ezdatesbeta-production.up.railway.app/users"
     url:string = "http://localhost:8080/users"
-  
+
+    /* URL games */
+    // urlGames:string = "https://ezdatesbeta-production.up.railway.app/profileGame"
+    urlGames:string = "http://localhost:8080/games"
+
+    /* URL interests */
+    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    urlInterests:string = "http://localhost:8080/interest"
+
+    /* URL Profile */
+    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profile"
+    urlProfile:string = "http://localhost:8080/profile"
+
+        /* URL ProfileInterests */
+    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profileInterest"
+    urlProfileInterests:string = "http://localhost:8080/profileInterest"
+
+    /* URL ProfileGames */
+    // urlInterests:string = "https://ezdatesbeta-production.up.railway.app/profile"
+    urlProfileGames:string = "http://localhost:8080/profileGame"
+
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -43,9 +72,7 @@ import { Profile } from '../interfaces/profile.interface';
       return this.http.delete<User>(this.url+"/"+username)
     }
 
-    /* URL follows */
-    // followUrl:string = "https://ezdatesbeta-production.up.railway.app/follows"
-    followUrl:string = "http://localhost:8080/follows"
+
 
     getFollows(){
       return this.http.get<Follower[]>(this.followUrl)
@@ -68,8 +95,42 @@ import { Profile } from '../interfaces/profile.interface';
       
       
 
-      return this.http.post<Profile>("http://localhost:8080/profile/add",form);
+      return this.http.post<Profile>(this.urlProfile+"/add",form);
 
+    }
+
+    getProfile(username:string){
+      return this.http.get<Profile>(this.urlProfile+"/"+username)
+    }
+
+    getProfiles(){
+      return this.http.get<Profile[]>(this.urlProfile)
+    }
+
+    getGames(){
+      return this.http.get<Game[]>(this.urlGames)
+    }
+
+    getInterests(){
+      return this.http.get<Interest[]>(this.urlInterests)
+    }
+
+
+    addNewGame(idProfile:string, idGame:number){
+      return this.http.post<Game>(this.urlProfileGames+"/add/"+idProfile+"/"+idGame,"")
+    }
+
+    addNewInterest(idProfile:string, idInterest:number){
+      return this.http.post<Game>(this.urlProfileInterests+"/add/"+idProfile+"/"+idInterest,"")
+    }
+
+
+    getProfileGames(idProfile:string){
+      return this.http.get<ProfileGame[]>(this.urlProfileGames+"/"+idProfile)
+    }
+
+    getProfileInterests(idProfile:string){
+      return this.http.get<ProfileInterest[]>(this.urlProfileInterests+"/"+idProfile)
     }
   
   }

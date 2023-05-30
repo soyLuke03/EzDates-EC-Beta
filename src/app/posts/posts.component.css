@@ -1,19 +1,16 @@
-.header{
-    background: rgb(2,0,36);
-    background: linear-gradient(200deg, rgba(0,0,0) 40%, rgba(255,0,0,0.9284664549413515) 100%);
-}
 
-.logo{
-    align-items: center;
-    padding: 3%;
-    margin: auto;
-    border-radius: 350px;
+
+.card-img-top-full{
+    height: 350px;
+    width: 350px;
+    background-color: white;
 }
 
 .hashtag{
     color: rgb(60, 0, 255);
     border-color: rgba(60, 0, 255, 0.368);
     border-width: 2px;
+    margin: 2px;
 }
 
 .hashtag:hover{
@@ -23,41 +20,68 @@
     border-width: 2px;
 }
 
-.btn{
+.btn {
     font-size: medium;
+    margin-bottom: 3px;
 }
 
-.EZbtn{
+.btn:hover {
+    color: red;
+}
+
+.EZbtn {
     background-color: rgba(108, 0, 0, 0.801);
     color: white;
     border-color: aliceblue;
     border-width: 2px;
 }
 
-sub{
-    color: blueviolet;
-}
-    
-.title{
-    color: bisque;
-    font-size: 42px;
+.anchor {
+    border-radius: 5px;
+    border-color: beige;
+    border-style: groove;
+    border-width: 2px;
+    float: right;
+    background-color: red;
+    color: white;
 }
 
-.date{
+.comment {
+    text-align: left;
+    font-size: medium;
+    margin-top: 10px;
+}
+
+.submit-comment {
+    margin-bottom: 3px;
+}
+
+.comment-section {
+    margin-bottom: 5px;
+}
+
+.comment-user {
+    font-size: 18px;
+}
+
+.card-title {
+    font-size: larger;
+    text-decoration: underline;
+}
+
+.date {
       color: rgb(157, 157, 157);
       font-size: 15px;
-    }
-
-.subtitle{
-    color: bisque;
-    font-size: 32px;
 }
+
 
 .center{
     text-align: center;
     margin: auto;
 }
 
+
+/* Galería de imagenes */
 .galery{
     display: flex;
     flex-flow: wrap;
@@ -71,6 +95,26 @@ sub{
     padding: 1rem;
 }
 
+.galery-img{
+    min-height: 300px;
+}
+/* ------------------ */
+
+/* Galeria de trends */
+.trend-gallery{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.trend-gallery-img{
+    min-height: 40px;
+    max-width: 100px;
+    padding: 1%;
+}
+/* ----------------- */
+
 .profile-link-badge, .profile-link{
     text-decoration: none;
     color: white;
@@ -78,11 +122,16 @@ sub{
     background-color: black;
     border-radius: 6px;
     margin-bottom: 1px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .profile-link:hover{
-    color: black;
-    background-color: white ;
+    color: red;
+    text-decoration: underline;
+}
+.profile-link{
+    margin-left: 5px;
 }
 
 .active{
@@ -133,13 +182,12 @@ sub{
     background-color: rgb(21, 21, 21);
 }
 
-.image{
+.card-img-top{
     background-color: rgb(21, 21, 21);
-    margin-top: 8%;
-    margin-bottom: 8%;
-    border-color: aliceblue;
-    border-radius: 25px;
     border-width: 5px;
+    border-bottom: black;
+    border-bottom-style: groove;
+    height: 260px;
 }
 
 .backBlack{

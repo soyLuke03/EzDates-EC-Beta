@@ -25,6 +25,10 @@ export class InterestService {
       return this.http.delete<Interest>(this.url+"/delete/"+name)
     }
 
+    postInterest(interest:Interest):Observable<Interest>{
+      return this.http.post<Interest>(this.url+"/add",interest)
+    }
+
     updateInterest(name:string, interest:Interest):Observable<Interest>{
       return this.http.put<Interest>(this.url+"/update/"+name,interest)
     }

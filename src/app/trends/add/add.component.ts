@@ -47,7 +47,8 @@ export class AddComponent implements OnInit {
         Swal.fire({
           title: "Saved successfully",
           text: "Your trend has been saved",
-          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
+          color: 'white',
           confirmButtonColor: 'black',
           confirmButtonText: 'OK',
           allowOutsideClick: false

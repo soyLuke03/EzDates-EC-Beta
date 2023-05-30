@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/interfaces/game.interface';
 import { GamesService } from '../games.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +11,7 @@ import { GamesService } from '../games.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private gameService:GamesService) { }
+  constructor(private gameService:GamesService, private fb: FormBuilder) { }
 
   gameList:Game[] = []
 
@@ -21,6 +23,11 @@ export class ListComponent implements OnInit {
       }
     })
   }
+
+  myForm: FormGroup = this.fb.group({
+    id: [],
+    name: [null, [Validators.required, Validators.maxLength(200)]]
+  })
 
 
   deleteGame(name:string){
@@ -37,5 +44,38 @@ export class ListComponent implements OnInit {
     })
   }
 
+      /**
+  * Método cuando se envía el formulario correctamente
+  */
+      save = (e: { preventDefault: () => void; }) => {
+
+      
+        // console.log(this.myForm.value);
+        
+        this.gameService.postGame(this.myForm.value).subscribe({
+          next: resp => 
+          Swal.fire({
+            title: "Saved successfully",
+            text: "Your game has been saved",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK',
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload()
+          }}),
+          error: (error) =>
+            Swal.fire({
+              title: "An error has appeared",
+              text: "The game cannot be saved. Try again later or contact with an admin",
+              background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+              confirmButtonColor: 'black',
+              confirmButtonText: 'OK'
+            }) 
+        })
+        this.myForm.reset()
+        
+      }
   
 }

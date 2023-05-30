@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.username = this.username.toLocaleLowerCase()
 
     this.lS.login(this.username,this.password).subscribe({
-      next: resp => console.log()
+      next: resp => {}
     })
 
     this.auth.login(this.username,this.password)
@@ -82,33 +82,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  /**
-   * Método cuando se envía el formulario correctamente
-   */
-  verifyLogin = () => {
 
-    if(localStorage.getItem('token')!=null){
-      Swal.fire({
-        title: "Log in",
-        text: "You've been logged in",
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',
-        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
-      })
-      this.router.navigate(['/posts/list'])
-    }
-    else{
-      Swal.fire({
-        title: "Oh oh",
-        text: "Incorrect credentials",
-        background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',
-        color: 'white',
-        confirmButtonColor: 'black',
-        confirmButtonText: 'OK'
-      })
-    }
-  }
 
 
 

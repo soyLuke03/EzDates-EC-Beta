@@ -1,8 +1,6 @@
 
 <div class="body backBlack">
-  
-  
-    <form class="formulario backBlack white" enctype="multipart/form-data" (ngSubmit)="save($event)" [formGroup]="myForm"> 
+  <form class="formulario backBlack white" enctype="multipart/form-data" (ngSubmit)="save($event)" [formGroup]="myForm"> 
       <div class="container-flex center">
           <div class="row">
               <div class="col-md-8 col-sm-12 center">
@@ -29,20 +27,5 @@
                   </div>
               </div>
           </div>
-    </form>
-  </div>
-  
-  <div class="footer">
-    <div class="container-flex">
-      <div class="row">
-        <div class="col center bg-black">
-          
-          <div class="terms">
-            <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-            <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+  </form>
 </div>

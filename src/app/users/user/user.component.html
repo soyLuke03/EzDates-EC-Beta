@@ -6,14 +6,14 @@
         <!-- Tarjeta de cada foto de user -->
         <div class="card center image" style="width: 18rem;">
           
-          <div *ngIf="user[0].userProfile">
-            <img *ngIf="user[0].userProfile.image" src="{{user[0].userProfile.image}}" class="card-img-top" alt="Image of the user ...">
+          <div *ngIf="profile">
+            <img *ngIf="profile.image" src="{{profile.image}}" class="card-img-top" alt="Image of the user ...">
           
-            <img *ngIf="!user[0].userProfile.image" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image of the user ...">
+            <img *ngIf="!profile.image" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image of the user ...">
 
           </div>
           
-          <div *ngIf="!user[0].userProfile">
+          <div *ngIf="!profile">
             <img src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image of the user ...">
           </div>
 
@@ -28,12 +28,12 @@
       <br>
       <div class="col-sm-12 col-xs-12 col-md-6">
         <br>
-        <div class="follows" *ngIf="username != user[0].username.toLowerCase()">
+        <div class="follows" *ngIf="userName != username">
           
-          <a *ngIf="!followers.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Add Follower</button></a>
-          <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">Remove Follower</button></a>
+          <a *ngIf="!followers.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Follow</button></a>
+          <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">UnFollow</button></a>
         </div>
-        <div class="center follows" *ngIf="username == user[0].username.toLowerCase()">
+        <div class="center follows" *ngIf="userName == username">
           <h3>Your profile</h3>
           <div class="row center">
             <div class="col-sm-3">
@@ -48,24 +48,28 @@
         </div>
 
         <!-- Si hay perfil -->
-        <div *ngIf="user[0].userProfile">
-          <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].userProfile.username}}</p>
+        <div *ngIf="profile">
+          <p class="subtitle"><span class="title">USERNAME:</span> {{profile.username}}</p>
           <br>
           <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
           <br>
           <p class="subtitle"><span class="title">SURNAME:</span> {{user[0].surname}}</p>
           <br>
-          <p *ngIf="user[0].userProfile.gender==1" class="subtitle"><span class="title">GENDER:</span> Male </p>
-          <p *ngIf="user[0].userProfile.gender==2" class="subtitle"><span class="title">GENDER:</span> Female </p>
-          <p *ngIf="user[0].userProfile.gender==3" class="subtitle"><span class="title">GENDER:</span> Non Binary </p>
-          <p *ngIf="user[0].userProfile.gender==4" class="subtitle"><span class="title">GENDER:</span> Other </p>
-          <p *ngIf="user[0].userProfile.gender==5" class="subtitle"><span class="title">GENDER:</span> Does not say </p>
+          <p *ngIf="profile.gender==1" class="subtitle"><span class="title">GENDER:</span> Male </p>
+          <p *ngIf="profile.gender==2" class="subtitle"><span class="title">GENDER:</span> Female </p>
+          <p *ngIf="profile.gender==3" class="subtitle"><span class="title">GENDER:</span> Non Binary </p>
+          <p *ngIf="profile.gender==4" class="subtitle"><span class="title">GENDER:</span> Other </p>
+          <p *ngIf="profile.gender==5" class="subtitle"><span class="title">GENDER:</span> Does not say </p>
           <br>
-          <p class="subtitle"><span class="title">BIO:</span> {{user[0].userProfile.bio}}</p>
+          <p class="subtitle"><span class="title">BIO:</span> {{profile.bio}}</p>
+          <br>
+          <span class="title">GAMES I LIKE:</span><p *ngFor="let game of games" class="subtitle"> {{game}} </p>
+          <br>
+          <span class="title">INTERESTS I HAVE:</span><p *ngFor="let interest of interests" class="subtitle"> {{interest}} </p>
         </div>
 
         <!-- Si no hay perfil -->
-        <div *ngIf="!user[0].userProfile">
+        <div *ngIf="!profile">
           <p class="subtitle"><span class="title">USERNAME:</span> {{user[0].username}}</p>
 
           <p class="subtitle"><span class="title">NAME:</span> {{user[0].name}} </p>
@@ -80,56 +84,65 @@
     <hr style="color: aliceblue;">
     
     <div class="row galery">
-      <!-- Tarjeta de cada post -->
-      <div *ngFor="let post of userPosts" class="galery-img">
-        <div class="card" style="width: 18rem;">
-          <div class="profile-link-badge">
-            <a class="profile-link" [routerLink]="['/users/user/', post.user.username]">{{ post.user.username }}</a>
-          </div>
-          <a [routerLink]="['/posts/post/', post.id]" >
-            <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
-            <!--Si no hay foto, una por defecto-->
-            <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
-          </a>
-          <div class="card-body">
-            <h4 class="card-title">{{ post.title }}</h4>
-            <sub>
-              <p>
-                <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Show trends
-                </a>
-              </p>
-              <div class="collapse" id="{{post.id}}">
-                <div class="card card-body">
-                  <input class="btn hashtag" [routerLink]="['/trends/trend', trend.trend.name]" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+              <!-- Tarjeta de cada post -->
+              <div *ngFor="let post of listaPosts" class="galery-img">
+                <div class="card" style="width: 18rem;">
+                  <div class="profile-link-badge">
+                    <a class="profile-link center" [routerLink]="['/users/user/', post.userId]">{{ post.userId }}</a>
+                  </div>
+                  <a [routerLink]="['/posts/post/', post.id]" >
+                    <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
+                    <!--Si no hay foto, una por defecto-->
+                    <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top" alt="Image not found ...">
+                  </a>
+                  <div class="card-body">
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    <!--TRENDS y LIKES-->
+                    <sub>
+                      <!--  -->
+                      <p class="row">
+                        <a *ngIf="post.trendsList.length>0" class="btn backBlack white col-sm-6" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Show trends
+                        </a>
+                        <a *ngIf="!post.trendsList.length" class="btn backBlack white col-sm-6" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          No trends
+                        </a>
+                        <span class="col-sm-2"></span>
+                        <button (click)="addLike(post.id)" class="btn backBlack white col-sm-4">{{ post.likes.length }}</button>
+                      </p>
+                      <div class="collapse" id="{{post.id}}">
+                        <div class="card card-body">
+                          <input class="btn hashtag" [routerLink]="['/trends/trend', trend.trend.name]" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+                        </div>
+                      </div>
+                      <!--  -->
+                    </sub>
+                    <!---------->
+                    <hr>
+                    <p class="card-text">{{ post.description }}</p>
+                    <!--COMMENTS-->
+                    <sub>
+                      <!--  -->
+                      <p class="row">
+                        <a class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Show Comments
+                        </a>
+                      </p>
+                      <div class="collapse center" id="{{post.id}}comments">
+                        <input type="text" class="form-control" (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+                        <div class="card card-body">
+                          <button class="btn" *ngFor="let comment of post.comments">{{comment.user}}:  {{ comment.message }}</button>
+                        </div>
+                      </div>
+                      <!--  -->
+                    </sub>
+                    <!------------>
+                    <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
+                  </div>
                 </div>
               </div>
-            </sub>
-            <hr>
-            <p class="card-text">{{ post.description }}</p>
-            <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
-          </div>
-        </div>
-      </div>
-      <!-- -------------------- -->
-      
-      
+              <!-- -------------------- -->
     </div>
 
-  </div>
-</div>
-
-<div class="footer">
-  <div class="container-flex">
-    <div class="row">
-      <div class="col center bg-black">
-        
-        <div class="terms">
-          <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-          <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-        </div>
-        
-      </div>
-    </div>
   </div>
 </div>

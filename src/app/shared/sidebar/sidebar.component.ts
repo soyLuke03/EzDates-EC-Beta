@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { ConversionUtils } from 'turbocommons-ts';
 import { Router } from '@angular/router';
 
@@ -29,4 +29,28 @@ export class SidebarComponent implements OnInit {
   }
   
 
+  /* Método para dejar el navBar arriba y devolverlo cuando subas */
+  isNavbarSticky: boolean = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.checkNavbarPosition();
+  }
+
+  checkNavbarPosition() {
+    const navbar = document.getElementById('navbar');
+    const sticky = navbar!.offsetTop;
+    // console.log(window.pageYOffset, sticky);
+    
+    if(window.pageYOffset >= sticky && window.pageYOffset > 300){
+      this.isNavbarSticky = true
+    }
+    else {
+      this.isNavbarSticky = false
+    }
+    
+  }
+  
+
 }
+

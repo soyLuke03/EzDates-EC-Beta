@@ -1,57 +1,65 @@
 <div class="container-flex center backBlack white">
-    <br>
+
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-sm-12 col-md-6 center">
+        <div class="col-sm-12 col-md-8 col-lg-5 center">
             <h1>Login</h1>
+
+            
             <form (ngSubmit)="login()" method="post" #myForm="ngForm" class="border-form">
-                    <label class="form-label">*UserName</label><br>
-                    <input class="sepparate form-control input" required type="text" id="username" [(ngModel)]="username" name="username" minlength="1" placeholder="example username">
-                    <span class="form-text text-danger" 
-                          *ngIf="notValid('username') || errorLogin">
-                          Username is required
-                    </span>
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-12 col-lg-2 center">
+                            <label class="form-label">*Username</label><br>
+                        </div>
+                        <div class="col-md-12 col-lg-10 center">
+                            <input class="form-control input" required type="text" id="username" [(ngModel)]="username" name="username" minlength="1" placeholder="My Username">
+                            <span class="form-text text-danger" *ngIf="notValid('username') || errorLogin">
+                                Username is required
+                            </span>
+                        </div>
 
-                    <br>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12 col-lg-2 center">
+                            <label class="form-label">*Password</label><br>
+                        </div>
+                        <div class="col-md-12 col-lg-10 center">
+                            <input class="sepparate form-control input" required type="password" id="password" [(ngModel)]="password" name="password" minlength="1" placeholder="My Password">          
+                            <span class="form-text text-danger" 
+                                *ngIf="notValid('password') || errorLogin">
+                                Password is required
+                            </span>
+                        </div>
                     
-                    <label class="form-label">*Password</label><br>
-                    <input class="sepparate form-control input" required type="password" id="password" [(ngModel)]="password" name="password" minlength="1" placeholder="Enter your password here...">
-                                                
-                    <span class="form-text text-danger" 
-                          *ngIf="notValid('password') || errorLogin">
-                          Password is required
-                    </span>
+                    </div>
+                    <div class="row div-botones">
 
-                    <br><br>
+                        <div class="col-md-3 col-sm-3"><!-- SEPARACION --></div> 
+                        
+                        <div class="col-md-2 col-sm-2">
+                            <input class="botones btn btn-success" [disabled]="myForm.invalid" type="submit" value="Login"> 
+                        </div>
+                            
+                        <div class="col-md-1 col-sm-1"><!-- SEPARACION --></div>
+                        <div class="col-md-1 col-sm-1"><!-- SEPARACION --></div>
 
-                    <input class="btn btn-success sepparate" [disabled]="myForm.invalid" type="submit" value="Login"> 
-                    <input class="btn btn-danger sepparate" type="reset" value="Cancel">
-                                                
+                        <div class="col-md-2 col-sm-2">
+                            <input class="botones btn btn-danger" type="reset" value="Cancel">
+                        </div>
+                            
+                        <div class="col-md-3 col-sm-3"><!-- SEPARACION --></div>
                     
-
-                    <br>
-                    
-                    <p>You don't have an account?
-                    <a [routerLink]="['/logs/register']" routerLinkActive="active">Register now</a>
-                    </p>
+                    </div>
+                    <div class="row">  
+                        <div class="col-md-12">
+                            <p>You don't have an account?
+                            <a [routerLink]="['/logs/register']" routerLinkActive="active">Register now</a></p>
+                        </div>
+                    </div>
+                </div>
             </form>
-            <br>
         </div>
-        <div class="col-2"></div>
-    </div>
-</div>
-
-<div class="footer">
-    <div class="container-flex">
-      <div class="row">
-        <div class="col center bg-black">
-          
-          <div class="terms">
-            <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-            <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-          </div>
-          
-        </div>
-      </div>
     </div>
 </div>

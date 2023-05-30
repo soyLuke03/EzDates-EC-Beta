@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TrendService } from '../trend.service';
 import { Trend } from '../../interfaces/trend.interface';
 import { PostService } from '../../posts/posts.service';
@@ -16,6 +16,9 @@ export class TrendComponent implements OnInit {
   posts!:Post[]
   postDelTrend:Post[] = []
 
+  commentsList!: Comment[];
+  comment: string = ""
+
   token = localStorage.getItem('token')!;
   payload!:string;
   username!: string;
@@ -23,7 +26,7 @@ export class TrendComponent implements OnInit {
   
   constructor(private aCRoute:ActivatedRoute, private tS:TrendService, private pS:PostService) {
   
-   }
+  }
 
 
   ngOnInit(): void {
@@ -35,32 +38,70 @@ export class TrendComponent implements OnInit {
       this.role = this.payload.split('"')[9];
     }
 
-    let id = this.aCRoute.snapshot.params['id'];
-    this.tS.getTrend(id).subscribe({
-      next: resp => this.trend = resp
-    })
+    this.aCRoute.paramMap.subscribe((params:ParamMap) => {
 
-    this.pS.getPosts()
-    .subscribe({
-      next: resp => this.complementario(resp),
-      error: (error) => console.log()
-    })
-  }
+      //Actualiza la ruta en función del usuario
+      if(params.get('id')!=null){
 
-  complementario(resp:any){
-    this.posts = resp
+        this.tS.getTrend(params.get('id')!).subscribe({
+          next: resp => {
+            this.trend = resp
+            console.log(this.trend);
+            
+          }
+        })
 
-    for (const post of this.posts) {
-      for(const trend of post.trendsList) {
-        if(trend.trend.name == this.trend.name){
-          // console.log(this.trend.name);
-          this.postDelTrend.unshift(post);
-          
-        }
-        
+        this.pS.getPosts()
+        .subscribe({
+          next: resp => {
+            this.posts = resp
+            this.postDelTrend = []
+            for (const post of this.posts) {
+              for(const trend of post.trendsList) {
+                if(trend.trend.name == this.trend.name){
+                  this.postDelTrend.unshift(post); 
+                } 
+              }
+            }
+            console.log(this.postDelTrend);
+            
+          },
+          error: (error) => console.log()
+        })
+      }
+      else{
+        this.username = "NO USER FOUND"
       }
       
-    }
+    })
+
   }
+
+
+
+  submitNewComment(idPost:number): void{
+    this.pS.addComment(idPost,this.username,this.comment)
+    .subscribe({
+      next: resp => {}
+    })
+    
+    this.comment = ""
+  }
+
+  addLike(idPost:number): void{
+    this.pS.addLike(idPost,this.username)
+    .subscribe({
+      next: resp => {console.log(resp);
+      },
+      error: (error) => {
+        if(error.status == 200){
+          console.log(error);
+          
+        }
+      }
+      
+    })
+  }
+
 
 }

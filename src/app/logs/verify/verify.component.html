@@ -1,49 +1,25 @@
 <div *ngIf="!error" class="container-flex white backBlack">
-    <br>
-    <br>
     <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4 border-form center">
+        <div class="col-lg-4 center">
             <h1>GREAT</h1>
             <hr>
             <p>Now, your account has been verified</p>
             <p>Now you may close this window.</p>
             <a [routerLink]="['/logs/login']"><button class="btn btn-success">Return to login</button></a>
-            <br><br>
+            
         </div>
-        <div class="col-4"></div>
     </div>
-    <br>
 </div>
-<div *ngIf="error" class="container-flex white backBlack">
-  <br>
-  <br>
+
+<div *ngIf="error" class="container- white backBlack">
   <div class="row">
-      <div class="col-4"></div>
-      <div class="col-4 border-form center">
+      <div class="col-lg-4 center">
           <h1>Oh no</h1>
           <hr>
-          <p>This account do not Exists</p> 
-          <a [routerLink]="['/logs/login']"><button class="btn btn-success">Return to login</button></a>
+          <p>This account do not exists...</p>
+          <p>Or maybe an error has occurred</p> 
+          <a [routerLink]="['/logs/login']"><button class="botones btn btn-success">Return to login</button></a>
           <br><br>
       </div>
-      <div class="col-4"></div>
-  </div>
-  <br>
-</div>
-
-
-<div class="footer">
-  <div class="container-flex">
-    <div class="row">
-      <div class="col center bg-black">
-        
-        <div class="terms">
-          <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-          <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-        </div>
-        
-      </div>
-    </div>
   </div>
 </div>

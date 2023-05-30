@@ -4,15 +4,15 @@
   </div>
 </div>
 
-<div class="body backBlack" *ngIf="listaPosts">
+<div class="body backBlack" *ngIf="listaPosts" id="top" name="top">
   <div class="container-flex">
     <div class="row galery">
 
         <!-- Tarjeta de cada post -->
         <div *ngFor="let post of listaPosts" class="galery-img">
-          <div *ngIf="post.title" class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;">
             <div class="profile-link-badge">
-              <a class="profile-link" [routerLink]="['/users/user/', post.user.username]">{{ post.user.username }}</a>
+              <a class="profile-link center" [routerLink]="['/users/user/', post.userId]">{{ post.userId }}</a>
             </div>
             <a [routerLink]="['/posts/post/', post.id]" >
               <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
@@ -21,6 +21,7 @@
             </a>
             <div class="card-body">
               <h4 class="card-title">{{ post.title }}</h4>
+              <hr>
               <!--TRENDS y LIKES-->
               <sub>
                 <!--  -->
@@ -28,12 +29,15 @@
                   <a *ngIf="post.trendsList.length>0" class="btn backBlack white col-sm-6" data-bs-toggle="collapse" href="#{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Show trends
                   </a>
+                  <a *ngIf="!post.trendsList.length" class="btn backBlack white col-sm-6" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    No trends
+                  </a>
                   <span class="col-sm-2"></span>
                   <button (click)="addLike(post.id)" class="btn backBlack white col-sm-4">{{ post.likes.length }}</button>
                 </p>
                 <div class="collapse" id="{{post.id}}">
-                  <div class="card card-body">
-                    <input class="btn hashtag" [routerLink]="['/trends/trend', trend.trend.name]" type="button" value="{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
+                  <div class="card card-body trend-gallery">
+                    <input class="btn hashtag trend-gallery-img" [routerLink]="['/trends/trend', trend.trend.name]" type="button" value="#{{ trend.trend.name }}" *ngFor="let trend of post.trendsList">
                   </div>
                 </div>
                 <!--  -->
@@ -45,14 +49,16 @@
               <sub>
                 <!--  -->
                 <p class="row">
-                  <a *ngIf="post.trendsList.length>0" class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="btn backBlack white" data-bs-toggle="collapse" href="#{{post.id}}comments" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Show Comments
                   </a>
                 </p>
                 <div class="collapse center" id="{{post.id}}comments">
-                  <input type="text" class="form-control" (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
-                  <div class="card card-body">
-                    <button class="btn" *ngFor="let comment of post.comments">{{username}}:  {{ comment.message }}</button>
+                  <div class="submit-comment">
+                    <input type="text" class="form-control" (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+                  </div>                  
+                  <div class="comment-section card card-body">
+                    <p class="comment" *ngFor="let comment of post.comments"><span class="comment-user">{{comment.user}}:</span>  {{ comment.message }}</p>
                   </div>
                 </div>
                 <!--  -->
@@ -63,22 +69,13 @@
           </div>
         </div>
         <!-- -------------------- -->
-
+        <div>
+          <a href="posts/list#top">
+            <button class="anchor">
+              Go up
+            </button>
+          </a>
+        </div>
     </div>
   </div>
 </div>  
-
-<div class="footer">
-  <div class="container-flex">
-    <div class="row">
-      <div class="col center bg-black">
-        
-        <div class="terms">
-          <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-          <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</div>

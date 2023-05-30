@@ -24,7 +24,7 @@ const routes: Routes = [
             url: 'users'
           },
           {
-            label: 'USUARIO: {{id}}',
+            label: 'USER: '+'{{id}}',
             url: 'users/user/:id'
           }
         ]

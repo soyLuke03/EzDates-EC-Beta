@@ -13,7 +13,7 @@ import { Like } from '../../interfaces/like.interface';
 export class ListComponent implements OnInit {
 
   listaPosts!: Post[];
-  commentsList!: any[];
+  commentsList!: Comment[];
   comment: string = ""
 
   token = localStorage.getItem('token')!;
@@ -39,6 +39,7 @@ export class ListComponent implements OnInit {
     .subscribe({
       next: resp => {
         this.listaPosts = resp
+        
       },
       error: (error)=> console.log()
     })

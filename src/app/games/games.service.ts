@@ -29,6 +29,10 @@ import { Game } from '../interfaces/game.interface';
         return this.http.delete<Game>(this.url+"/delete/"+name)
     }
 
+    postGame(game:Game):Observable<Game>{
+      return this.http.post<Game>(this.url+"/add",game)
+    }
+
     updateGame(name:string, game:Game):Observable<Game>{
         return this.http.put<Game>(this.url+"/update/"+name,game)
     }

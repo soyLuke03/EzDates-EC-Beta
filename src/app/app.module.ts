@@ -15,10 +15,12 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
 import { TermConditionsModule } from './term-conditions/term-conditions.module';
 import { GamesModule } from './games/games.module';
 import { InterestsModule } from './interests/interests.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   myForm: FormGroup = this.fb.group({
     username: [null, [Validators.required,Validators.maxLength(199)]],
     email: [null, [Validators.required, Validators.email, Validators.maxLength(199)]],
-    name: [null,Validators.maxLength(199)],
+    name: [null,[Validators.required,Validators.maxLength(199)]],
     surname: [null, [Validators.required,Validators.maxLength(199)]],
     password: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]],
     password2: [null, [Validators.required,Validators.maxLength(199),Validators.minLength(8)]]
@@ -61,17 +61,12 @@ export class RegisterComponent implements OnInit {
       surname: this.myForm.controls['username'].value,
       verificationCode: "",
       enabled: false,
-      userProfile: {
-        username: '',
-        bio: '',
-        gender: -1,
-        image: '',
-      },
       role: "USER_ROLE"
     }
 
     if(this.equalsPasswords()){
       console.log(newUser);
+      newUser.username = newUser.username.toLowerCase()
       
       this.uS.register(newUser).subscribe({
         next: resp => 

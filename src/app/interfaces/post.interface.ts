@@ -10,7 +10,7 @@ export interface Post{
     date: string,
     imgurl: string,
     trendsList: Trend[],
-    user: User,
+    userId: User,
     likes: Like[]
     comments: Comment[]
 }

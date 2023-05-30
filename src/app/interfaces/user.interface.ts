@@ -9,5 +9,4 @@ export interface User{
 	verificationCode: string,
 	enabled: boolean,
 	role: string,
-	userProfile: Profile
 }

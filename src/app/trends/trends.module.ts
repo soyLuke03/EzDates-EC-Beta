@@ -6,7 +6,7 @@ import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
 import { TrendsRoutingModule } from './trends-routing.module';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddComponent } from './add/add.component';
 
 
@@ -23,7 +23,8 @@ import { AddComponent } from './add/add.component';
     CommonModule,
     TrendsRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class TrendsModule { }

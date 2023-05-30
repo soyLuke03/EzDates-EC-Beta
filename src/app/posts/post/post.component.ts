@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PostService } from '../posts.service';
 import { Post } from '../../interfaces/post.interface';
 import { ConversionUtils } from 'turbocommons-ts';
@@ -28,12 +28,17 @@ export class PostComponent implements OnInit {
       this.username = this.payload.split('"')[3].toLowerCase();
     }
 
-    let idPost = this.acRoute.snapshot.params['id'];
-    this.pS.getPost(idPost)
-    .subscribe({
-      next: resp => {this.post = resp},
-      error: (error) => console.log("ERROR on loading post")
+    this.acRoute.paramMap.subscribe((params:ParamMap) => {
+      if(params.get('id')!=null){
+        let idPost:any = params.get('id')!
+        this.pS.getPost(idPost)
+        .subscribe({
+          next: resp => {this.post = resp},
+          error: (error) => console.log("ERROR on loading post")
+        })
+      }
     })
+
   }
 
   belong(user:string){

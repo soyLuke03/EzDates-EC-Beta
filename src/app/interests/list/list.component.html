@@ -2,9 +2,9 @@
     <div class="grande center">
       <span class="loader center"></span>
     </div>
-  </div>
+</div>
   
-  <div class="body backBlack" *ngIf="interestList">
+<div class="body backBlack" *ngIf="interestList">
     <div class="container-flex backBlack">
       <div class="row galery ">
   
@@ -20,26 +20,32 @@
           <div class="galery-img">
             <div class="row card fondo" style="width: 18rem;">
               <div class="center card-body">
-                <h2>ADD NEW</h2>
+                <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  <h4 class="card-title center">ADD NEW</h4>
+                </a>
               </div>
             </div>
           </div>
   
       </div>
-    </div>
-  </div>  
-  
-  <div class="footer">
-    <div class="container-flex">
-      <div class="row">
-        <div class="col center bg-black">
-          
-          <div class="terms">
-            <p><a [routerLink]="['/terms']">ESP Privacy policy / Legal terms</a></p>
-            <p><a [routerLink]="['']">ENG Privacy policy / Legal terms</a></p>
+
+      
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header white" style="background: linear-gradient(200deg, rgba(0,0,0) 40%, rgba(255,0,0,0.9284664549413515) 100%)">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Interest</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="background-color: black;">
+          <div>
+            <form class="formulario backBlack white" enctype="multipart/form-data" (ngSubmit)="save($event)" [formGroup]="myForm"> 
+              <div class="form-group">
+                <label for="name">Name: </label>
+                <input type="text" formControlName="name" name="name" id="name">
+              </div>
+            </form>
           </div>
-          
         </div>
       </div>
+    
     </div>
-  </div>
+</div>  
