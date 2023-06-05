@@ -4,6 +4,7 @@ import { ErrorComponent } from './shared/error/error.component';
 import { AuthGuard } from './auth-guard.service';
 import { TermConditionsComponent } from './term-conditions/term-conditions/term-conditions.component';
 import { ListComponent } from './games/list/list.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: 'logs',
@@ -88,6 +89,18 @@ const routes: Routes = [
       {
         label: 'TERMS',
         url: 'terms'
+      }
+    ]
+  } 
+  },
+
+  { path: 'globalChat/:id', 
+    component: ChatComponent, data: {
+    title: 'GLOBAL CHAT',
+    breadcrumb: [
+      {
+        label: 'GLOBAL CHAT',
+        url: 'globalChat'
       }
     ]
   } 

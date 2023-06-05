@@ -13,8 +13,8 @@ import { Trend } from '../interfaces/trend.interface';
     
     //access_token:string = localStorage.getItem('token')!;
     
-    url:string = "https://ezdatesbeta-production.up.railway.app/trends"
-    // url:string = "http://localhost:8080/trends"
+    // url:string = "https://ezdatesbeta-production.up.railway.app/trends"
+    url:string = "http://localhost:8080/trends"
   
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

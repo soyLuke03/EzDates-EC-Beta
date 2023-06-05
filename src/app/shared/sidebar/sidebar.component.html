@@ -61,6 +61,14 @@
                    </a>
                  </li>
                </ul>
+
+               <ul *ngIf="token" class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a title="Go Chatting" [routerLink]="['/globalChat', username]" routerLinkActive="active" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Global Chat
+                  </a>
+                </li>
+              </ul>
    
                <ul *ngIf="role=='ADMIN_ROLE'" class="navbar-nav">
                  <li class="nav-item dropdown">

@@ -16,11 +16,13 @@ import { TermConditionsModule } from './term-conditions/term-conditions.module';
 import { GamesModule } from './games/games.module';
 import { InterestsModule } from './interests/interests.module';
 import { FooterComponent } from './footer/footer.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
