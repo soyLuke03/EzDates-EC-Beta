@@ -8,22 +8,17 @@
   <div class="container-flex update">
     <div class="row">
       <div class="col-sm-12 col-xs-12 col-md-6 center">
-        
         <!-- Tarjeta de cada post -->
-        <div class="center container-flex" >
+        <div class="center container-flex">
           <div class="row">
-            <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top" alt="Image of the user ...">
-            <!--Si no hay foto, una por defecto-->
+            <img *ngIf="post.imgurl" src="{{ post.imgurl }}" class="card-img-top-full" alt="Image of the user ...">
+            <!-- Si no hay foto, una por defecto -->
             <img *ngIf="!post.imgurl" src="https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png" class="card-img-top-full" alt="Image not found ...">
           </div>
-      
         </div>
-        <a  [routerLink]="['/posts/update/', post.id]"><button  class="btn EZbtn sepparate">Modify</button></a>
-        <a  [routerLink]="['/posts/delete/', post.id]"><button  class="btn EZbtn sepparate">Delete</button></a>
-        <a [routerLink]="['/posts/list']"><button  class="btn EZbtn sepparate">Posts List</button></a>
-        <!-- -------------------- -->
-        <!-- *ngIf="belong(post.userId.toString().toLowerCase())" -->
-
+        <a [routerLink]="['/posts/update/', post.id]"><button class="btn EZbtn sepparate">Modify</button></a>
+        <a [routerLink]="['/posts/delete/', post.id]"><button class="btn EZbtn sepparate">Delete</button></a>
+        <a [routerLink]="['/posts/list']"><button class="btn EZbtn sepparate">Posts List</button></a>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-6">
         <p class="subtitle"><span class="title">USER:</span> {{ post.userId }}</p>
@@ -32,22 +27,28 @@
         <p class="subtitle"><span class="title">TITLE:</span> {{ post.title }}</p>
 
         <hr>
-        <p class="subtitle"><span class="title">DESCRIPTION:</span> {{ post.description }} </p>
+        <p class="subtitle"><span class="title">DESCRIPTION:</span> {{ post.description }}</p>
 
         <hr>
-        <p class="subtitle"><span class="title">DATE:</span> {{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}} </p>
+        <p class="subtitle"><span class="title">DATE:</span> {{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
 
         <hr>
         <p class="subtitle"><span class="title" *ngFor="let trend of post.trendsList"> #{{ trend.trend.name }}, </span></p>
 
         <hr>
-        <div class="subtitle" >
-          <p class="title">COMMENTS:</p>
-          <p *ngFor="let comment of post.comments">{{ comment.user }}: {{ comment.message }}</p>
-        </div>
+        <p class="subtitle"><span class="title">LIKES:</span> {{ post.likes.length }}</p>
         <hr>
-        <p class="subtitle"><span class="title">LIKES:</span> {{ post.likes.length }} </p>
+        <div class="subtitle">
+          <div class="submit-comment">
+            <input type="text" class="form-control form-control-post" title="Press 'ENTER' to submit" (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+          </div>
+          <br>
+          <p class="title">COMMENTS:</p>
+          <div class="overflow-auto comments-container">
+            <p class="margin" *ngFor="let comment of commentsList">{{ comment.user }}: {{ comment.message }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>  
+</div>

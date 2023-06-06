@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { WebsocketService } from '../websocket.service';
 
@@ -19,6 +19,21 @@ export class ChatComponent implements OnInit {
 
   constructor(private activated:ActivatedRoute, private webService:WebsocketService) { }
 
+
+  @ViewChild('chatContainer') chatContainer!: ElementRef;
+
+  // Resto de tu código...
+
+  scrollToBottom() {
+    const container = this.chatContainer.nativeElement;
+    const isScrolledToBottom = container.scrollHeight - container.clientHeight <= container.scrollTop + 1;
+    container.scrollTop = container.scrollHeight;
+    if (!isScrolledToBottom) {
+      container.scrollTop = container.scrollHeight - container.clientHeight;
+    }
+  }
+  
+
   ngOnInit(): void {
     this.activated.paramMap.subscribe((params:ParamMap) => {
 
@@ -36,6 +51,7 @@ export class ChatComponent implements OnInit {
     this.webService.listen().subscribe(
       (data) => {
         this.myMessages = data;
+        this.scrollToBottom()
       }
     )
  
@@ -44,7 +60,8 @@ export class ChatComponent implements OnInit {
   //Emite el mensaje del usuario
   myMessage() {
     this.webService.emit(this.userChat);
-    this.userChat.text = ''
+    this.userChat.text = '';
+    this.scrollToBottom();
   }
 
 

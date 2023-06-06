@@ -1,9 +1,13 @@
 
 
-.card-img-top-full{
+/* .card-img-top-full{
     height: 350px;
     width: 350px;
     background-color: white;
+} */
+
+.form-control-post {
+    width: 50%;
 }
 
 .hashtag{
@@ -49,6 +53,32 @@
     float: right;
     background-color: red;
     color: white;
+}
+
+.comments-container{
+    max-height: 300px;
+    overflow-y: auto; /* Habilite el scroll vertical */
+    scrollbar-width: thin; /* Ancho del scroll */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Colores del scroll */
+    border-style: ridge;
+}
+
+.margin {
+    margin: 5px;
+}
+
+.comments-container::-webkit-scrollbar {
+    width: 25px; /* Ancho del scroll en navegadores WebKit */
+}
+
+.comments-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 0, 0, 0.5); /* Color del scroll thumb */
+    border-radius: 4px; /* Radio de borde del scroll thumb */
+}
+
+.comments-container::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1); /* Color del track del scroll */
+    border-radius: 4px; /* Radio de borde del track del scroll */
 }
 
 .comment {
@@ -188,6 +218,15 @@
     border-bottom: black;
     border-bottom-style: groove;
     height: 260px;
+}
+
+.card-img-top-full{
+    background-color: rgb(21, 21, 21);
+    border-width: 5px;
+    border-bottom: black;
+    border-bottom-style: groove;
+    height: 260px;
+    width: auto;
 }
 
 .backBlack{

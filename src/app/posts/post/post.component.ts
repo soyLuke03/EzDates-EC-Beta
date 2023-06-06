@@ -11,10 +11,16 @@ import { ConversionUtils } from 'turbocommons-ts';
 })
 export class PostComponent implements OnInit {
 
+  
+  commentsList: any[] = [];
+  comment: string = ""
+
+  
   post!: Post;
   token = localStorage.getItem('token')!;
   payload!:string;
   username!: string;
+  
 
   constructor(private pS:PostService, private acRoute:ActivatedRoute) { }
 
@@ -33,7 +39,12 @@ export class PostComponent implements OnInit {
         let idPost:any = params.get('id')!
         this.pS.getPost(idPost)
         .subscribe({
-          next: resp => {this.post = resp},
+          next: resp => {
+            this.post = resp
+            for(let comentario of this.post.comments){
+              this.commentsList.unshift(comentario)
+            }
+          },
           error: (error) => console.log("ERROR on loading post")
         })
       }
@@ -45,6 +56,28 @@ export class PostComponent implements OnInit {
     return this.username == user
   }
 
+  submitNewComment(idPost:number): void{
+    
+    this.pS.addComment(idPost,this.username,this.comment)
+    .subscribe({
+      next: resp => {
+        // console.log(resp);
+        this.commentsList.unshift(
+          {
+            user: this.username,
+            message: this.comment
+          }
+        )
+        this.comment = ""
+      },
+      error: (error) => {
+        console.log(error);
+        this.comment = ""
+        
+      }
+    })
+    
+  }
   
 
 }

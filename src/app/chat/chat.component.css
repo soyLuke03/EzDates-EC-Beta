@@ -1,0 +1,54 @@
+.chat-body {
+    width: 80%;
+    max-width: 500px;
+    
+    margin: auto; 
+    margin-top: 100px;
+}
+
+.borde-chat {
+    border: 5px;
+    border-style: ridge;
+    padding: 10px;
+    min-height: 200px;
+    max-height: 500px;
+}
+
+.white-text {
+    color: white;
+    word-wrap: break-word
+}
+
+.user-text {
+    color: white;
+    text-decoration: underline;   
+}
+
+.other-messages {
+    border-radius: 15px;
+    padding: 5px;
+    margin: 3px;
+    background-color: red;
+    max-width: 50%;
+    min-width: 10%;
+}
+
+.my-messages {
+    /* text-align: right; */
+    width: 100%;
+    text-align: -webkit-right;
+}
+
+/* .my-text {
+    width: max-content;
+} */
+
+.q {
+    border-radius: 15px;
+    padding: 5px;
+    margin: 3px;
+    background-color: red;
+    /* background-color: aliceblue; */
+    max-width: 50%;
+    min-width: 10%;
+}
