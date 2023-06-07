@@ -7,10 +7,10 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class WebsocketService {
 
-  // puerto:string = "http://localhost:3000"
-  puerto:string = "https://scary-lock-production.up.railway.app"
+  puerto:string = "http://localhost:3000"
+  // puerto:string = "https://scary-lock-production.up.railway.app"
   socket:any;
-  server = io("http://scary-lock-production.up.railway.app", {transports: ['websocket']});
+  server = io(this.puerto, {transports: ['websocket']});
 
   constructor() { 
     this.socket = this.server

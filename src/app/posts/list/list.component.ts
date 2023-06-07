@@ -51,11 +51,11 @@ export class ListComponent implements OnInit {
     .subscribe({
       next: resp => {
         console.log(resp);
-        this.commentsList.unshift(this.comment)
+        location.reload()
       },
       error: (error) => {
         console.log(error);
-        
+        location.reload()
       }
     })
     

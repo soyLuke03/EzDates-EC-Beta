@@ -10,11 +10,11 @@ export class AuthService {
     
     
 
-    url:string = "https://ezdatesbeta-production.up.railway.app/signin"
-    // url:string = "http://localhost:8080/signin"
+    // url:string = "https://ezdatesbeta-production.up.railway.app/signin"
+    url:string = "http://localhost:8080/signin"
   
-    urlAuth: string = 'https://ezdatesbeta-production.up.railway.app/jwt'
-    // urlAuth: string = 'http://localhost:8080/jwt'
+    // urlAuth: string = 'https://ezdatesbeta-production.up.railway.app/jwt'
+    urlAuth: string = 'http://localhost:8080/jwt'
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

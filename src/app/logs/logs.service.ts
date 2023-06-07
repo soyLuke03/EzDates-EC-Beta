@@ -11,11 +11,11 @@ import { AuthResponse } from '../interfaces/token.interface';
   export class LogsService {
     
     //Url de verificación
-    url:string = "https://ezdatesbeta-production.up.railway.app/signin"
-    // url:string = "http://localhost:8080/signin"
+    // url:string = "https://ezdatesbeta-production.up.railway.app/signin"
+    url:string = "http://localhost:8080/signin"
   
-    urlVerify = "https://ezdatesbeta-production.up.railway.app/verify"
-    // urlVerify = "http://localhost:8080/verify"
+    // urlVerify = "https://ezdatesbeta-production.up.railway.app/verify"
+    urlVerify = "http://localhost:8080/verify"
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

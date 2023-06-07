@@ -83,8 +83,9 @@
 
 .comment {
     text-align: left;
-    font-size: medium;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    word-wrap: break-word;
 }
 
 .submit-comment {

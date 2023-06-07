@@ -1,19 +1,38 @@
-.header{
-    background: rgb(2,0,36);
-    background: linear-gradient(200deg, rgba(0,0,0) 40%, rgba(255,0,0,0.9284664549413515) 100%);
+
+
+.title-trend {
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    border-style: ridge;
+    border-radius: 25px;
+    border-color: white;
 }
 
-.logo{
-    align-items: center;
-    padding: 3%;
-    margin: auto;
-    border-radius: 350px;
+.card-body-trend {
+    background: linear-gradient(260deg, rgba(0,0,0) 40%, rgba(255,0,0,0.9284664549413515) 100%);
+}
+
+.card-trend{
+    width: 200px;
+    margin: 10px;
+}
+
+.fondo:hover{
+    background-color: red;
+    color: white;
+    zoom: 1.1;
+}
+
+.form-control-post {
+    width: 50%;
 }
 
 .hashtag{
     color: rgb(60, 0, 255);
     border-color: rgba(60, 0, 255, 0.368);
     border-width: 2px;
+    margin: 2px;
 }
 
 .hashtag:hover{
@@ -23,69 +42,128 @@
     border-width: 2px;
 }
 
-.EZbtn{
+.btn {
+    font-size: medium;
+    margin-bottom: 3px;
+}
+
+.btn {
+    font-size: medium;
+    margin-bottom: 3px;
+}
+
+.btn2:hover {
+    color: red;
+}
+
+.EZbtn {
     background-color: rgba(108, 0, 0, 0.801);
     color: white;
     border-color: aliceblue;
     border-width: 2px;
 }
 
-.galery{
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-    margin: auto;
-    background-color: rgb(21, 21, 21);
-  }
-  
-  .galery .galery-img{
-    max-width: 320px;
-    padding: 1rem;
-  }
-
-.EZbtn{
-    background-color: rgba(108, 0, 0, 0.801);
-    color: white;
-    border-color: aliceblue;
+.anchor {
+    border-radius: 5px;
+    border-color: beige;
+    border-style: groove;
     border-width: 2px;
+    float: right;
+    background-color: red;
+    color: white;
 }
 
-sub{
-    color: blueviolet;
-}
-    
-.title{
-    color: bisque;
-    font-size: 42px;
+.comments-container{
+    max-height: 300px;
+    overflow-y: auto; /* Habilite el scroll vertical */
+    scrollbar-width: thin; /* Ancho del scroll */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Colores del scroll */
+    border-style: ridge;
 }
 
-.date{
+.margin {
+    margin: 5px;
+}
+
+.comments-container::-webkit-scrollbar {
+    width: 25px; /* Ancho del scroll en navegadores WebKit */
+}
+
+.comments-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 0, 0, 0.5); /* Color del scroll thumb */
+    border-radius: 4px; /* Radio de borde del scroll thumb */
+}
+
+.comments-container::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1); /* Color del track del scroll */
+    border-radius: 4px; /* Radio de borde del track del scroll */
+}
+
+.comment {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+
+.submit-comment {
+    margin-bottom: 3px;
+}
+
+.comment-section {
+    margin-bottom: 5px;
+}
+
+.comment-user {
+    font-size: 18px;
+}
+
+.card-title {
+    font-size: larger;
+    text-decoration: underline;
+}
+
+.date {
       color: rgb(157, 157, 157);
       font-size: 15px;
-    }
-
-.subtitle{
-    color: bisque;
-    font-size: 32px;
 }
+
 
 .center{
     text-align: center;
     margin: auto;
 }
 
+
+/* Galería de imagenes */
 .galery{
     display: flex;
     flex-flow: wrap;
     justify-content: center;
     margin: auto;
     background-color: rgb(21, 21, 21);
-  }
+}
   
-  .galery .galery-img{
+.galery .galery-img{
     max-width: 320px;
     padding: 1rem;
-  }
+}
+/* ------------------ */
+
+/* Galeria de trends */
+.trend-gallery{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.trend-gallery-img{
+    min-height: 40px;
+    max-width: 100px;
+    padding: 1%;
+}
+/* ----------------- */
 
 .profile-link-badge, .profile-link{
     text-decoration: none;
@@ -94,11 +172,16 @@ sub{
     background-color: black;
     border-radius: 6px;
     margin-bottom: 1px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .profile-link:hover{
-    color: black;
-    background-color: white ;
+    color: red;
+    text-decoration: underline;
+}
+.profile-link{
+    margin-left: 5px;
 }
 
 .active{
@@ -106,20 +189,8 @@ sub{
     text-align: center;
 }
 
-.terms{
-    color: bisque;
-    padding: 3%;
-}
-
-.backBlack{
-    background-color: rgb(21, 21, 21);
-}
 
 
-
-.white{
-    color: aliceblue;
-}
 
 .formulario{
     padding: 10px
@@ -141,15 +212,36 @@ sub{
     margin: 1.3%;
 }
 
+.row{
+    margin-top: 30px;
+}
+
 .input{
     margin: auto;
-    width: 60%;
+    width: 95%;
 }
 
 
 .update{
     text-align: left;
     background-color: rgb(21, 21, 21);
+}
+
+.card-img-top{
+    background-color: rgb(21, 21, 21);
+    border-width: 5px;
+    border-bottom: black;
+    border-bottom-style: groove;
+    height: 260px;
+}
+
+.card-img-top-full{
+    background-color: rgb(21, 21, 21);
+    border-width: 5px;
+    border-bottom: black;
+    border-bottom-style: groove;
+    height: 260px;
+    width: auto;
 }
 
 .backBlack{
@@ -160,42 +252,21 @@ sub{
     color: aliceblue;
 }
 
-.hidden{
-    visibility: hidden;
-}
-
-.fondo{
-    background-image: url(../../assets/fondoTrend.png);
-    background-size: cover;
-    color: white;
-}
-
-.image{
-    background-color: black;
-    margin-top: 8%;
-    margin-bottom: 8%;
-    border-color: aliceblue;
-    border-radius: 25px;
-    border-width: 5px;
-}
-
-.footer {
-
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-
-.trend-link{
-    text-decoration: none;
-    color: black;
-}
-
 .breadCramp{
     color: aliceblue;
     background: rgb(2,0,36);
     background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
 }
+
+.right{
+    text-align: right;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
 
 /* LOADER DE CSS PARA LA PAGINA VACÍA */
 .grande{

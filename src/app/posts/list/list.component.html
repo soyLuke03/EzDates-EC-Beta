@@ -64,19 +64,20 @@
                     </svg>
                   </a>
                 </p>
-                <div class="collapse center" id="{{post.id}}comments">
-                  <div class="submit-comment">
-                    <input type="text" class="form-control" title="Press 'ENTER' to submit " (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
-                  </div>                  
-                  <div class="comment-section card card-body">
-                    <div class="" *ngFor="let comment of post.comments">
-                      <label class="">{{comment.user}}:</label>
-                      <span class="" name="commentsList" id="commentsList" ngModel="commentsList">  {{ comment.message }}</span>
-                    </div>
-                  </div>
-                </div>
+
                 <!--  -->
               </sub>
+              <div class="collapse" id="{{post.id}}comments">
+                <div class="submit-comment">
+                  <input type="text" class="form-control" title="Press 'ENTER' to submit " (keydown.enter)="submitNewComment(post.id)" id="comment" [(ngModel)]="comment" name="comment" placeholder="Put a new comment...">
+                </div>                  
+                <div class="comment-section card card-body comments-container">
+                  <div class="comment" *ngFor="let comment of post.comments">
+                    <label class="comment-user">{{comment.user}}:</label>
+                    <span class="comment" name="commentsList" id="commentsList" ngModel="commentsList">  {{ comment.message }}</span>
+                  </div>
+                </div>
+              </div>
               <!------------>
               <p class="date">{{ post.date[2] }}/{{post.date[1]}}/{{post.date[0]}} | {{post.date[3]}}:{{post.date[4]}}</p>
             </div>
