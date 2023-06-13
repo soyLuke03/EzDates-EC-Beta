@@ -51,9 +51,6 @@ export class ListComponent implements OnInit {
   * Método cuando se envía el formulario correctamente
   */
     save = (e: { preventDefault: () => void; }) => {
-
-      
-      // console.log(this.myForm.value);
       
       this.interestService.postInterest(this.myForm.value).subscribe({
         next: resp =>{ 

@@ -58,7 +58,7 @@ export class UpdateComponent implements OnInit {
         this.myForm.controls['surname'].setValue(resp[0].surname)
         this.myForm.controls['password'].setValue("")
       },
-      error: (error) => console.log()
+      error: (error) => {}
     })
   }
 
@@ -85,7 +85,6 @@ export class UpdateComponent implements OnInit {
     if(this.equalsPasswords()){
       
       let username = this.aCRoute.snapshot.params['id'];
-      // console.log(this.myForm.controls['password'].value);
       let formulario:any = {
         username: this.myForm.controls['username'].value,
         email: this.myForm.controls['email'].value,

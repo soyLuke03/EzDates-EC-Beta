@@ -48,7 +48,7 @@ export class PostComponent implements OnInit {
             }
             this.likes = resp.likes.length
           },
-          error: (error) => console.log("ERROR on loading post")
+          error: (error) => {}
         })
       }
     })
@@ -64,7 +64,6 @@ export class PostComponent implements OnInit {
     this.pS.addComment(idPost,this.username,this.comment)
     .subscribe({
       next: resp => {
-        // console.log(resp);
         this.commentsList.unshift(
           {
             user: this.username,
@@ -74,7 +73,6 @@ export class PostComponent implements OnInit {
         this.comment = ""
       },
       error: (error) => {
-        console.log(error);
         this.comment = ""
         
       }

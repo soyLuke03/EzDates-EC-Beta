@@ -78,7 +78,6 @@ export class RegisterComponent implements OnInit {
           confirmButtonText: 'OK'
         }),
         error: (error) =>{
-          console.log(error)
           
           Swal.fire({
             title: "An error has appeared",
@@ -90,7 +89,6 @@ export class RegisterComponent implements OnInit {
           }) 
         }
       })
-      // console.log("Enviado")
       this.myForm.reset()
       this.errorPasswords=""
 

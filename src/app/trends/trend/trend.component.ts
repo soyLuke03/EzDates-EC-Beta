@@ -46,7 +46,6 @@ export class TrendComponent implements OnInit {
         this.tS.getTrend(params.get('id')!).subscribe({
           next: resp => {
             this.trend = resp
-            console.log(this.trend);
             
           }
         })
@@ -63,10 +62,9 @@ export class TrendComponent implements OnInit {
                 } 
               }
             }
-            console.log(this.postDelTrend);
             
           },
-          error: (error) => console.log()
+          error: (error) => {}
         })
       }
       else{
@@ -94,12 +92,10 @@ export class TrendComponent implements OnInit {
     this.pS.addLike(idPost,this.username)
     .subscribe({
       next: resp => {
-        // console.log(resp);
         location.reload()
       },
       error: (error) => {
         if(error.status == 200){
-          // console.log(error);
           location.reload()
           
         }

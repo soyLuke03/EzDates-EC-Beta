@@ -69,7 +69,6 @@ export class DeleteComponent implements OnInit {
           }) 
       })
       
-      // console.log("Añadido con éxito")
       this.myForm.reset()
       this.route.navigate(['/trends/list/']);
 

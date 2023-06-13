@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   userName: string = ""
 
   listaPosts:Post[] = [];
-  profile!:Profile
+  profile!:Profile|null
 
   commentsList!: Comment[];
   comment: string = ""
@@ -52,15 +52,31 @@ export class UserComponent implements OnInit {
       //Actualiza la ruta en función del usuario
       if(params.get('id')!=null){
         this.userName = params.get('id')!
-        // console.log(this.userName);
-        // console.log(this.username);
-        
+        this.profile = null
         
         this.uS.getUser(this.userName)
         .subscribe({
           next: resp => {
             this.user = resp
 
+            //Obtener seguidores
+            this.uS.getFollows().subscribe({
+              next: resp => {
+                this.followers = []
+                for (const u of resp) {
+                  if(u.user.toString()==this.username){
+                    this.followers.unshift(u.follower.toString())
+                  }
+                }
+                this.follows = []
+                for (const a of resp) {
+                  if(a.user.toString()!=this.username){
+                    this.follows.unshift(a.user.toString())
+                  }
+                }
+                
+              }
+            })
             //Obtener los posts
             this.pS.getPosts()
             .subscribe({
@@ -84,13 +100,11 @@ export class UserComponent implements OnInit {
                   }
                 }
                 //Obtener los juegos del usuario
-                // console.log(this.profile);
                 
                 if(this.profile){
                   this.uS.getProfile(this.userName)
                   .subscribe({
                   next: resp => {
-                    console.log(resp);
                     
                     for(let game of resp.game_list){
                       this.games.unshift(game.game.name)
@@ -104,7 +118,6 @@ export class UserComponent implements OnInit {
                   this.uS.getProfile(this.userName)
                   .subscribe({
                     next: resp => {
-                      console.log(resp);
                       
                       for(let interest of resp.interest_list){
                         this.interests.unshift(interest.interest.name)
@@ -119,35 +132,9 @@ export class UserComponent implements OnInit {
 
             
           },
-          error: (error) => {}
-        })
-    
-        
-    
-
-    
-        //Obtener seguidores
-        this.uS.getFollows().subscribe({
-          next: resp => {
-            this.follows = []
-            for (const u of resp) {
-              if(u.user.toString()==this.username){
-                this.follows.unshift(u.follower.toString())
-              }
-            }
-            // console.log(this.follows);
-            this.followers = []
-            for (const a of resp) {
-              if(a.user.toString()!=this.username){
-                this.followers.unshift(a.user.toString())
-              }
-            }
-            // console.log(this.followers);
+          error: (error) => {
           }
         })
-
-
-
       }
       else{
         this.username = "NO USER FOUND"
@@ -160,15 +147,13 @@ export class UserComponent implements OnInit {
 
   //Seguir usuario
   follow(user:string){
-    // console.log(user);
     
     this.uS.followUser(this.username,user).subscribe({
       next: resp => {
-        this.followers.unshift(user)
-        // console.log(this.follows);
-        // console.log(this.followers);
+        this.follows.unshift(user)
+
       },
-      error: (err) => console.log(err)  
+      error: (err) => {} 
     })
   }
 
@@ -176,10 +161,7 @@ export class UserComponent implements OnInit {
   unfollow(user:string){
     this.uS.unfollowUser(this.username,user).subscribe({
       next: resp => {
-        this.followers.splice(this.followers.indexOf(user), 1)
-
-        // console.log(this.followers);
-        // console.log(this.follows);
+        this.follows = this.follows.filter(delUser => delUser != user) 
       },
       error: (err) => {}
     })

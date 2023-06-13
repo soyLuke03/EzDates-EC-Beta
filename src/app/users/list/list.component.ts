@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListComponent implements OnInit {
 
     /** Filter, paginator y datatable */
-    displayedColumns = ['username', 'name', 'surname', 'boton'];
+    displayedColumns = ['username' , 'boton'];
     dataSource = new MatTableDataSource<User>();
   
     @ViewChild(MatPaginator) paginator!: MatPaginator;

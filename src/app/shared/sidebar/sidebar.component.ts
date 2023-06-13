@@ -39,7 +39,6 @@ export class SidebarComponent implements OnInit {
   checkNavbarPosition() {
     const navbar = document.getElementById('navbar');
     const sticky = navbar!.offsetTop;
-    // console.log(window.pageYOffset, sticky);
     
     if(window.pageYOffset >= sticky && window.pageYOffset > 300){
       this.isNavbarSticky = true

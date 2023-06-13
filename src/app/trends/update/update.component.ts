@@ -72,7 +72,6 @@ export class UpdateComponent implements OnInit {
 
       this.myForm.reset()
       this.route.navigate(['/trends/list/']);
-      // console.log("Añadido con éxito")
 
     }
 

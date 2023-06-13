@@ -28,7 +28,7 @@ export class DeleteComponent implements OnInit {
     this.pS.getPost(idPost)
     .subscribe({
       next: resp => this.post = resp,
-      error: (error) => console.log()
+      error: (error) => {}
     })
   }
 

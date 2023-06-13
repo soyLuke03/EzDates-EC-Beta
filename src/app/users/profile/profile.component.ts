@@ -63,14 +63,11 @@ export class ProfileComponent implements OnInit {
     this.uS.getProfile(this.username)
     .subscribe({
       next: resp => {
-        // console.log(resp.game_list);
         
         for (let game of resp.game_list){
           this.myGames.unshift(game.game.name)
-          // console.log(game.game);
           
         }
-        // console.log(this.myGames);
         
       }
     })
@@ -81,7 +78,6 @@ export class ProfileComponent implements OnInit {
         for(let interest of resp.interest_list){
           this.myInterests.unshift(interest.interest.name)
         }
-        console.log(this.myInterests);
         
       }
     })
@@ -204,7 +200,6 @@ export class ProfileComponent implements OnInit {
             })
           },
           error(err) {
-            console.log(err);
             
           },
         })

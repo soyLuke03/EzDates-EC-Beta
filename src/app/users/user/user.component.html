@@ -31,19 +31,19 @@
         <br>
         <div class="follows" *ngIf="userName != username">
           
-          <a *ngIf="!followers.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Follow</button></a>
-          <a *ngIf="followers.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">UnFollow</button></a>
+          <a *ngIf="!follows.includes(user[0].username)"  (click)="follow(user[0].username)"><button  class="btn btn-success sepparate">Follow</button></a>
+          <a *ngIf="follows.includes(user[0].username)" (click)="unfollow(user[0].username)"><button  class="btn btn-danger sepparate">UnFollow</button></a>
         </div>
         
         <div class="center follows" *ngIf="userName == username">
           <h3>Your profile</h3>
           <div class="row center">
             <div class="col-sm-6">
-              <span>FOLLOWERS</span>
+              <span>FOLLOWS</span>
               <p>{{ follows.length }}</p>
             </div>
             <div class="col-sm-6">
-              <span>FOLLOWS</span>
+              <span>FOLLOWERS</span>
               <p>{{ followers.length }}</p>
             </div>
           </div>

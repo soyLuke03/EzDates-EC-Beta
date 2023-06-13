@@ -7,8 +7,8 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class WebsocketService {
 
-  puerto:string = "http://localhost:3000"
-  // puerto:string = "https://scary-lock-production.up.railway.app"
+  // puerto:string = "http://localhost:3000"
+  puerto:string = "https://serviciochat.adaptable.app"
   socket:any;
   server = io(this.puerto, {transports: ['websocket']});
 

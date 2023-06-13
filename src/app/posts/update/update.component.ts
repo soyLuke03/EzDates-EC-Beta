@@ -32,7 +32,7 @@ export class UpdateComponent implements OnInit {
     this.pS.getPost(idPost)
     .subscribe({
       next: resp => this.defaultValues(resp),
-      error: (error) => console.log()
+      error: (error) => {}
     })
 
   }
@@ -42,7 +42,6 @@ export class UpdateComponent implements OnInit {
 
     this.myForm.controls['title'].setValue(this.post.title)
     this.myForm.controls['description'].setValue(this.post.description)
-    // console.log(this.post.imgurl);
     
     if(!this.post.imgurl){
       this.myForm.controls['imgurl'].setValue("https://res.cloudinary.com/dzr2fkubk/image/upload/v1674463603/404NotFound_lu44pl.png")
