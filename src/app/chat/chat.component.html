@@ -6,11 +6,11 @@
                 <div class="scrollspy-example" tabindex="0">
                     <div class="textos other-messages" *ngIf="userChat.user != message.user">
                         <a [routerLink]="['/users/user/', message.user]"><label class="user-text" title="{{message.user}}" style="font-weight: bold;">{{ message.user }}</label></a>
-                        <span class="white-text" title="{{message.text}}">  {{ message.text }}</span>
+                        <span class="black-text" title="{{message.text}}">  {{ message.text }}</span>
                     </div>
                     <div class="textos my-messages" *ngIf="userChat.user == message.user">
                         <div class="q">
-                            <span class="white-text my-text">{{ message.text }}  </span>
+                            <span class="black-text my-text">{{ message.text }}  </span>
                             <label class="user-text" style="font-weight: bold;"> you</label>
                         </div>
                     </div>
@@ -19,9 +19,9 @@
             </div>
         </div>
     </div>
-    <div style="background-color: red;">
-        <label>Hola <span style="font-weight: bold;">{{ userChat.user }}</span>... Escribe algo</label>
-        <input type="text" class="form-control" (change)="myMessage(); scrollToBottom()" [(ngModel)]="userChat.text">
+    <br>
+    <div>
+        <input placeholder="Hey {{userChat.user}} ... Write something" type="text" class="form-control" (change)="myMessage(); scrollToBottom()" [(ngModel)]="userChat.text">
     </div>
 </div>
 

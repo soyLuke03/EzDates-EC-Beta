@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../posts.service';
 import { Post } from '../../interfaces/post.interface';
-import { Trend } from '../../interfaces/trend.interface';
 import { ConversionUtils } from 'turbocommons-ts';
-import { Like } from '../../interfaces/like.interface';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -75,7 +74,6 @@ export class ListComponent implements OnInit {
           location.reload()
         }
       }
-      
     })
   }
 

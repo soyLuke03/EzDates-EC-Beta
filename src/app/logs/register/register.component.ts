@@ -65,7 +65,6 @@ export class RegisterComponent implements OnInit {
     }
 
     if(this.equalsPasswords()){
-      console.log(newUser);
       newUser.username = newUser.username.toLowerCase()
       
       this.uS.register(newUser).subscribe({
@@ -73,7 +72,8 @@ export class RegisterComponent implements OnInit {
         Swal.fire({
           title: "Created",
           text: "Your profile has been created succesfully. Now check your email and verify",
-          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
+          color: 'white',
           confirmButtonColor: 'black',
           confirmButtonText: 'OK'
         }),
@@ -83,7 +83,8 @@ export class RegisterComponent implements OnInit {
           Swal.fire({
             title: "An error has appeared",
             text: "The profile cannot be created. Try again later or contact with an admin",
-            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        color: 'white',
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
+            color: 'white',
             confirmButtonColor: 'black',
             confirmButtonText: 'OK'
           }) 

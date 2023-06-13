@@ -13,13 +13,15 @@ export class ListComponent implements OnInit {
 
   constructor(private interestService:InterestService, private fb: FormBuilder) { }
   
-  interestList:Interest[] = []
+  interestList:string[] = []
   
   ngOnInit(): void {
     this.interestService.getInterest()
     .subscribe({
       next: (resp) => {
-        this.interestList = resp        
+        for (const interest of resp) {
+          this.interestList.unshift(interest.name)
+        }        
       }
     })
   }
@@ -32,7 +34,9 @@ export class ListComponent implements OnInit {
   deleteInterest(name:string){
     this.interestService.deleteInterest(name)
     .subscribe({
-      next: resp => {}
+      next: resp => {
+        this.interestList.splice(this.interestList.indexOf(resp.name),1)
+      }
     })
   }
 
@@ -52,7 +56,7 @@ export class ListComponent implements OnInit {
       // console.log(this.myForm.value);
       
       this.interestService.postInterest(this.myForm.value).subscribe({
-        next: resp => 
+        next: resp =>{ 
         Swal.fire({
           title: "Saved successfully",
           text: "Your interest has been saved",
@@ -60,10 +64,10 @@ export class ListComponent implements OnInit {
           confirmButtonColor: 'black',
           confirmButtonText: 'OK',
           allowOutsideClick: false
-        }).then((result) => {
-          if (result.isConfirmed) {
-            location.reload()
-        }}),
+        })
+        this.interestList.unshift(this.myForm.controls['name'].value)
+        this.myForm.reset()
+      },
         error: (error) =>
           Swal.fire({
             title: "An error has appeared",
@@ -73,7 +77,6 @@ export class ListComponent implements OnInit {
             confirmButtonText: 'OK'
           }) 
       })
-      this.myForm.reset()
       
     }
 

@@ -1,6 +1,6 @@
 .chat-body {
     width: 80%;
-    max-width: 500px;
+    max-width: 700px;
     
     margin: auto; 
     margin-top: 100px;
@@ -9,6 +9,9 @@
 .borde-chat {
     border: 5px;
     border-style: ridge;
+    border-radius: 15px;
+    border-color: darkgray;
+    background-color: #000000;
     padding: 10px;
     min-height: 200px;
     max-height: 500px;
@@ -19,8 +22,13 @@
     word-wrap: break-word
 }
 
+.black-text {
+    color: black;
+    word-wrap: break-word
+}
+
 .user-text {
-    color: white;
+    color: black;
     text-decoration: underline;   
 }
 
@@ -28,8 +36,8 @@
     border-radius: 15px;
     padding: 5px;
     margin: 3px;
-    background-color: red;
-    max-width: 50%;
+    background-color: rgb(250, 77, 77);
+    max-width: 40%;
     min-width: 10%;
 }
 
@@ -47,8 +55,31 @@
     border-radius: 15px;
     padding: 5px;
     margin: 3px;
-    background-color: red;
+    background-color: antiquewhite;
     /* background-color: aliceblue; */
-    max-width: 50%;
+    max-width: 40%;
     min-width: 10%;
 }
+
+/* Estilo para la barra de desplazamiento vertical */
+.borde-chat::-webkit-scrollbar {
+    border-radius: 15px;
+    width: 15px; /* Ancho de la barra de desplazamiento */
+    background-color: #000000; /* Color de fondo de la barra de desplazamiento */
+  }
+  
+  /* Estilo para el pulgar de la barra de desplazamiento */
+  .borde-chat::-webkit-scrollbar-thumb {
+    background-color: #ff0000ab; /* Color del pulgar */
+    border-radius: 15px; /* Borde redondeado del pulgar */
+  }
+  
+  /* Estilo para el pulgar de la barra de desplazamiento al pasar el mouse por encima */
+  .borde-chat::-webkit-scrollbar-thumb:hover {
+    background-color: #ff0000; /* Color del pulgar al pasar el mouse por encima */
+  }
+  
+  /* Estilo para las flechas de la barra de desplazamiento */
+  .borde-chat::-webkit-scrollbar-button {
+    display: none; /* Oculta las flechas de la barra de desplazamiento */
+  }

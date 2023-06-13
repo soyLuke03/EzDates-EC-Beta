@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UserService } from '../user.service';
-import { ConversionUtils } from 'turbocommons-ts';
 import { User } from '../../interfaces/user.interface';
+import { ConversionUtils } from 'turbocommons-ts';
 
 @Component({
   selector: 'app-update',
@@ -29,27 +29,37 @@ export class UpdateComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private uS:UserService, private aCRoute: ActivatedRoute) { }
 
 
-  user!:User[];
+  user:User|null = null;
+
+  token = localStorage.getItem('token')!;
+  payload!:string;
+  usernameToken!: string;
+  role!: string;
+
   ngOnInit(): void {
+
+
+    if(this.token){
+      this.token = localStorage.getItem('token')!;
+      this.payload = ConversionUtils.base64ToString(this.token.split(".")[1])
+      this.usernameToken = this.payload.split('"')[3];
+      this.role = this.payload.split('"')[9];
+    }
+
     let username = this.aCRoute.snapshot.params['id'];
     this.uS.getUser(username)
     .subscribe({
-      next: resp => this.defaultValues(resp),
+      next: resp => {
+        this.user = resp[0];
+    
+        this.myForm.controls['username'].setValue(resp[0].username)
+        this.myForm.controls['email'].setValue(resp[0].email)
+        this.myForm.controls['name'].setValue(resp[0].name)
+        this.myForm.controls['surname'].setValue(resp[0].surname)
+        this.myForm.controls['password'].setValue("")
+      },
       error: (error) => console.log()
     })
-  }
-
-  defaultValues(resp:any) {
-    this.user = resp;
-    // console.log(resp[0].surname);
-    
-
-    this.myForm.controls['username'].setValue(resp[0].username)
-    this.myForm.controls['email'].setValue(resp[0].email)
-    this.myForm.controls['name'].setValue(resp[0].name)
-    this.myForm.controls['surname'].setValue(resp[0].surname)
-    this.myForm.controls['password'].setValue("")
-
   }
 
   /**
@@ -65,7 +75,7 @@ export class UpdateComponent implements OnInit {
 
 
     equalsPasswords(){
-      return this.myForm.controls['password'].value == this.myForm.controls['password2'].value
+      return this.myForm.controls['password'].value == this.myForm.controls['password2'].value && this.myForm.controls['password2'].dirty || !this.myForm.controls['password2'].dirty
     }
 
   /**
@@ -84,13 +94,12 @@ export class UpdateComponent implements OnInit {
         password: this.myForm.controls['password'].value,
         enabled: true
       }
-
-      // console.log(formulario);
       
 
       this.uS.putUser(formulario,username,this.myForm.controls['email'].value).subscribe({
         next: resp => 
-          Swal.fire({
+          {
+            Swal.fire({
             title: "Updated",
             text: "Your account has been updated",
             background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',        
@@ -98,10 +107,16 @@ export class UpdateComponent implements OnInit {
             confirmButtonColor: 'black',
             confirmButtonText: 'OK',
             allowOutsideClick: false
-          }).then((result) => {
-            if (result.isConfirmed) {
-              location.reload()
-          }}),
+          })
+          if(username==this.usernameToken){
+            localStorage.removeItem('token')
+            this.router.navigate(['/logs/login'])
+          }        
+          else{
+            this.router.navigate(['/users/list'])
+          }
+        }
+          ,
           error: (error) =>
             Swal.fire({
               title: "An error has appeared",
@@ -113,12 +128,8 @@ export class UpdateComponent implements OnInit {
             })
       })
       
-      // console.log(this.myForm.controls['password'].value);
-      
       this.myForm.reset()
       this.errorPasswords=""
-
-      this.router.navigate(['logs/login']).then(() => window.location.reload())
     }
     if(!this.equalsPasswords()){
       Swal.fire({

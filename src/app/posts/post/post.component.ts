@@ -15,6 +15,8 @@ export class PostComponent implements OnInit {
   commentsList: any[] = [];
   comment: string = ""
 
+  likes: number = 0;
+
   
   post!: Post;
   token = localStorage.getItem('token')!;
@@ -44,6 +46,7 @@ export class PostComponent implements OnInit {
             for(let comentario of this.post.comments){
               this.commentsList.unshift(comentario)
             }
+            this.likes = resp.likes.length
           },
           error: (error) => console.log("ERROR on loading post")
         })
@@ -77,6 +80,20 @@ export class PostComponent implements OnInit {
       }
     })
     
+  }
+
+  addLike(idPost:number): void{
+    this.pS.addLike(idPost,this.username)
+    .subscribe({
+      next: resp => {
+        this.likes+=1
+      },
+      error: (error) => {
+        if(error.status == 200){
+          this.likes-=1
+        }
+      }
+    })
   }
   
 

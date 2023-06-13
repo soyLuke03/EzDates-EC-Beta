@@ -82,7 +82,7 @@ const routes: Routes = [
     }
   },
 
-  { path: 'terms', 
+  { path: 'terms/:lang', 
     component: TermConditionsComponent, data: {
     title: 'TERMS',
     breadcrumb: [

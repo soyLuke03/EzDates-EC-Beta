@@ -19,8 +19,8 @@ export class VerifyComponent implements OnInit {
     console.log(code, user);
     if(code != null && user != null){
       this.lS.verify(user, code).subscribe({
-        next: resp => console.log(resp),
-        error: (error) => console.log("ERROR")
+        next: resp => {this.error=""},
+        error: (error) => {this.error="1"}
       })
       this.error=""
     }

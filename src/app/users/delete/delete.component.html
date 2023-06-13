@@ -6,10 +6,10 @@
       <div class="row ">
 
           <div class="col-md-12 col-sm-12">
-              <div class="border-form">
+              <div class="border-form-delete">
                       <!--Formulario de registro-->
-                      <label class="form-label">*Username</label><br>
-                      <input required class="sepparate form-control input" type="text" id="username" name="username"  placeholder="{{user[0].username}}">
+                      <label class="form-label">Username</label><br>
+                      <input readonly class="sepparate form-control input" type="text" id="username" name="username"  placeholder="{{user[0].username}}">
 
                       <br>
 
@@ -18,9 +18,9 @@
 
 
                       <!--CAMPOS OCULTOS PARA LA API DE SPRING-->
-                      <input class="sepparate form-control input hidden" type="text" id="name" name="name" placeholder="{{user[0].name}}">
+                      <input class="sepparate form-control input hidden" type="hidden" id="name" name="name" placeholder="{{user[0].name}}">
 
-                      <input required class="sepparate form-control input hidden" type="text" id="surname" name="surname" placeholder="{{user[0].surname}}">
+                      <input required class="sepparate form-control input hidden" type="hidden" id="surname" name="surname" placeholder="{{user[0].surname}}">
 
                       <input class="sepparate form-control input" type="hidden" id="verCode" name="verCode" placeholder="verCode">
                       
@@ -30,16 +30,12 @@
                           
                       <input class="sepparate form-control input" value="USER_ROLE" type="hidden" id="rol" name="rol" placeholder="rol">
                       <!-- -------------------- -->
-
-                      <!-- -------------------- -->
-                      <br><br>                   
-
                   
               </div>
           </div>
           <div class="col-md-12">
               <br><br>
-              <div class="border-form">
+              <div class="border-form-delete">
                   <input class="btn btn-success sepparate" type="submit" value="Remove"> 
                   <a [routerLink]="['/users/user/', user[0].username]"><button  class="btn btn-danger sepparate">Cancel</button></a>
               </div>

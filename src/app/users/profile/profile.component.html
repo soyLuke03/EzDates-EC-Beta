@@ -1,17 +1,17 @@
 <form (ngSubmit)="save($event)" [formGroup]="myForm" class="backBlack white"> 
-  <div class="container-flex center">
+  <div class="container center">
       <br>
-      <div class="row ">
+      <div class="row">
           <h1>Profile form</h1>
-          
-          <div class="center col-md-8 col-sm-12">
-              <div class="border-form">
-                <h4>NOTE: Fill this form and submit before selecting any options below</h4>
+          <sub>NOTE: Create a profile before using the tags at the right</sub>
+          <br>
+          <div class="col-md-4 col-sm-12">
+              <div class="">
                       <!--Formulario de perfil-->
                       
 
                       <label class="form-label">Gender</label><br>
-                      <select id="gender" name="gender" formControlName="gender" required>
+                      <select class="form-select input" id="gender" name="gender" formControlName="gender" required>
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                         <option value="3">Non Binary</option>
@@ -35,49 +35,35 @@
                   
               </div>
           </div>
-
-          <div *ngIf="profile" class="center col-md-8 col-sm-12">
-            <div class="border-form">
-                    <!--Formulario de perfil-Games-->
+          <div class="border-form col-md-4 col-sm-12">
+            <div class="container">
+                <!--Formulario de perfil-->
+                <div class="row">
+                  <label class="form-label">Games</label><br>
+                  <div class="col-lg-6" *ngFor="let game of games">
+                    <input [disabled]="!profile" *ngIf="!myGames.includes(game.name)" type="button" (click)="addGame(game.id)" class="btn btn-success sepparate" name="{{game.name}}" id="{{game.name}}" value="{{game.name}}">
+                    <input [disabled]="!profile" *ngIf="myGames.includes(game.name)" type="button" (click)="delGame(game.id)" class="btn btn-danger sepparate" name="{{game.name}}" id="{{game.name}}" value="{{game.name}}">
                     
-
-                    <label class="form-label">Games</label><br>
-                    <div *ngFor="let game of games">
-                      <br *ngIf="!myGames.includes(game.name)">
-                      <input *ngIf="!myGames.includes(game.name)" type="button" (click)="addGame(game.id)" class="btn btn-success" name="{{game.name}}" id="{{game.name}}" value="{{game.name}}">
-                      <br *ngIf="!myGames.includes(game.name)">
-                    </div>
-                    <br>
-
-                    
-
-                    <!-- -------------------- -->
-                    <br><br>                   
-
-                
+                  </div>
+                </div>
             </div>
           </div>
 
-          <div *ngIf="profile" class="center col-md-8 col-sm-12">
-            <div class="border-form">
-                    <!--Formulario de perfil-->
-                    
+          <div class="border-form col-md-4 col-sm-12">
+            <div class="container">
+                <!--Formulario de perfil-->
+                <div class="row">
+                  <label class="form-label">Interests</label><br>
+                  <div class="col-lg-6" *ngFor="let interest of interests">
+                    <input [disabled]="!profile" *ngIf="!myInterests.includes(interest.name)" type="button" (click)="addInterest(interest.id)" class="btn btn-success sepparate" name="{{interest.name}}" id="{{interest.name}}" value="{{interest.name}}">
+                    <input [disabled]="!profile" *ngIf="myInterests.includes(interest.name)" type="button" (click)="delInterest(interest.id)" class="btn btn-danger sepparate" name="{{interest.name}}" id="{{interest.name}}" value="{{interest.name}}">
 
-                    <label class="form-label">Interests</label><br>
-                    <div *ngFor="let interest of interests">
-                      <br *ngIf="!myInterests.includes(interest.name)">
-                      <input *ngIf="!myInterests.includes(interest.name)" type="button" (click)="addInterest(interest.id)" class="btn btn-success" name="{{interest.name}}" id="{{interest.name}}" value="{{interest.name}}">
-                      <br *ngIf="!myInterests.includes(interest.name)">
-                    </div>
-
-                    <!-- -------------------- -->
-                    <br><br>                   
-
-                
+                  </div>
+                </div>
             </div>
           </div>
 
-          <div class="border-form center">
+          <div class=" center">
             <input class="btn btn-success sepparate" type="submit" [disabled]="myForm.invalid" value="Change Profile">
             <a [routerLink]="['/logs/login']"><button  class="btn btn-danger sepparate">Cancel</button></a>
           </div>

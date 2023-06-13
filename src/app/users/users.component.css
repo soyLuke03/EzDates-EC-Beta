@@ -1,4 +1,12 @@
+.foto {
+  max-width: 380px;
+  max-height: 500px;
+}
 
+.profile-img{
+  width: auto;
+  height: auto;
+}
 
 .EZbtn{
     background-color: rgba(108, 0, 0, 0.801);
@@ -8,11 +16,27 @@
 }
 
 .searchUser{
-    background-color: red;
-    color: Black;
+    background-color: black;
+    color: antiquewhite;
     height: 35px;
-    padding: 4px;
+    padding: 5px;
     border-radius: 15px;
+}
+
+.border-form{
+  border-width: 2px;
+  border-style: ridge;
+  border-color: aliceblue;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.input {
+  width: 90%;
+}
+
+.searchUser::placeholder{
+  color: antiquewhite;
 }
 
 .white{
@@ -25,10 +49,14 @@
     border-color: rgb(63, 63, 63);
 }
 
-.breadCramp{
-    color: aliceblue;
-    background: rgb(2,0,36);
-    background: linear-gradient(350deg, rgba(0,0,0) 20%, rgba(255,0,0,0.9284664549413515) 100%);
+.border-form-delete {
+  width: 80%;
+  margin: auto;
+}
+
+.sepparate{
+  margin: 5px;
+  
 }
 
 .datatable{
@@ -63,3 +91,13 @@
   }
 
 /**/
+
+/* Estilo para las opciones de tamaño de página */
+::ng-deep .mat-paginator-outer-container {
+  background-color: rgb(21, 21, 21);
+  color: white;
+}
+
+::ng-deep .mat-select-value, ::ng-deep .mat-select-arrow{
+  color: white;
+}

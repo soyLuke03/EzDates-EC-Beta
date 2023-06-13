@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Game } from 'src/app/interfaces/game.interface';
 import { Interest } from 'src/app/interfaces/interest.interface';
 import { Profile } from 'src/app/interfaces/profile.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -133,36 +134,97 @@ export class ProfileComponent implements OnInit {
     this.json.bio = this.myForm.get('bio')?.value;
     this.uS.postProfile(this.json, this.myForm.controls['imageSource'].value)
     .subscribe({
-      next: resp => {}
+      next: resp => {
+        Swal.fire({
+          title: "Profile saved",
+          text: "Your profile has been saved succesfully. You may choose 'Games' and 'Interests' to your list",
+          background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+          color: 'white',
+          confirmButtonColor: 'black',
+          confirmButtonText: 'OK',
+          allowOutsideClick: true
+        })
+      }
     })
-
       this.myForm.reset()
-
-      // this.router.navigate(['logs/login'])
     }
 
 
     addGame(gameId:number){
-      console.log(gameId);
       this.uS.addNewGame(this.username,gameId)
       .subscribe({
         next: resp => {
-          console.log(resp);
-          
+          this.myGames.unshift(resp.name),
+          Swal.fire({
+            title: "Game added",
+            text: "",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+            color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK',
+            timer: 800,
+            timerProgressBar: true,
+          })
         }
       })
-      
+    }
+    delGame(gameId:number){
+      this.uS.delGame(this.username,gameId)
+      .subscribe({
+        next: resp => {
+          this.myGames.splice(this.myGames.indexOf(resp.name),1)
+          Swal.fire({
+            title: "Game deleted",
+            text: "",
+            background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+            color: 'white',
+            confirmButtonColor: 'black',
+            confirmButtonText: 'OK',
+            timer: 800,
+            timerProgressBar: true,
+          })
+        }
+      })
     }
 
     addInterest(interestId:number){
-      console.log(interestId);
-      
         this.uS.addNewInterest(this.username,interestId)
         .subscribe({
           next: resp => {
-            console.log(resp);
+            this.myInterests.unshift(resp.name)
+            Swal.fire({
+              title: "Interest added",
+              text: "",
+              background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+              color: 'white',
+              confirmButtonColor: 'black',
+              confirmButtonText: 'OK',
+              timer: 800,
+              timerProgressBar: true,
+            })
+          },
+          error(err) {
+            console.log(err);
             
-          }
+          },
+        })
+    }
+    delInterest(interestId:number){
+        this.uS.delInterest(this.username,interestId)
+        .subscribe({
+          next: resp => {
+            this.myInterests.splice(this.myInterests.indexOf(resp.name),1)
+            Swal.fire({
+              title: "Interest deleted",
+              text: "",
+              background: 'linear-gradient(200deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9284664549413515) 70%)',      
+              color: 'white',
+              confirmButtonColor: 'black',
+              confirmButtonText: 'OK',
+              timer: 800,
+              timerProgressBar: true,
+            })
+          },
         })
     }
     

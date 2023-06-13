@@ -39,6 +39,7 @@ export class AddComponent implements OnInit {
   payload!:string;
   username!: string;
 
+  
   ngOnInit(): void {
     if(this.token){
       this.token = localStorage.getItem('token')!;
@@ -81,8 +82,18 @@ export class AddComponent implements OnInit {
 
       this.json.title = this.myForm.get('title')?.value;
       this.json.description = this.myForm.get('description')?.value;
+      let trends = this.myForm.get('trends')?.value
+      let newTrends:string = ""
+
+      for (const trend of trends) {
+        newTrends += trend.replace("#","").trim()
+      }
+      if(newTrends.startsWith(',')){
+        newTrends = newTrends.replace(',','')
+      }
       
-      this.pS.postPost(this.json, this.myForm.get('trends')?.value, this.username, this.myForm.controls['fileSource'].value)
+      
+      this.pS.postPost(this.json, newTrends, this.username, this.myForm.controls['fileSource'].value)
       .subscribe({
         next: resp => 
         Swal.fire({
@@ -97,9 +108,7 @@ export class AddComponent implements OnInit {
           if (result.isConfirmed) {
             location.reload()
         }}),
-        error: (error) => {
-          // console.log(error);
-          
+        error: (error) => {          
           Swal.fire({
             title: "An error has appeared",
             text: "The post cannot be saved. Try again later or contact with an admin",
@@ -112,7 +121,6 @@ export class AddComponent implements OnInit {
       })
       this.myForm.reset()
       this.router.navigate([['/posts/list']]);
-      
     }
 
 

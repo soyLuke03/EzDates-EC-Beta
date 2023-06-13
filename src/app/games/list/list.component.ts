@@ -13,13 +13,15 @@ export class ListComponent implements OnInit {
 
   constructor(private gameService:GamesService, private fb: FormBuilder) { }
 
-  gameList:Game[] = []
+  gameList:string[] = []
 
   ngOnInit(): void {
     this.gameService.getGames()
     .subscribe({
       next: (resp) => {
-        this.gameList = resp        
+        for (const game of resp) {
+          this.gameList.unshift(game.name)
+        }        
       }
     })
   }
@@ -33,7 +35,9 @@ export class ListComponent implements OnInit {
   deleteGame(name:string){
     this.gameService.deleteGame(name)
     .subscribe({
-      next: resp => {}
+      next: resp => {
+        this.gameList.splice(this.gameList.indexOf(resp.name),1)
+      }
     })
   }
 
@@ -50,10 +54,10 @@ export class ListComponent implements OnInit {
       save = (e: { preventDefault: () => void; }) => {
 
       
-        // console.log(this.myForm.value);
+        console.log(this.myForm.controls['name'].value);
         
         this.gameService.postGame(this.myForm.value).subscribe({
-          next: resp => 
+          next: resp => {
           Swal.fire({
             title: "Saved successfully",
             text: "Your game has been saved",
@@ -61,10 +65,10 @@ export class ListComponent implements OnInit {
             confirmButtonColor: 'black',
             confirmButtonText: 'OK',
             allowOutsideClick: false
-          }).then((result) => {
-            if (result.isConfirmed) {
-              location.reload()
-          }}),
+          })
+          this.gameList.unshift(this.myForm.controls['name'].value)
+          this.myForm.reset()
+        },
           error: (error) =>
             Swal.fire({
               title: "An error has appeared",
@@ -74,7 +78,7 @@ export class ListComponent implements OnInit {
               confirmButtonText: 'OK'
             }) 
         })
-        this.myForm.reset()
+        
         
       }
   

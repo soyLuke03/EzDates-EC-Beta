@@ -123,9 +123,15 @@ import { ProfileInterest } from '../interfaces/profileInterest.interface copy';
     addNewGame(idProfile:string, idGame:number){
       return this.http.post<Game>(this.urlProfileGames+"/add/"+idProfile+"/"+idGame,"")
     }
+    delGame(idProfile:string, idGame:number){
+      return this.http.delete<Game>(this.urlProfileGames+"/del/"+idProfile+"/"+idGame)
+    }
 
     addNewInterest(idProfile:string, idInterest:number){
-      return this.http.post<Game>(this.urlProfileInterests+"/add/"+idProfile+"/"+idInterest,"")
+      return this.http.post<Interest>(this.urlProfileInterests+"/add/"+idProfile+"/"+idInterest,"")
+    }
+    delInterest(idProfile:string, idInterest:number){
+      return this.http.delete<Interest>(this.urlProfileInterests+"/del/"+idProfile+"/"+idInterest)
     }
 
 

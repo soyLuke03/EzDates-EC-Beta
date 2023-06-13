@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-term-conditions',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermConditionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private acRoute:ActivatedRoute) { }
+  lang:string = "ESP"
 
   ngOnInit(): void {
+
+    this.acRoute.paramMap.subscribe((params:ParamMap) => {
+      if(params.get('lang')!=null){
+        this.lang = params.get('lang')!
+        
+      }
+    })
+
   }
 
 }

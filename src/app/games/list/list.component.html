@@ -12,7 +12,7 @@
           <div class="container-flex galery-img" *ngFor="let game of gameList">
               <div class="row card fondo" style="width: 18rem;">
                 <div class="card-body">
-                  <h4 class="card-title center">{{ game.name }} -> <button (click)="deleteGame(game.name)">DELETE</button></h4>
+                  <h4 class="card-title center">{{ game }} -> <button class="btn EZbtn" (click)="deleteGame(game)">DELETE</button></h4>
                 </div>
               </div>
           </div>
@@ -21,7 +21,7 @@
           <div class="galery-img">
             <div class="row card fondo" style="width: 18rem;">
               <div class="center card-body">
-                <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <a class="btn EZbtn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                   <h4 class="card-title center">ADD NEW</h4>
                 </a>
               </div>
